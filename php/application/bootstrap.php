@@ -156,6 +156,19 @@ Route::set('coctails', 'coctails/<action>(/<tail>)')
         'ids' => isset($_POST['ids']) ? $_POST['ids'] : '',
         'newData' => isset($_POST['newData']) ? $_POST['newData'] : '',
 ));
+
+Route::set('orders', 'orders/<action>(/<tail>)')
+    ->defaults(array(
+    'controller' => 'orders',
+    'client' => isset($_POST['client']) ? $_POST['client'] : '',
+    'coctail' => isset($_POST['coctail']) ? $_POST['coctail'] : '',
+    'prozent' => isset($_POST['prozent']) ? $_POST['prozent'] : '',
+    'quantity' =>  isset($_POST['quantity']) ? $_POST['quantity'] : '',
+    'ids' => isset($_POST['ids']) ? $_POST['ids'] : '',
+    'discount' => isset($_POST['discount']) ? $_POST['discount'] : '',
+    'priority' => isset($_POST['priority']) ? $_POST['priority'] : '',
+    'status' => isset($_POST['status']) ? $_POST['status'] : '',
+));
 //Route::set('users_getOwners', 'users/getOwners(/<tail>)', array('tail' => '.+'));
 
 /*Route::set('default', '(<controller>(/<action>(/<id>)))')

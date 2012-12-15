@@ -13,6 +13,7 @@ Ext.define('Bar.view.MainPanel', {
     items: [
         {
             xtype: 'TreePanel',
+            id: 'treePanel',
             title: 'Действия',
             root: {
                 nodeType: 'async',
@@ -97,7 +98,8 @@ Ext.define('Bar.view.MainPanel', {
             }
         },
         {
-            xtype: 'ActionsPanel'
+            xtype: 'ActionsPanel',
+            id: 'actionPanel'
         }
     ],
 
@@ -107,21 +109,19 @@ Ext.define('Bar.view.MainPanel', {
         }
     },
 
-    initComponent: function() {
+    bindEvents: function() {
         var panels = {barClients: 'Bar.view.ClientsPanel',
-                      barOrders:  'Bar.view.OrdersPanel',
-                      barOwners: 'Bar.view.OwnersPanel',
-                      barResources: 'Bar.view.BarResourcesPanel',
-                      barAlco: 'Bar.view.AlcoCoctailsPanel'};
-
-        Bar.view.MainPanel.superclass.initComponent.apply(this, arguments);
-        console.log('Bar.view.MainPanel');
+                        barOrders:  'Bar.view.OrdersPanel',
+                        barOwners: 'Bar.view.OwnersPanel',
+                        barResources: 'Bar.view.BarResourcesPanel',
+                        barAlco: 'Bar.view.AlcoCoctailsPanel'};
 
         this.treePanel = this.items.getAt(0);
         this.actionsPanel = this.items.getAt(1);
 
+        var layout = this.actionsPanel.getLayout();
+
         this.treePanel.on('itemclick', function(view, record, item, index, e, eOpts) {
-            var layout = this.actionsPanel.getLayout();
             if(record.getId() in panels) {
                 // Загружаем панель, если есть. Если панель уже создана, подгружаем созданное.
                 var panel = panels[record.getId()];
@@ -134,8 +134,18 @@ Ext.define('Bar.view.MainPanel', {
                     panels[record.getId()].updatePanel();
                 }
             }
-        }, this)
+        }, this);
 
+        // Раскрываем по умолчанию панель заказов
+        panels['barOrders'] = Ext.create(panels.barOrders);
+        layout.setActiveItem(panels['barOrders']);
+        panels['barOrders'].updatePanel();
+    },
+
+    initComponent: function() {
+        Bar.view.MainPanel.superclass.initComponent.apply(this, arguments);
+        console.log('Bar.view.MainPanel');
+        this.bindEvents();
     }
 });
 

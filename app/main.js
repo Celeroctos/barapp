@@ -20,7 +20,8 @@ Ext.onReady(function() {
                  'AlcoModel',
                  'NoAlcoModel',
                  'OtherModel',
-                 'InventoryModel'],
+                 'InventoryModel',
+                 'OrdersModel'],
         stores: ['ClientsStore',
                  'OwnersStore',
                  'InventoryStore',
@@ -28,7 +29,9 @@ Ext.onReady(function() {
                  'NoAlcoStore',
                  'OtherStore',
                  'AllComponentsStore',
-                 'AlcoCoctailsStore'],
+                 'AlcoCoctailsStore',
+                 'OrdersStore'],
+        views: ['ClientsCombobox'],
         launch: function() {
             Ext.create('Bar.view.MainPanel').show();
         },
