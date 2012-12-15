@@ -1,0 +1,4 @@
+{results:
+[{id: 1, name: 'Ed',    email: 'ed@sencha.com', moneyOut: 10},
+{id: 2, name: 'Tommy', email: 'tommy@sencha.com', moneyOut: 15}]
+}
