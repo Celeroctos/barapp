@@ -36,7 +36,8 @@ class Controller_Orders extends Controller {
                                                      b.price as price_full,
                                                      c.nick,
                                                      a.priced,
-                                                     b.name AS coctail_name
+                                                     b.name AS coctail_name,
+                                                     a.create_date
                                                FROM orders a
                                                INNER JOIN coctails b ON a.coctail_id = b.id
                                                INNER JOIN users c ON c.id = a.owner_id
@@ -46,9 +47,32 @@ class Controller_Orders extends Controller {
                                   'data' => $result));
     }
 
-    public function action_delOrders() {
+    public function action_saveChanges() {
         $params = $this->request->param();
 
+        $newData = json_decode($params['newData']);
+        foreach($newData as $order) {
+            $orderModel = ORM::factory('order', $order->id);
+            $orderModel->coctail_id = $order->coctail;
+            $orderModel->status = $order->status;
+            $orderModel->priced = $order->priced;
+            $orderModel->priority = $order->priority;
+            $orderModel->owner_id = $order->client;
+            $orderModel->price += ($orderModel->discount - $order->discount); // Скидка текущая больше - сумма уменьшится.
+            $orderModel->discount = $order->discount;
+            // Клиент полностью оплатил заказик
+            if($order->priced >= $orderModel->price && $orderModel->status < 2) {
+                $orderModel->status = 2;
+            }
+            $orderModel->save();
+        }
+        $this->makeResponse(array('success' => true,
+                                  'data' => 'Данные успешно сохранены'));
+    }
+
+
+    public function action_delOrders() {
+        $params = $this->request->param();
         if(isset($params['ids']) && $params['ids'] == '') {
             return;
         }

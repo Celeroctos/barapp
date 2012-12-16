@@ -52,7 +52,9 @@ class Controller_Components extends Controller {
         $model->type = $type;
         $model->owner_id = $params['owner'];
         $model->current_capacity = $params['capacity'];
-        $model->strength = $params['strength'];
+        if($params['strength'] != '') {
+            $model->strength = $params['strength'];
+        }
         $model->buy_price = $params['price'];
 
         $model->save();

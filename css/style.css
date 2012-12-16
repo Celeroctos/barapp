@@ -1,3 +1,6 @@
+strong {
+   font-weight: bold;
+}
 .order-0 td {
     background: #FFC7C7 !important;
 }

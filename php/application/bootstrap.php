@@ -168,6 +168,7 @@ Route::set('orders', 'orders/<action>(/<tail>)')
     'discount' => isset($_POST['discount']) ? $_POST['discount'] : '',
     'priority' => isset($_POST['priority']) ? $_POST['priority'] : '',
     'status' => isset($_POST['status']) ? $_POST['status'] : '',
+    'newData' => isset($_POST['newData']) ? $_POST['newData'] : '',
 ));
 //Route::set('users_getOwners', 'users/getOwners(/<tail>)', array('tail' => '.+'));
 

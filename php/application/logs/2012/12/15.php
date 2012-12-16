@@ -345,3 +345,133 @@
 #8 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
 #9 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
 #10 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-15 23:38:22 --- EMERGENCY: Database_Exception [ 2 ]: mysql_connect() [function.mysql-connect]: Access denied for user ''@'localhost' (using password: NO) ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 67 ] in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php:171
+2012-12-15 23:38:22 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php(171): Kohana_Database_MySQL->connect()
+#1 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php(358): Kohana_Database_MySQL->query(1, 'SHOW FULL COLUM...', false)
+#2 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(1665): Kohana_Database_MySQL->list_columns('users')
+#3 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(441): Kohana_ORM->list_columns()
+#4 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(386): Kohana_ORM->reload_columns()
+#5 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(254): Kohana_ORM->_initialize()
+#6 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(46): Kohana_ORM->__construct(NULL)
+#7 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(34): Kohana_ORM::factory('user')
+#8 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(30): Controller_Users->getUsers(Array)
+#9 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Users->action_getClients()
+#10 [internal function]: Kohana_Controller->execute()
+#11 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Users))
+#12 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#13 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#14 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#15 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php:171
+2012-12-15 23:38:22 --- EMERGENCY: Database_Exception [ 2 ]: mysql_connect() [function.mysql-connect]: Access denied for user ''@'localhost' (using password: NO) ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 67 ] in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php:171
+2012-12-15 23:38:22 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php(171): Kohana_Database_MySQL->connect()
+#1 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(1, 'SELECT a.id,?? ...', false, Array)
+#2 Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php(44): Kohana_Database_Query->execute()
+#3 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Orders->action_getOrders()
+#4 [internal function]: Kohana_Controller->execute()
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Orders))
+#6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#9 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php:171
+2012-12-15 23:38:22 --- EMERGENCY: Database_Exception [ 2 ]: mysql_connect() [function.mysql-connect]: Access denied for user ''@'localhost' (using password: NO) ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 67 ] in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php:171
+2012-12-15 23:38:22 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php(171): Kohana_Database_MySQL->connect()
+#1 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(1, 'SELECT a.id,?? ...', false, Array)
+#2 Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php(44): Kohana_Database_Query->execute()
+#3 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Orders->action_getOrders()
+#4 [internal function]: Kohana_Controller->execute()
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Orders))
+#6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#9 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php:171
+2012-12-15 23:38:27 --- EMERGENCY: Database_Exception [ 2 ]: mysql_connect() [function.mysql-connect]: Access denied for user ''@'localhost' (using password: NO) ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 67 ] in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php:171
+2012-12-15 23:38:27 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php(171): Kohana_Database_MySQL->connect()
+#1 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(1, 'SELECT a.id,?? ...', false, Array)
+#2 Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php(44): Kohana_Database_Query->execute()
+#3 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Orders->action_getOrders()
+#4 [internal function]: Kohana_Controller->execute()
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Orders))
+#6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#9 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php:171
+2012-12-15 23:38:43 --- EMERGENCY: Database_Exception [ 2 ]: mysql_connect() [function.mysql-connect]: Access denied for user ''@'localhost' (using password: NO) ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 67 ] in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php:171
+2012-12-15 23:38:43 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php(171): Kohana_Database_MySQL->connect()
+#1 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php(358): Kohana_Database_MySQL->query(1, 'SHOW FULL COLUM...', false)
+#2 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(1665): Kohana_Database_MySQL->list_columns('users')
+#3 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(441): Kohana_ORM->list_columns()
+#4 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(386): Kohana_ORM->reload_columns()
+#5 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(254): Kohana_ORM->_initialize()
+#6 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(46): Kohana_ORM->__construct(NULL)
+#7 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(34): Kohana_ORM::factory('user')
+#8 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(26): Controller_Users->getUsers(1)
+#9 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Users->action_getOwners()
+#10 [internal function]: Kohana_Controller->execute()
+#11 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Users))
+#12 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#13 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#14 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#15 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php:171
+2012-12-15 23:38:44 --- EMERGENCY: Database_Exception [ 2 ]: mysql_connect() [function.mysql-connect]: Access denied for user ''@'localhost' (using password: NO) ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 67 ] in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php:171
+2012-12-15 23:38:44 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php(171): Kohana_Database_MySQL->connect()
+#1 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(1, 'SELECT a.id,?? ...', false, Array)
+#2 Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php(44): Kohana_Database_Query->execute()
+#3 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Orders->action_getOrders()
+#4 [internal function]: Kohana_Controller->execute()
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Orders))
+#6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#9 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php:171
+2012-12-15 23:38:45 --- EMERGENCY: Database_Exception [ 2 ]: mysql_connect() [function.mysql-connect]: Access denied for user ''@'localhost' (using password: NO) ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 67 ] in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php:171
+2012-12-15 23:38:45 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php(171): Kohana_Database_MySQL->connect()
+#1 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php(358): Kohana_Database_MySQL->query(1, 'SHOW FULL COLUM...', false)
+#2 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(1665): Kohana_Database_MySQL->list_columns('components')
+#3 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(441): Kohana_ORM->list_columns()
+#4 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(386): Kohana_ORM->reload_columns()
+#5 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(254): Kohana_ORM->_initialize()
+#6 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(46): Kohana_ORM->__construct(NULL)
+#7 Z:\home\barapp.my\www\php\application\classes\Controller\Components.php(64): Kohana_ORM::factory('component')
+#8 Z:\home\barapp.my\www\php\application\classes\Controller\Components.php(18): Controller_Components->getComponents(0)
+#9 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Components->action_getAlcoComponents()
+#10 [internal function]: Kohana_Controller->execute()
+#11 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Components))
+#12 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#13 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#14 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#15 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php:171
+2012-12-15 23:38:46 --- EMERGENCY: Database_Exception [ 2 ]: mysql_connect() [function.mysql-connect]: Access denied for user ''@'localhost' (using password: NO) ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 67 ] in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php:171
+2012-12-15 23:38:46 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php(171): Kohana_Database_MySQL->connect()
+#1 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php(358): Kohana_Database_MySQL->query(1, 'SHOW FULL COLUM...', false)
+#2 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(1665): Kohana_Database_MySQL->list_columns('components')
+#3 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(441): Kohana_ORM->list_columns()
+#4 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(386): Kohana_ORM->reload_columns()
+#5 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(254): Kohana_ORM->_initialize()
+#6 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(46): Kohana_ORM->__construct(NULL)
+#7 Z:\home\barapp.my\www\php\application\classes\Controller\Components.php(64): Kohana_ORM::factory('component')
+#8 Z:\home\barapp.my\www\php\application\classes\Controller\Components.php(18): Controller_Components->getComponents(0)
+#9 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Components->action_getAlcoComponents()
+#10 [internal function]: Kohana_Controller->execute()
+#11 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Components))
+#12 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#13 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#14 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#15 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php:171
+2012-12-15 23:45:26 --- EMERGENCY: ErrorException [ 1 ]: Maximum execution time of 30 seconds exceeded ~ SYSPATH\classes\Kohana\Core.php [ 984 ] in :
+2012-12-15 23:45:26 --- NOTICE: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in :
+2012-12-15 23:45:26 --- EMERGENCY: ErrorException [ 1 ]: Maximum execution time of 30 seconds exceeded ~ SYSPATH\classes\Kohana\Core.php [ 984 ] in :
+2012-12-15 23:45:26 --- NOTICE: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in :
+2012-12-15 23:45:26 --- EMERGENCY: ErrorException [ 1 ]: Maximum execution time of 30 seconds exceeded ~ SYSPATH\classes\Kohana\Core.php [ 984 ] in :
+2012-12-15 23:45:26 --- NOTICE: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in :
+2012-12-15 23:50:12 --- EMERGENCY: ErrorException [ 1 ]: Maximum execution time of 30 seconds exceeded ~ SYSPATH\classes\Kohana\Core.php [ 984 ] in :
+2012-12-15 23:50:12 --- NOTICE: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in :
+2012-12-15 23:50:12 --- EMERGENCY: ErrorException [ 1 ]: Maximum execution time of 30 seconds exceeded ~ SYSPATH\classes\Kohana\Core.php [ 984 ] in :
+2012-12-15 23:50:12 --- NOTICE: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in :
+2012-12-15 23:50:12 --- EMERGENCY: ErrorException [ 1 ]: Maximum execution time of 30 seconds exceeded ~ SYSPATH\classes\Kohana\Core.php [ 984 ] in :
+2012-12-15 23:50:12 --- NOTICE: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in :
