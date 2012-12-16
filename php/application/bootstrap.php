@@ -169,6 +169,7 @@ Route::set('orders', 'orders/<action>(/<tail>)')
     'priority' => isset($_POST['priority']) ? $_POST['priority'] : '',
     'status' => isset($_POST['status']) ? $_POST['status'] : '',
     'newData' => isset($_POST['newData']) ? $_POST['newData'] : '',
+    'forced' => isset($_POST['forced']) ? $_POST['forced'] : '',
 ));
 //Route::set('users_getOwners', 'users/getOwners(/<tail>)', array('tail' => '.+'));
 

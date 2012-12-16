@@ -4,16 +4,6 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library name="PHARS">
-        <CLASSES>
-          <root url="phar://Z:/home/barapp.my/www/php/composer.phar" />
-        </CLASSES>
-        <SOURCES>
-          <root url="phar://Z:/home/barapp.my/www/php/composer.phar" />
-        </SOURCES>
-      </library>
-    </orderEntry>
   </component>
 </module>
 

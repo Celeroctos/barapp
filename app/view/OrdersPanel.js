@@ -68,6 +68,7 @@ Ext.define('Bar.view.OrdersPanel', {
                             discount: Ext.getCmp('addOrderDiscount').getValue(),
                             priority: Ext.getCmp('addOrderPriority').getValue(),
                             status: Ext.getCmp('addOrderStatus').getValue(),
+                            quantity: Ext.getCmp('addOrderQuantity').getValue()
                         };
                         Ext.Ajax.request({
                             url: '/php/index.php/orders/addOrder',
@@ -82,6 +83,7 @@ Ext.define('Bar.view.OrdersPanel', {
                                     Ext.getCmp('addOrderPriority').setValue('');
                                     Ext.getCmp('addOrderStatus').setValue('');
                                     Ext.getCmp('addOrderCoctail').setValue(''),
+                                    Ext.getCmp('addOrderQuantity').setValue(''),
                                     //  Обновляем саму таблицу
                                     Ext.getCmp('ordersGrid').getStore().reload();
                                     console.log(Ext.getCmp('ordersGrid').getStore());

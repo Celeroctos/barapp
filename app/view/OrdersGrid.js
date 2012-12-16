@@ -33,6 +33,13 @@ Ext.define('Bar.view.OrdersGrid', {
             width: 150
         },
         {
+            text: 'Количество',
+            sortable: true,
+            dataIndex: 'quantity',
+            editor: 'textfield',
+            width: 80
+        },
+        {
             text: 'Клиент',
             width: 150,
             dataIndex: 'nick',
@@ -59,16 +66,16 @@ Ext.define('Bar.view.OrdersGrid', {
             text: 'Цена',
             sortable: true,
             dataIndex: 'price',
-            width: 90,
+            width: 60,
         },
         {
             text: 'Цена полная',
-            width: 90,
+            width: 80,
             dataIndex: 'price_full',
         },
         {
             text: 'Скидка',
-            width: 90,
+            width: 80,
             dataIndex: 'discount',
             editor: 'textfield'
         },
@@ -89,13 +96,13 @@ Ext.define('Bar.view.OrdersGrid', {
         },
         {
             text: 'Оплачено',
-            width: 90,
+            width: 70,
             dataIndex: 'priced',
             editor: 'textfield'
         },
         {
             text: 'Приоритет',
-            width: 80,
+            width: 70,
             dataIndex: 'priority',
             editor: 'textfield'
         },
@@ -121,8 +128,51 @@ Ext.define('Bar.view.OrdersGrid', {
                 listeners: {
                     click: this.putToHistory
                 }
+            },
+            'изменить статус на:',
+            {
+                xtype: 'OrdersStatusCombobox',
+                id: 'tbarStatusCombo'
+            },
+            {
+                text: 'ок',
+                handler: this.changeStatus
             }]
         };
+    },
+
+    changeStatus: function() {
+        var selected = Ext.getCmp('ordersGrid').getSelected();
+        var status = Ext.getCmp('tbarStatusCombo').getValue();
+        if(selected.length > 0 && status != null) {
+            var toSend = [];
+            for(var i = 0; i < selected.length; i++ ) {
+                toSend.push({
+                    id: selected[i],
+                    status: status
+                });
+            }
+
+            Ext.Ajax.request({
+                url: '/php/index.php/orders/saveChanges',
+                params: {
+                    forced: 1,
+                    newData: Ext.JSON.encode(toSend)
+                },
+                success: function(response) {
+                    var data = Ext.JSON.decode(response.responseText);
+                    if(data.success == true) {
+                        Ext.Msg.show({
+                            title:'Сообщение',
+                            msg: 'Статус успешно изменён.',
+                            buttons: Ext.MessageBox.YES,
+                            buttonText: 'ОК'
+                        });
+                        Ext.getCmp('ordersGrid').getStore().reload();
+                    }
+                }
+            });
+        }
     },
 
     saveChanges: function() {
@@ -140,7 +190,8 @@ Ext.define('Bar.view.OrdersGrid', {
                     discount: rec.get('discount'),
                     status: rec.get('status'),
                     priced: rec.get('priced'),
-                    priority: rec.get('priority')
+                    priority: rec.get('priority'),
+                    quantity:  rec.get('quantity')
                 });
             }
 

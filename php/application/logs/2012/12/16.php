@@ -142,3 +142,57 @@
 #5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
 #6 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
 #7 {main} in Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php:54
+2012-12-16 19:50:58 --- EMERGENCY: ErrorException [ 8 ]: Undefined property: stdClass::$coctail ~ APPPATH\classes\Controller\Orders.php [ 56 ] in Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php:56
+2012-12-16 19:50:58 --- NOTICE: #0 Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php(56): Kohana_Core::error_handler(8, 'Undefined prope...', 'Z:\home\barapp....', 56, Array)
+#1 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Orders->action_saveChanges()
+#2 [internal function]: Kohana_Controller->execute()
+#3 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Orders))
+#4 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#6 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#7 {main} in Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php:56
+2012-12-16 19:57:38 --- EMERGENCY: ErrorException [ 8 ]: Undefined property: stdClass::$coctail ~ APPPATH\classes\Controller\Orders.php [ 56 ] in Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php:56
+2012-12-16 19:57:38 --- NOTICE: #0 Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php(56): Kohana_Core::error_handler(8, 'Undefined prope...', 'Z:\home\barapp....', 56, Array)
+#1 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Orders->action_saveChanges()
+#2 [internal function]: Kohana_Controller->execute()
+#3 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Orders))
+#4 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#6 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#7 {main} in Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php:56
+2012-12-16 19:59:00 --- EMERGENCY: ErrorException [ 8 ]: Undefined property: stdClass::$coctail ~ APPPATH\classes\Controller\Orders.php [ 57 ] in Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php:57
+2012-12-16 19:59:00 --- NOTICE: #0 Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php(57): Kohana_Core::error_handler(8, 'Undefined prope...', 'Z:\home\barapp....', 57, Array)
+#1 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Orders->action_saveChanges()
+#2 [internal function]: Kohana_Controller->execute()
+#3 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Orders))
+#4 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#6 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#7 {main} in Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php:57
+2012-12-16 20:33:12 --- EMERGENCY: ErrorException [ 8 ]: Undefined property: stdClass::$coctail_id ~ APPPATH\classes\Controller\Orders.php [ 64 ] in Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php:64
+2012-12-16 20:33:12 --- NOTICE: #0 Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php(64): Kohana_Core::error_handler(8, 'Undefined prope...', 'Z:\home\barapp....', 64, Array)
+#1 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Orders->action_saveChanges()
+#2 [internal function]: Kohana_Controller->execute()
+#3 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Orders))
+#4 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#6 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#7 {main} in Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php:64
+2012-12-16 20:44:52 --- EMERGENCY: ErrorException [ 8 ]: Undefined property: stdClass::$id ~ APPPATH\classes\Controller\Orders.php [ 56 ] in Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php:56
+2012-12-16 20:44:52 --- NOTICE: #0 Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php(56): Kohana_Core::error_handler(8, 'Undefined prope...', 'Z:\home\barapp....', 56, Array)
+#1 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Orders->action_saveChanges()
+#2 [internal function]: Kohana_Controller->execute()
+#3 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Orders))
+#4 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#6 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#7 {main} in Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php:56
+2012-12-16 20:46:06 --- EMERGENCY: ErrorException [ 8 ]: Undefined property: stdClass::$id ~ APPPATH\classes\Controller\Orders.php [ 56 ] in Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php:56
+2012-12-16 20:46:06 --- NOTICE: #0 Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php(56): Kohana_Core::error_handler(8, 'Undefined prope...', 'Z:\home\barapp....', 56, Array)
+#1 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Orders->action_saveChanges()
+#2 [internal function]: Kohana_Controller->execute()
+#3 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Orders))
+#4 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#6 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#7 {main} in Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php:56

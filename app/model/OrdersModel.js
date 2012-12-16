@@ -39,6 +39,9 @@ Ext.define('Bar.model.OrdersModel', {
         },
         {
             name: 'create_date'
+        },
+        {
+            name: 'quantity'
         }
     ]
 });

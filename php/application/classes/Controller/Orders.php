@@ -29,11 +29,12 @@ class Controller_Orders extends Controller {
                                                      a.coctail_id,
                                                      a.owner_id,
                                                      a.quantity,
+                                                     a.quantity,
                                                      a.status,
                                                      a.discount,
                                                      a.priority,
                                                      a.price,
-                                                     b.price as price_full,
+                                                     FORMAT((b.price * a.quantity), 2) as price_full,
                                                      c.nick,
                                                      a.priced,
                                                      b.name AS coctail_name,
@@ -53,16 +54,53 @@ class Controller_Orders extends Controller {
         $newData = json_decode($params['newData']);
         foreach($newData as $order) {
             $orderModel = ORM::factory('order', $order->id);
-            $orderModel->coctail_id = $order->coctail;
-            $orderModel->status = $order->status;
-            $orderModel->priced = $order->priced;
-            $orderModel->priority = $order->priority;
-            $orderModel->owner_id = $order->client;
-            $orderModel->price += ($orderModel->discount - $order->discount); // Скидка текущая больше - сумма уменьшится.
-            $orderModel->discount = $order->discount;
-            // Клиент полностью оплатил заказик
-            if($order->priced >= $orderModel->price && $orderModel->status < 2) {
-                $orderModel->status = 2;
+            if(isset($order->coctail) && $order->coctail !== '') {
+                $orderModel->coctail_id = $order->coctail;
+            }
+            if(isset($order->discount) && $order->discount !== '') {
+                $orderModel->price += ($orderModel->discount - $order->discount) * $orderModel->quantity; // Скидка текущая больше - сумма уменьшится.
+                $orderModel->discount = $order->discount;
+            }
+            if(isset($order->quantity) && $order->quantity !== '') {
+                $orderModel->quantity = $order->quantity;
+                // Пересчитать цену и цену со скидкой
+                // Получаем коктейль
+                $coctailModel = ORM::factory('coctail', $orderModel->coctail_id);
+                $orderModel->price = round(($coctailModel->price - $orderModel->discount)  * $orderModel->quantity, 2);
+            }
+            if(isset($order->status) && $order->status !== '') {
+                // Доплатить..?
+                if($orderModel->priced < $orderModel->price) {
+                    $orderModel->status = 1;
+                } else {
+                    $orderModel->status = $order->status;
+                }
+                // Теперь смотрим на флаг принудительности, если эта принудиловка с тулбара
+                if(isset($params['forced']) && $params['forced'] == 1) {
+                    $orderModel->status = $order->status;
+                    // Уже оплачен - цену поставить проплаченную
+                    if($order->status > 1) {
+                        $coctailModel = ORM::factory('coctail', $orderModel->coctail_id);
+                        $orderModel->priced = ($coctailModel->price - $orderModel->discount)  * $orderModel->quantity;
+                    }
+                }
+            }
+            if(isset($order->priced) && $order->priced !== '') {
+                $orderModel->priced = $order->priced;
+                // Клиент полностью оплатил заказик
+                if($order->priced >= $orderModel->price && $orderModel->status < 2) {
+                    $orderModel->status = 2;
+                }
+                // Клиент не полностью оплатил
+                if($order->priced < $orderModel->price && $orderModel->status > 0) {
+                    $orderModel->status = 1;
+                }
+            }
+            if(isset($order->priority) && $order->priority !== '') {
+                $orderModel->priority = $order->priority;
+            }
+            if(isset($order->client) && $order->client !== '') {
+                $orderModel->owner_id = $order->client;
             }
             $orderModel->save();
         }
