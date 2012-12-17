@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Coctails extends Controller {
+class Controller_Coctails extends Controller_Extendcontroller {
     public function action_addAlcoCoctail() {
         $this->addCoctail(0);
     }
@@ -112,14 +112,6 @@ class Controller_Coctails extends Controller {
         }
         $this->makeResponse(array('success' => true,
                                   'data' => $resultData));
-    }
-
-    public function makeResponse($data) {
-        $view = View::factory('default');
-        $view->response = json_encode($data);
-        $view->render();
-
-        $this->response->body($view);
     }
 
     public function action_delCoctail() {

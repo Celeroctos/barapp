@@ -38,9 +38,17 @@ Ext.define('Bar.view.OwnersGrid', {
             dataIndex: 'moneyIn'
         },
         {
-            text: 'Разница',
+            text: 'Баланс',
             width: 200,
-            dataIndex: 'difference'
+            dataIndex: 'difference',
+            renderer: function(value) {
+                if(value >= 0) {
+                   var className = 'blue';
+                } else {
+                   var className = 'red';
+                }
+                return "<strong class='" + className + "'>" + value + "</strong>";
+            }
         }
     ],
     listeners: {

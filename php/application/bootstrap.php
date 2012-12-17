@@ -126,55 +126,26 @@ Kohana::modules(array(
  * defaults for the URI.
  */
 
-Route::set('users', 'users/<action>(/<tail>)')
+Route::set('default', '<controller>/<action>(/<tail>)')
     ->defaults(array(
         'nick' => isset($_POST['nick']) ? $_POST['nick'] : '',
         'email' => isset($_POST['email']) ? $_POST['email'] : '',
-        'controller' => 'users',
-        'ids' => isset($_POST['ids']) ? $_POST['ids'] : ''
-    ));
-
-Route::set('components', 'components/<action>(/<tail>)')
-    ->defaults(array(
-    'name' => isset($_POST['name']) ? $_POST['name'] : '',
-    'capacity' => isset($_POST['capacity']) ? $_POST['capacity'] : '',
-    'price' => isset($_POST['price']) ? $_POST['price'] : '',
-    'owner' => isset($_POST['owner']) ? $_POST['owner'] : '',
-    'strength' => isset($_POST['strength']) ? $_POST['strength'] : '',
-    'controller' => 'components',
-    'ids' => isset($_POST['ids']) ? $_POST['ids'] : '',
-    'components' =>  isset($_POST['components']) ? $_POST['components'] : '',
-));
-
-Route::set('coctails', 'coctails/<action>(/<tail>)')
-    ->defaults(array(
-        'controller' => 'coctails',
+        'ids' => isset($_POST['ids']) ? $_POST['ids'] : '',
         'name' => isset($_POST['name']) ? $_POST['name'] : '',
+        'capacity' => isset($_POST['capacity']) ? $_POST['capacity'] : '',
+        'price' => isset($_POST['price']) ? $_POST['price'] : '',
+        'owner' => isset($_POST['owner']) ? $_POST['owner'] : '',
+        'strength' => isset($_POST['strength']) ? $_POST['strength'] : '',
+        'components' =>  isset($_POST['components']) ? $_POST['components'] : '',
         'recipe' => isset($_POST['recipe']) ? $_POST['recipe'] : '',
         'prozent' => isset($_POST['prozent']) ? $_POST['prozent'] : '',
-        'components' =>  isset($_POST['components']) ? $_POST['components'] : '',
-        'ids' => isset($_POST['ids']) ? $_POST['ids'] : '',
         'newData' => isset($_POST['newData']) ? $_POST['newData'] : '',
-));
-
-Route::set('orders', 'orders/<action>(/<tail>)')
-    ->defaults(array(
-    'controller' => 'orders',
-    'client' => isset($_POST['client']) ? $_POST['client'] : '',
-    'coctail' => isset($_POST['coctail']) ? $_POST['coctail'] : '',
-    'prozent' => isset($_POST['prozent']) ? $_POST['prozent'] : '',
-    'quantity' =>  isset($_POST['quantity']) ? $_POST['quantity'] : '',
-    'ids' => isset($_POST['ids']) ? $_POST['ids'] : '',
-    'discount' => isset($_POST['discount']) ? $_POST['discount'] : '',
-    'priority' => isset($_POST['priority']) ? $_POST['priority'] : '',
-    'status' => isset($_POST['status']) ? $_POST['status'] : '',
-    'newData' => isset($_POST['newData']) ? $_POST['newData'] : '',
-    'forced' => isset($_POST['forced']) ? $_POST['forced'] : '',
-));
-//Route::set('users_getOwners', 'users/getOwners(/<tail>)', array('tail' => '.+'));
-
-/*Route::set('default', '(<controller>(/<action>(/<id>)))')
-    ->defaults(array(
-    'controller' => 'welcome',
-    'action'     => 'index',
-));*/
+        'client' => isset($_POST['client']) ? $_POST['client'] : '',
+        'coctail' => isset($_POST['coctail']) ? $_POST['coctail'] : '',
+        'quantity' =>  isset($_POST['quantity']) ? $_POST['quantity'] : '',
+        'discount' => isset($_POST['discount']) ? $_POST['discount'] : '',
+        'priority' => isset($_POST['priority']) ? $_POST['priority'] : '',
+        'status' => isset($_POST['status']) ? $_POST['status'] : '',
+        'forced' => isset($_POST['forced']) ? $_POST['forced'] : '',
+        't_type' => isset($_POST['t_type']) ? $_POST['t_type'] : '',
+    ));

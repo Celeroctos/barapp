@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Orders extends Controller {
+class Controller_Orders extends Controller_Extendcontroller {
 
     public function action_addOrder() {
         $params = $this->request->param();
@@ -42,6 +42,7 @@ class Controller_Orders extends Controller {
                                                FROM orders a
                                                INNER JOIN coctails b ON a.coctail_id = b.id
                                                INNER JOIN users c ON c.id = a.owner_id
+                                               WHERE a.is_visible = 1
                                                ORDER BY a.id DESC');
         $result = $query->execute()->as_array();
         $this->makeResponse(array('success' => true,
@@ -125,14 +126,6 @@ class Controller_Orders extends Controller {
         }
         $this->makeResponse(array('success' => true,
                                   'data' => 'Успешно удалено '.$num.' заказов.'));
-    }
-
-    public function makeResponse($data) {
-        $view = View::factory('default');
-        $view->response = json_encode($data);
-        $view->render();
-
-        $this->response->body($view);
     }
 
 }

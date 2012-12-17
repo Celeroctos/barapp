@@ -33,6 +33,24 @@ Ext.define('Bar.view.ClientsInfoGrid', {
             text: 'Потраченная сумма',
             width: 200,
             dataIndex: 'moneyOut'
+        },
+        {
+            text: 'Пришедшая сумма',
+            width: 200,
+            dataIndex: 'moneyIn'
+        },
+        {
+            text: 'Баланс',
+            width: 200,
+            dataIndex: 'difference',
+            renderer: function(value) {
+                if(value >= 0) {
+                    var className = 'blue';
+                } else {
+                    var className = 'red';
+                }
+                return "<strong class='" + className + "'>" + value + "</strong>";
+            }
         }
     ],
     initComponent: function() {

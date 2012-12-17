@@ -219,11 +219,12 @@ Ext.define('Bar.view.OrdersGrid', {
     putToHistory: function() {
         var selected = Ext.getCmp('ordersGrid').getSelected();
         var data = {
-            ids: Ext.JSON.encode(selected)
+            ids: Ext.JSON.encode(selected),
+            t_type: 0
         };
         if(selected.length > 0) {
             Ext.Ajax.request({
-                url: '/php/index.php/orders/moveOrdersToHistory',
+                url: '/php/index.php/transactions/moveToTransactions',
                 params: data,
                 success: function(response) {
                     var data = Ext.JSON.decode(response.responseText);

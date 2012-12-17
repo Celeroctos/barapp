@@ -15,6 +15,12 @@ Ext.define('Bar.model.OwnersModel', {
         },
         {
             name: 'moneyOut'
+        },
+        {
+            name: 'moneyIn'
+        },
+        {
+            name: 'difference'
         }
     ]
 });

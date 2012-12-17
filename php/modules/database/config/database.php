@@ -18,10 +18,10 @@ return array
 			 *
 			 * Ports and sockets may be appended to the hostname.
 			 */
-			'hostname'   => 'toonftp.ru',
-			'database'   => 'barapp',
-			'username'   => 'root',
-			'password'   => 'asQv3yK0',
+			'hostname'   => '',
+			'database'   => '',
+			'username'   => '',
+			'password'   => '',
 			'persistent' => FALSE,
 		),
 		'table_prefix' => '',

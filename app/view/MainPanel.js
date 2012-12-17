@@ -45,9 +45,9 @@ Ext.define('Bar.view.MainPanel', {
                     },
                     {
                         nodeType: 'async',
-                        text: 'Финансы',
+                        text: 'Транзакции',
                         draggable: false,
-                        id: 'barGolds',
+                        id: 'barTransactions',
                         leaf: true
                     },
                     {
@@ -114,7 +114,8 @@ Ext.define('Bar.view.MainPanel', {
                         barOrders:  'Bar.view.OrdersPanel',
                         barOwners: 'Bar.view.OwnersPanel',
                         barResources: 'Bar.view.BarResourcesPanel',
-                        barAlco: 'Bar.view.AlcoCoctailsPanel'};
+                        barAlco: 'Bar.view.AlcoCoctailsPanel',
+                        barTransactions: 'Bar.view.TransactionsPanel'};
 
         this.treePanel = this.items.getAt(0);
         this.actionsPanel = this.items.getAt(1);
@@ -136,10 +137,11 @@ Ext.define('Bar.view.MainPanel', {
             }
         }, this);
 
+        var loadedPanel = 'barOrders';
         // Раскрываем по умолчанию панель заказов
-        panels['barOrders'] = Ext.create(panels.barOrders);
-        layout.setActiveItem(panels['barOrders']);
-        panels['barOrders'].updatePanel();
+        panels[loadedPanel] = Ext.create(panels[loadedPanel]);
+        layout.setActiveItem(panels[loadedPanel]);
+        panels[loadedPanel].updatePanel();
     },
 
     initComponent: function() {

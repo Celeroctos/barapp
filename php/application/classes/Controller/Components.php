@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Components extends Controller {
+class Controller_Components extends Controller_Extendcontroller {
 
     public function action_addAlcoComponent() {
         $this->addComponent(0);
@@ -95,14 +95,6 @@ class Controller_Components extends Controller {
         }
 
         $this->makeResponse($response);
-    }
-
-    public function makeResponse($data) {
-        $view = View::factory('default');
-        $view->response = json_encode($data);
-        $view->render();
-
-        $this->response->body($view);
     }
 
     public function action_delComponents() {
