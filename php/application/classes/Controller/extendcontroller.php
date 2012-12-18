@@ -2,9 +2,9 @@
 
 class Controller_Extendcontroller extends Controller {
 
-    public function makeResponse($data) {
+    public function makeResponse($data, $coded = true) {
         $view = View::factory('default');
-        $view->response = json_encode($data);
+        $view->response = $coded ? json_encode($data) : $data;
         $view->render();
 
         $this->response->body($view);

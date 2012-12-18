@@ -53,8 +53,56 @@ Ext.define('Bar.view.ClientsInfoGrid', {
             }
         }
     ],
+    makeToolbar: function() {
+        this.tbar = {
+            height: 30,
+            items: [{
+                text: 'Сохранить изменения в таблице',
+                listeners: {
+                    click: this.saveChanges
+                }
+            },
+            '<strong>С отмеченными:</strong>',
+            {
+                text: 'удалить',
+                listeners: {
+                    click: this.deleteChecked
+                }
+            }]
+        };
+    },
+
+    saveChanges: function() {
+
+    },
+
+    deleteChecked: function() {
+        var selected = [];
+        var selection = Ext.getCmp('clientsGrid').getSelectionModel().getSelection();
+        for(var i = 0; i < selection.length; i++) {
+            selected.push(selection[i].get('id'));
+        }
+        var data = {
+            ids: Ext.JSON.encode(selected)
+        };
+        if(selected.length > 0) {
+            Ext.Ajax.request({
+                url: '/php/index.php/users/delUsers',
+                params: data,
+                success: function(response) {
+                    var data = Ext.JSON.decode(response.responseText);
+                    if(data.success == true) {
+                        // Обновляем таблицу
+                        Ext.getCmp('clientsGrid').getStore().reload();
+                    }
+                }
+            });
+        }
+    },
+
     initComponent: function() {
         console.log('Bar.view.ClientsInfoGrid');
+        this.makeToolbar();
         Bar.view.ClientsInfoGrid.superclass.initComponent.apply(this, arguments);
     },
     listeners: {

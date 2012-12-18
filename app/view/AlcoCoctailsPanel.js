@@ -1,6 +1,7 @@
 Ext.define('Bar.view.AlcoCoctailsPanel', {
    extend: 'Ext.form.Panel',
    requires: ['Bar.view.AlcoCoctailsGrid',
+              'Bar.view.CoctailsPanel',
               'Bar.controller.ResourcesController',
               'Bar.view.ComponentsCombobox'],
    alias: 'widget.AlcoCoctailsPanel',
@@ -12,13 +13,9 @@ Ext.define('Bar.view.AlcoCoctailsPanel', {
    currentComponentId: 0, // Компонент, на котором сейчас стоит фокус
    items: [
        {
-           xtype: 'AlcoCoctailsGrid',
-           id: 'alcoCoctailsGrid',
            title: '',
-           maxHeight: 300,
-           minHeight: 300,
-           width: '100%',
-           flex: 1
+           xtype: 'CoctailsPanel',
+           id: 'coctailsPanel'
        },
        {
            xtype: 'fieldset',
@@ -94,60 +91,6 @@ Ext.define('Bar.view.AlcoCoctailsPanel', {
                                }
                            }
                        });
-                   }
-               }
-           ]
-       },
-       {
-           xtype: 'fieldset',
-           id: 'alcoCoctailsDelete',
-           width: 300,
-           title: 'С отмеченными',
-           maxHeight: 100,
-           style: 'margin-left: 10px',
-           items: [
-               {
-                   xtype: 'button',
-                   text: 'Удалить',
-                   handler: function() {
-                       var selected = [];
-                       var selection = Ext.getCmp('alcoCoctailsGrid').getSelectionModel().getSelection();
-                       for(var i = 0; i < selection.length; i++) {
-                           selected.push(selection[i].get('id'));
-                       }
-                       var data = {
-                           ids: Ext.JSON.encode(selected)
-                       };
-                       if(selected.length > 0) {
-                           Ext.Ajax.request({
-                               url: '/php/index.php/coctails/delCoctail',
-                               params: data,
-                               success: function(response) {
-                                   var data = Ext.JSON.decode(response.responseText);
-                                   if(data.success == true) {
-                                       // Обновляем таблицу
-                                       Ext.getCmp('alcoCoctailsGrid').getStore().reload();
-                                   }
-                               }
-                           });
-                       }
-                   }
-               }
-           ]
-       },
-       {
-           xtype: 'fieldset',
-           id: 'alcoCoctailsUpdate',
-           width: 300,
-           title: 'Дополнительно',
-           maxHeight: 70,
-           style: 'margin-left: 10px',
-           items: [
-               {
-                   xtype: 'button',
-                   text: 'Обновить таблицу',
-                   handler: function() {
-                       Ext.getCmp('alcoCoctailsGrid').getStore().reload();
                    }
                }
            ]

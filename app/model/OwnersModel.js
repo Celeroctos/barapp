@@ -21,6 +21,9 @@ Ext.define('Bar.model.OwnersModel', {
         },
         {
             name: 'difference'
+        },
+        {
+            name: 'clean_profit'
         }
     ]
 });

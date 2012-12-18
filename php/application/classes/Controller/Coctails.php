@@ -19,6 +19,7 @@ class Controller_Coctails extends Controller_Extendcontroller {
         // Считаем цену. Для этого вызовем контроллер коктейлей и передадим ему пришедшие идшники, чтобы он посчитал цену.
         $components = Request::factory('components/getComponentsById')->execute()->body();
         $componentsArr = json_decode($components);
+        $model->price_clean = 0;
         $model->save();
         // Декодируем компоненты, которые пришли: там прописан объём, который нужно брать для компонента
         $componentsIn = json_decode($params['components']);
@@ -47,6 +48,7 @@ class Controller_Coctails extends Controller_Extendcontroller {
             $componentsToCoctailsModels[$key]->save();
         }
         $model->price = $sum;
+        $model->price_clean = $sum;
         $model->strength = round($alcoCapacity / $capacity, 2) * 100;
         $model->save();
         $this->makeResponse(array('success' => true,
@@ -66,7 +68,10 @@ class Controller_Coctails extends Controller_Extendcontroller {
         $params = $this->request->param();
         $newData = json_decode($params['newData']);
         foreach($newData as $key => $data) {
-            $query = DB::query(Database::UPDATE, 'UPDATE coctails SET name = "'.$data->name.'", price = "'.$data->price.'", strength = "'.$data->strength.'" WHERE id = '.$data->id);
+            // Считаем новую цену, ориентируясь на текущую и на скидку.
+            $oneProzent = $data->price / (100 + $data->profit_prozent_saved);
+            $data->price = round($oneProzent * (100 + $data->profit_prozent), 2);
+            $query = DB::query(Database::UPDATE, 'UPDATE coctails SET name = "'.$data->name.'", price = "'.$data->price.'", strength = "'.$data->strength.'", profit_prozent = "'.$data->profit_prozent.'" WHERE id = '.$data->id);
             $query->execute();
         }
         $this->makeResponse(array('success' => true,
@@ -76,15 +81,45 @@ class Controller_Coctails extends Controller_Extendcontroller {
     private function getCoctails($type) {
         // Алкольными считаем те коктейли, в которых есть алкогольные составляющие
         if($type == 0) {
-            $query = DB::query(Database::SELECT, 'SELECT DISTINCT coctails.id AS id, coctails.strength, coctails.name AS name, coctails.recipe AS recipe, coctails.price AS price, coctails.profit_prozent FROM coctails INNER JOIN coctailscomponents ON coctails.id = coctailscomponents.coctail_id WHERE EXISTS(SELECT * FROM components WHERE components.id = coctailscomponents.component_id AND type = 0) ORDER BY coctails.id DESC ');
-            $result = $query->execute()->as_array();
+            $query = DB::query(Database::SELECT, 'SELECT DISTINCT coctails.id AS id,
+                                                              coctails.price_clean,
+                                                              coctails.strength,
+                                                              coctails.name AS name,
+                                                              coctails.recipe AS recipe,
+                                                              coctails.price AS price,
+                                                              coctails.profit_prozent
+                                              FROM coctails
+                                              INNER JOIN coctailscomponents ON coctails.id = coctailscomponents.coctail_id
+                                              WHERE EXISTS(SELECT *
+                                                           FROM components
+                                                           WHERE components.id = coctailscomponents.component_id
+                                                                 AND type = 0)
+                                              ORDER BY coctails.id DESC ');
         } elseif($type == 1) {
-
+            $query = DB::query(Database::SELECT, 'SELECT DISTINCT coctails.id AS id,
+                                                              coctails.price_clean,
+                                                              coctails.strength,
+                                                              coctails.name AS name,
+                                                              coctails.recipe AS recipe,
+                                                              coctails.price AS price,
+                                                              coctails.profit_prozent
+                                              FROM coctails
+                                              INNER JOIN coctailscomponents ON coctails.id = coctailscomponents.coctail_id
+                                              INNER JOIN components ON components.id = coctailscomponents.component_id
+                                              WHERE NOT EXISTS (SELECT *
+                                                                FROM coctailscomponents
+                                                                INNER JOIN components ON coctailscomponents.component_id = components.id
+                                                                WHERE components.type = 0
+                                                                      AND coctailscomponents.coctail_id = coctails.id)
+                                              ORDER BY coctails.id DESC ');
         }
+        $result = $query->execute()->as_array();
+
         $resultData = array();
         $counter = 0;
         $ownersProfit = array();
         foreach($result as $key => $coctail) {
+            $coctail['profit_prozent_saved'] = $coctail['profit_prozent'];
             $resultData[$counter] = $coctail;
             $resultData[$counter]['components'] = array();
             $resultData[$counter]['capacity'] = 0;

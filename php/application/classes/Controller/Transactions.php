@@ -84,4 +84,42 @@ class Controller_Transactions extends Controller_Extendcontroller {
                                   'data' => 'Транзакции успешно проведены.'));
     }
 
+    public function action_getCleanProfit() {
+        $params = $this->request->param();
+        $profitResult = DB::query(Database::SELECT, 'SELECT a.*,
+                                                            b.quantity,
+                                                            b.priced,
+                                                            b.price,
+                                                            c.profit_prozent
+                                                     FROM transactions a
+                                                     INNER JOIN orders b ON b.id = a.order_id
+                                                     INNER JOIN coctails c ON b.coctail_id = c.id
+                                                     WHERE a.user_id = :user_id
+                                                           AND a.type = 1')
+                    ->param(':user_id', $params['user_id'])
+                    ->execute()
+                    ->as_array();
+        // Проходимся по всем транзакциям и вычисляем чистую прибыль ака профит исходя из скидки и цены
+        $profit = 0;
+        foreach($profitResult as $key => $transaction) {
+            // Проценты можно делить пропорционально: 100 / % =  (70 + 30) / % = 70 / % + 30 / % . Процент от части равен сумму процентов от более мелких частей.
+            // Один процент от стоимости для конкретной транзакции
+            $oneProzent = $transaction['money'] / (100 + $transaction['profit_prozent']);
+            // Цена без профита для конкретной транзакции
+            $withoutProfit = $oneProzent * 100;
+            // Разница между ценой с профитом и настоящей ценой, помноженной на количество, есть прибыль от заказа
+            $profit += ($transaction['money'] - $withoutProfit) * $transaction['quantity'];
+        }
+
+        $antiProfitResult = DB::query(Database::SELECT, 'SELECT SUM(money) AS antiMoney
+                                                     FROM transactions a
+                                                     WHERE a.user_id = :user_id
+                                                           AND a.type = 0')
+            ->param(':user_id', $params['user_id'])
+            ->execute()
+            ->as_array();
+
+        $this->makeResponse(round($profit - $antiProfitResult[0]['antiMoney'], 2), false);
+    }
+
 }

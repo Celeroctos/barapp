@@ -46,10 +46,12 @@ class Controller_Users extends Controller_Extendcontroller {
                                                       (SELECT SUM(money) FROM transactions WHERE user_id = '.$user->id.' AND type = 1) AS money_in');
 
             $result = $moneys->execute()->as_array();
-
+            // Подсчитаем чистую прибыль для пользователя
+            $cleanProfit = Request::factory('transactions/getCleanProfit/'.$user->id)->execute()->body();
             $response[] = array('id' => $user->id,
                                 'nick' => $user->nick,
                                 'email' => $user->email,
+                                'clean_profit' => $cleanProfit,
                                 'moneyIn' => round($result[0]['money_in'], 2),
                                 'moneyOut' => round($result[0]['money_out'], 2),
                                 'difference' => round($result[0]['money_in'] - $result[0]['money_out'], 2));

@@ -30,6 +30,7 @@ Ext.onReady(function() {
                  'OtherStore',
                  'AllComponentsStore',
                  'AlcoCoctailsStore',
+                 'NoAlcoCoctailsStore',
                  'OrdersStore',
                  'TransactionsStore'],
         views: ['ClientsCombobox'],

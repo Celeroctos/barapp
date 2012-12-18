@@ -11,6 +11,10 @@ class Controller_Orders extends Controller_Extendcontroller {
         $model->quantity = trim($params['quantity']) == '' ? 1 : $params['quantity'];
         $model->status = $params['status'];
         $model->discount = trim($params['discount']) == '' ? 0 : $params['discount'];
+        // Автопроставление цены
+        if($model->status > 3) {
+            $model->priced = (ORM::factory('coctail', $model->coctail_id)->price - $model->discount) *  $model->quantity;
+        }
         $model->priority = trim($params['priority']) == '' ? 0 : $params['priority'];
         $coctail = ORM::factory('coctail', $params['coctail']);
         if(trim($params['discount']) != '') {

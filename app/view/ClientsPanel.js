@@ -55,43 +55,6 @@ Ext.define('Bar.view.ClientsPanel', {
                    }
                }
            ]
-       },
-       {
-           xtype: 'fieldset',
-           id: 'clientsDelete',
-           width: 300,
-           title: 'С отмеченными',
-           maxHeight: 100,
-           style: 'margin-left: 10px',
-           items: [
-               {
-                   xtype: 'button',
-                   text: 'Удалить',
-                   handler: function() {
-                       var selected = [];
-                       var selection = Ext.getCmp('clientsGrid').getSelectionModel().getSelection();
-                       for(var i = 0; i < selection.length; i++) {
-                           selected.push(selection[i].get('id'));
-                       }
-                       var data = {
-                           ids: Ext.JSON.encode(selected)
-                       };
-                       if(selected.length > 0) {
-                           Ext.Ajax.request({
-                               url: '/php/index.php/users/delUsers',
-                               params: data,
-                               success: function(response) {
-                                   var data = Ext.JSON.decode(response.responseText);
-                                   if(data.success == true) {
-                                       // Обновляем таблицу
-                                       Ext.getCmp('clientsGrid').getStore().reload();
-                                   }
-                               }
-                           });
-                       }
-                   }
-               }
-           ]
        }
    ],
    initComponent: function() {

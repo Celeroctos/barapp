@@ -1,13 +1,13 @@
-Ext.define('Bar.view.AlcoCoctailsGrid', {
+Ext.define('Bar.view.NoAlcoCoctailsGrid', {
     extend: 'Ext.grid.Panel',
     requires: ['Ext.grid.plugin.CellEditing',
                'Bar.view.OwnersCombobox',
                'Bar.view.CoctailExtendInfoWindow'],
     region:'center',
     layout: 'auto',
-    alias: 'widget.AlcoCoctailsGrid',
-    store: 'AlcoCoctailsStore',
-    id: 'AlcoCoctailsGrid',
+    alias: 'widget.NoAlcoCoctailsGrid',
+    store: 'NoAlcoCoctailsStore',
+    id: 'NoAlcoCoctailsGrid',
     selModel: new Ext.create('Ext.selection.CheckboxModel', {}),
     selType: 'cellmodel',
     edited: [], // пока так. Если на строке кликали, её могли менять. Нехорошо, потому что строку могли и не менять =/
@@ -82,7 +82,7 @@ Ext.define('Bar.view.AlcoCoctailsGrid', {
                 xtype: 'button',
                 text: 'Обновить таблицу',
                 handler: function() {
-                    Ext.getCmp('alcoCoctailsGrid').getStore().reload();
+                    Ext.getCmp('noAlcoCoctailsGrid').getStore().reload();
                 }
             }]
         };
@@ -90,7 +90,7 @@ Ext.define('Bar.view.AlcoCoctailsGrid', {
 
     deleteChecked: function() {
         var selected = [];
-        var selection = Ext.getCmp('alcoCoctailsGrid').getSelectionModel().getSelection();
+        var selection = Ext.getCmp('NoAlcoCoctailsGrid').getSelectionModel().getSelection();
         for(var i = 0; i < selection.length; i++) {
             selected.push(selection[i].get('id'));
         }
@@ -105,7 +105,7 @@ Ext.define('Bar.view.AlcoCoctailsGrid', {
                     var data = Ext.JSON.decode(response.responseText);
                     if(data.success == true) {
                         // Обновляем таблицу
-                        Ext.getCmp('alcoCoctailsGrid').getStore().reload();
+                        Ext.getCmp('noAlcoCoctailsGrid').getStore().reload();
                     }
                 }
             });
@@ -113,7 +113,7 @@ Ext.define('Bar.view.AlcoCoctailsGrid', {
     },
 
     saveChanges: function(btn, e, options) {
-        var grid = Ext.getCmp('alcoCoctailsGrid');
+        var grid = Ext.getCmp('NoAlcoCoctailsGrid');
         var edited = grid.edited;
         var store = grid.getStore();
         var toSend = []; // Данные на отправку, новые
@@ -144,7 +144,7 @@ Ext.define('Bar.view.AlcoCoctailsGrid', {
                             buttons: Ext.MessageBox.YES,
                             buttonText: 'ОК'
                         });
-                        Ext.getCmp('alcoCoctailsGrid').getStore().reload();
+                        Ext.getCmp('noAlcoCoctailsGrid').getStore().reload();
                     }
                 }
             });
@@ -188,10 +188,10 @@ Ext.define('Bar.view.AlcoCoctailsGrid', {
         }, this);
     },
     initComponent: function() {
-        console.log('Bar.view.AlcoCoctailsGrid');
+        console.log('Bar.view.NoAlcoCoctailsGrid');
         this.makeToolbar();
         this.bindHandlers();
-        Bar.view.AlcoCoctailsGrid.superclass.initComponent.apply(this, arguments);
+        Bar.view.NoAlcoCoctailsGrid.superclass.initComponent.apply(this, arguments);
     },
     listeners: {
         afterrender: function(grid, eOpts) {

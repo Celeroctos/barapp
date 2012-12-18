@@ -125,6 +125,11 @@ Kohana::modules(array(
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
+Route::set('clean_profit', 'transactions/getCleanProfit/<user_id>')
+    ->defaults(array(
+        'controller' => 'transactions',
+        'action' => 'getCleanProfit'
+    ));
 
 Route::set('default', '<controller>/<action>(/<tail>)')
     ->defaults(array(

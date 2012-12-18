@@ -59,25 +59,10 @@ Ext.define('Bar.view.MainPanel', {
                     },
                     {
                         nodeType: 'async',
-                        text: 'Меню коктейлей',
+                        text: 'Меню',
                         draggable: false,
-                        id: 'barMenu',
-                        children: [
-                            {
-                                nodeType: 'async',
-                                text: 'Алкогольные',
-                                draggable: false,
-                                id: 'barAlco',
-                                leaf: true
-                            },
-                            {
-                                nodeType: 'async',
-                                text: 'Безалкогольные',
-                                draggable: false,
-                                id: 'barNoAlco',
-                                leaf: true
-                            }
-                        ]
+                        id: 'barCoctails',
+                        leaf: true
                     },
                     {
                         nodeType: 'async',
@@ -114,7 +99,7 @@ Ext.define('Bar.view.MainPanel', {
                         barOrders:  'Bar.view.OrdersPanel',
                         barOwners: 'Bar.view.OwnersPanel',
                         barResources: 'Bar.view.BarResourcesPanel',
-                        barAlco: 'Bar.view.AlcoCoctailsPanel',
+                        barCoctails: 'Bar.view.AlcoCoctailsPanel',
                         barTransactions: 'Bar.view.TransactionsPanel'};
 
         this.treePanel = this.items.getAt(0);
