@@ -18,6 +18,9 @@ Ext.define('Bar.model.ClientsModel', {
        },
        {
            name: 'difference'
+       },
+       {
+           name: 'orders'
        }
    ]
 });

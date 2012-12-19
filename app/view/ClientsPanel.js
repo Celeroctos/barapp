@@ -57,6 +57,10 @@ Ext.define('Bar.view.ClientsPanel', {
            ]
        }
    ],
+   updatePanel: function() {
+
+
+   },
    initComponent: function() {
        Bar.view.ClientsPanel.superclass.initComponent.apply(this, arguments);
        console.log('Bar.view.ClientsPanel');

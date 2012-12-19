@@ -24,6 +24,9 @@ Ext.define('Bar.model.OwnersModel', {
         },
         {
             name: 'clean_profit'
+        },
+        {
+            name: 'orders'
         }
     ]
 });

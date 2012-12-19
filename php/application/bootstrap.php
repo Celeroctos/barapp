@@ -131,6 +131,12 @@ Route::set('clean_profit', 'transactions/getCleanProfit/<user_id>')
         'action' => 'getCleanProfit'
     ));
 
+Route::set('orders_by_user', 'orders/getOrders/<user_id>')
+    ->defaults(array(
+    'controller' => 'orders',
+    'action' => 'getOrders'
+));
+
 Route::set('default', '<controller>/<action>(/<tail>)')
     ->defaults(array(
         'nick' => isset($_POST['nick']) ? $_POST['nick'] : '',

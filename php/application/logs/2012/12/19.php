@@ -531,3 +531,266 @@
 #9 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
 #10 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
 #11 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-19 13:24:24 --- EMERGENCY: Database_Exception [ 2 ]: mysql_connect() [function.mysql-connect]: Access denied for user ''@'localhost' (using password: NO) ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 67 ] in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php:171
+2012-12-19 13:24:24 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php(171): Kohana_Database_MySQL->connect()
+#1 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php(358): Kohana_Database_MySQL->query(1, 'SHOW FULL COLUM...', false)
+#2 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(1665): Kohana_Database_MySQL->list_columns('users')
+#3 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(441): Kohana_ORM->list_columns()
+#4 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(386): Kohana_ORM->reload_columns()
+#5 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(254): Kohana_ORM->_initialize()
+#6 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(46): Kohana_ORM->__construct(NULL)
+#7 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(34): Kohana_ORM::factory('user')
+#8 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(30): Controller_Users->getUsers(Array)
+#9 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Users->action_getClients()
+#10 [internal function]: Kohana_Controller->execute()
+#11 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Users))
+#12 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#13 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#14 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#15 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\MySQL.php:171
+2012-12-19 16:51:24 --- EMERGENCY: ErrorException [ 4 ]: syntax error, unexpected T_VARIABLE ~ APPPATH\classes\Controller\Users.php [ 53 ] in :
+2012-12-19 16:51:24 --- NOTICE: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in :
+2012-12-19 16:54:10 --- EMERGENCY: Database_Exception [ 1064 ]: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '24
+                                               ORDER BY a.id DESC' at line 18 [ SELECT a.id,
+                                                     a.coctail_id,
+                                                     a.owner_id,
+                                                     a.quantity,
+                                                     a.quantity,
+                                                     a.status,
+                                                     a.discount,
+                                                     a.priority,
+                                                     a.price,
+                                                     FORMAT((b.price * a.quantity), 2) as price_full,
+                                                     c.nick,
+                                                     a.priced,
+                                                     b.name AS coctail_name,
+                                                     a.create_date
+                                               FROM orders a
+                                               INNER JOIN coctails b ON a.coctail_id = b.id
+                                               INNER JOIN users c ON c.id = a.owner_id
+                                               WHERE a.is_visible = 1 24
+                                               ORDER BY a.id DESC ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-19 16:54:10 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(1, 'SELECT a.id,?? ...', false, Array)
+#1 Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php(57): Kohana_Database_Query->execute()
+#2 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Orders->action_getOrders()
+#3 [internal function]: Kohana_Controller->execute()
+#4 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Orders))
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#7 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(52): Kohana_Request->execute()
+#8 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(30): Controller_Users->getUsers(Array)
+#9 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Users->action_getClients()
+#10 [internal function]: Kohana_Controller->execute()
+#11 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Users))
+#12 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#13 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#14 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#15 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-19 16:54:10 --- EMERGENCY: Database_Exception [ 1064 ]: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '23
+                                               ORDER BY a.id DESC' at line 18 [ SELECT a.id,
+                                                     a.coctail_id,
+                                                     a.owner_id,
+                                                     a.quantity,
+                                                     a.quantity,
+                                                     a.status,
+                                                     a.discount,
+                                                     a.priority,
+                                                     a.price,
+                                                     FORMAT((b.price * a.quantity), 2) as price_full,
+                                                     c.nick,
+                                                     a.priced,
+                                                     b.name AS coctail_name,
+                                                     a.create_date
+                                               FROM orders a
+                                               INNER JOIN coctails b ON a.coctail_id = b.id
+                                               INNER JOIN users c ON c.id = a.owner_id
+                                               WHERE a.is_visible = 1 23
+                                               ORDER BY a.id DESC ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-19 16:54:10 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(1, 'SELECT a.id,?? ...', false, Array)
+#1 Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php(57): Kohana_Database_Query->execute()
+#2 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Orders->action_getOrders()
+#3 [internal function]: Kohana_Controller->execute()
+#4 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Orders))
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#7 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(52): Kohana_Request->execute()
+#8 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(30): Controller_Users->getUsers(Array)
+#9 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Users->action_getClients()
+#10 [internal function]: Kohana_Controller->execute()
+#11 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Users))
+#12 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#13 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#14 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#15 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-19 16:54:10 --- EMERGENCY: Database_Exception [ 1064 ]: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '22
+                                               ORDER BY a.id DESC' at line 18 [ SELECT a.id,
+                                                     a.coctail_id,
+                                                     a.owner_id,
+                                                     a.quantity,
+                                                     a.quantity,
+                                                     a.status,
+                                                     a.discount,
+                                                     a.priority,
+                                                     a.price,
+                                                     FORMAT((b.price * a.quantity), 2) as price_full,
+                                                     c.nick,
+                                                     a.priced,
+                                                     b.name AS coctail_name,
+                                                     a.create_date
+                                               FROM orders a
+                                               INNER JOIN coctails b ON a.coctail_id = b.id
+                                               INNER JOIN users c ON c.id = a.owner_id
+                                               WHERE a.is_visible = 1 22
+                                               ORDER BY a.id DESC ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-19 16:54:10 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(1, 'SELECT a.id,?? ...', false, Array)
+#1 Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php(57): Kohana_Database_Query->execute()
+#2 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Orders->action_getOrders()
+#3 [internal function]: Kohana_Controller->execute()
+#4 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Orders))
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#7 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(52): Kohana_Request->execute()
+#8 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(30): Controller_Users->getUsers(Array)
+#9 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Users->action_getClients()
+#10 [internal function]: Kohana_Controller->execute()
+#11 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Users))
+#12 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#13 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#14 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#15 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-19 16:54:10 --- EMERGENCY: Database_Exception [ 1064 ]: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '21
+                                               ORDER BY a.id DESC' at line 18 [ SELECT a.id,
+                                                     a.coctail_id,
+                                                     a.owner_id,
+                                                     a.quantity,
+                                                     a.quantity,
+                                                     a.status,
+                                                     a.discount,
+                                                     a.priority,
+                                                     a.price,
+                                                     FORMAT((b.price * a.quantity), 2) as price_full,
+                                                     c.nick,
+                                                     a.priced,
+                                                     b.name AS coctail_name,
+                                                     a.create_date
+                                               FROM orders a
+                                               INNER JOIN coctails b ON a.coctail_id = b.id
+                                               INNER JOIN users c ON c.id = a.owner_id
+                                               WHERE a.is_visible = 1 21
+                                               ORDER BY a.id DESC ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-19 16:54:10 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(1, 'SELECT a.id,?? ...', false, Array)
+#1 Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php(57): Kohana_Database_Query->execute()
+#2 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Orders->action_getOrders()
+#3 [internal function]: Kohana_Controller->execute()
+#4 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Orders))
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#7 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(52): Kohana_Request->execute()
+#8 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(30): Controller_Users->getUsers(Array)
+#9 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Users->action_getClients()
+#10 [internal function]: Kohana_Controller->execute()
+#11 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Users))
+#12 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#13 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#14 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#15 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-19 16:55:14 --- EMERGENCY: Database_Exception [ 1064 ]: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '24
+                                               ORDER BY a.id DESC' at line 18 [ SELECT a.id,
+                                                     a.coctail_id,
+                                                     a.owner_id,
+                                                     a.quantity,
+                                                     a.quantity,
+                                                     a.status,
+                                                     a.discount,
+                                                     a.priority,
+                                                     a.price,
+                                                     FORMAT((b.price * a.quantity), 2) as price_full,
+                                                     c.nick,
+                                                     a.priced,
+                                                     b.name AS coctail_name,
+                                                     a.create_date
+                                               FROM orders a
+                                               INNER JOIN coctails b ON a.coctail_id = b.id
+                                               INNER JOIN users c ON c.id = a.owner_id
+                                               WHERE a.is_visible = 1 24
+                                               ORDER BY a.id DESC ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-19 16:55:14 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(1, 'SELECT a.id,?? ...', false, Array)
+#1 Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php(57): Kohana_Database_Query->execute()
+#2 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Orders->action_getOrders()
+#3 [internal function]: Kohana_Controller->execute()
+#4 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Orders))
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#7 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#8 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-19 16:56:36 --- EMERGENCY: Database_Exception [ 1064 ]: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"24
+                                               ORDER BY a.id DESC' at line 18 [ SELECT a.id,
+                                                     a.coctail_id,
+                                                     a.owner_id,
+                                                     a.quantity,
+                                                     a.quantity,
+                                                     a.status,
+                                                     a.discount,
+                                                     a.priority,
+                                                     a.price,
+                                                     FORMAT((b.price * a.quantity), 2) as price_full,
+                                                     c.nick,
+                                                     a.priced,
+                                                     b.name AS coctail_name,
+                                                     a.create_date
+                                               FROM orders a
+                                               INNER JOIN coctails b ON a.coctail_id = b.id
+                                               INNER JOIN users c ON c.id = a.owner_id
+                                               WHERE a.is_visible = 1 AND a.owner_id = "24
+                                               ORDER BY a.id DESC ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-19 16:56:36 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(1, 'SELECT a.id,?? ...', false, Array)
+#1 Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php(57): Kohana_Database_Query->execute()
+#2 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Orders->action_getOrders()
+#3 [internal function]: Kohana_Controller->execute()
+#4 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Orders))
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#7 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#8 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-19 16:58:26 --- EMERGENCY: Database_Exception [ 1064 ]: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"24
+                                               ORDER BY a.id DESC' at line 18 [ SELECT a.id,
+                                                     a.coctail_id,
+                                                     a.owner_id,
+                                                     a.quantity,
+                                                     a.quantity,
+                                                     a.status,
+                                                     a.discount,
+                                                     a.priority,
+                                                     a.price,
+                                                     FORMAT((b.price * a.quantity), 2) as price_full,
+                                                     c.nick,
+                                                     a.priced,
+                                                     b.name AS coctail_name,
+                                                     a.create_date
+                                               FROM orders a
+                                               INNER JOIN coctails b ON a.coctail_id = b.id
+                                               INNER JOIN users c ON c.id = a.owner_id
+                                               WHERE a.is_visible = 1 AND c.id = "24
+                                               ORDER BY a.id DESC ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-19 16:58:26 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(1, 'SELECT a.id,?? ...', false, Array)
+#1 Z:\home\barapp.my\www\php\application\classes\Controller\Orders.php(57): Kohana_Database_Query->execute()
+#2 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Orders->action_getOrders()
+#3 [internal function]: Kohana_Controller->execute()
+#4 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Orders))
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#7 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#8 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-19 17:01:38 --- EMERGENCY: ErrorException [ 1 ]: Cannot use object of type stdClass as array ~ APPPATH\classes\Controller\Users.php [ 58 ] in :
+2012-12-19 17:01:38 --- NOTICE: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in :
+2012-12-19 17:01:57 --- EMERGENCY: ErrorException [ 1 ]: Cannot use object of type stdClass as array ~ APPPATH\classes\Controller\Users.php [ 58 ] in :
+2012-12-19 17:01:57 --- NOTICE: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in :
+2012-12-19 17:02:20 --- EMERGENCY: ErrorException [ 1 ]: Cannot use object of type stdClass as array ~ APPPATH\classes\Controller\Users.php [ 58 ] in :
+2012-12-19 17:02:20 --- NOTICE: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in :
+2012-12-19 17:02:41 --- EMERGENCY: ErrorException [ 1 ]: Cannot use object of type stdClass as array ~ APPPATH\classes\Controller\Users.php [ 59 ] in :
+2012-12-19 17:02:41 --- NOTICE: #0 [internal function]: Kohana_Core::shutdown_handler()
+#1 {main} in :

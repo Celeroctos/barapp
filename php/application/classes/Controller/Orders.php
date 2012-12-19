@@ -29,6 +29,12 @@ class Controller_Orders extends Controller_Extendcontroller {
     }
 
     public function action_getOrders() {
+        $params = $this->request->param();
+        if(isset($params['user_id']) && $params['user_id'] == '') {
+            return;
+        } else {
+            $userId = $params['user_id'];
+        }
         $query = DB::query(Database::SELECT, 'SELECT a.id,
                                                      a.coctail_id,
                                                      a.owner_id,
@@ -46,7 +52,7 @@ class Controller_Orders extends Controller_Extendcontroller {
                                                FROM orders a
                                                INNER JOIN coctails b ON a.coctail_id = b.id
                                                INNER JOIN users c ON c.id = a.owner_id
-                                               WHERE a.is_visible = 1
+                                               WHERE a.is_visible = 1 '.(isset($userId) ? 'AND c.id = "'.$userId.'" ' : '').'
                                                ORDER BY a.id DESC');
         $result = $query->execute()->as_array();
         $this->makeResponse(array('success' => true,

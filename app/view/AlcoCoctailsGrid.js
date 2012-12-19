@@ -172,7 +172,6 @@ Ext.define('Bar.view.AlcoCoctailsGrid', {
                         break;
                     }
                 }
-                console.log(record);
                 if(!issetWindow) {
                     var window = Ext.create(Bar.view.CoctailExtendInfoWindow, {
                         parentGrid: this,

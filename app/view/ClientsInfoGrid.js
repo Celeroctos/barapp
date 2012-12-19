@@ -1,6 +1,7 @@
 Ext.define('Bar.view.ClientsInfoGrid', {
     extend: 'Ext.grid.Panel',
-    requires: ['Bar.view.ClientExtendInfoWindow'],
+    requires: ['Bar.view.ClientExtendInfoWindow',
+               'Bar.view.FilterModeCombobox'],
     region:'center',
     layout: 'card',
     alias: 'widget.ClientsInfoGrid',
@@ -8,12 +9,6 @@ Ext.define('Bar.view.ClientsInfoGrid', {
     openedWindows: [], // Открытые окна с информацией о пользователях
     selModel: new Ext.create('Ext.selection.CheckboxModel', {}),
     columns: [
-        {
-            text: '',
-            sortable: false,
-            dataIndex: 'detailCheckbox',
-            width: 30
-        },
         {
             text: 'ID',
             sortable: true,
@@ -31,17 +26,17 @@ Ext.define('Bar.view.ClientsInfoGrid', {
         },
         {
             text: 'Потраченная сумма',
-            width: 200,
+            width: 150,
             dataIndex: 'moneyOut'
         },
         {
             text: 'Пришедшая сумма',
-            width: 200,
+            width: 150,
             dataIndex: 'moneyIn'
         },
         {
             text: 'Баланс',
-            width: 200,
+            width: 150,
             dataIndex: 'difference',
             renderer: function(value) {
                 if(value >= 0) {
@@ -50,6 +45,14 @@ Ext.define('Bar.view.ClientsInfoGrid', {
                     var className = 'red';
                 }
                 return "<strong class='" + className + "'>" + value + "</strong>";
+            }
+        },
+        {
+            text: '', // Поле просмотра заказов клиента
+            width: 50,
+            dataIndex: 'id',
+            renderer: function(value) {
+                return '<a href="#' + value + '"><img src="/img/arrow-curve-000-left.png" alt="Посмотреть данные по пользователю" width="16" height="16" /></a>';
             }
         }
     ],
@@ -67,6 +70,30 @@ Ext.define('Bar.view.ClientsInfoGrid', {
                 text: 'удалить',
                 listeners: {
                     click: this.deleteChecked
+                }
+            },
+            '<strong>Фильтровать:</strong>',
+            {
+                xtype: 'FilterModeCombobox',
+                id: 'clientsFilterCombo'
+            },
+            {
+                xtype: 'textfield',
+                id: 'clientsFilterField',
+                listeners: {
+                    change: function(field, newValue, oldValue, eOpts) {
+                        Ext.getCmp('clientsGrid').getStore().filterBy(function(rec, id) {
+                            var comboValue = Ext.getCmp('clientsFilterCombo').getValue();
+                            if(comboValue === 0) {
+                                var pattern = new RegExp('/^' + newValue + '\.+$/i', 'i');
+                                return pattern.test(rec.get('nick'));
+                            } else if(comboValue == 1) {
+                                var pattern = new RegExp('/^\.+' + newValue + '\.+$/i', 'i');
+                                return pattern.test(rec.get('nick'));
+                            }
+                            return false;
+                        });
+                    }
                 }
             }]
         };
@@ -107,7 +134,7 @@ Ext.define('Bar.view.ClientsInfoGrid', {
     },
     listeners: {
         cellclick: function(grid, td, cellIndex, record, tr, rowIndex, e, eOpts) {
-            if(cellIndex == 0) {
+            if(cellIndex == 7) {
                // Открывается окно с информацией о пользователе, если такого окна ещё нет. В противном случае - окно выползает на передний план
                issetWindow = false;
                for(var i = 0; i < this.openedWindows.length; i++) {
@@ -118,10 +145,13 @@ Ext.define('Bar.view.ClientsInfoGrid', {
                }
 
                if(!issetWindow) {
-                   var window = Ext.create(Bar.view.ClientExtendInfoWindow);
+                   var window = Ext.create(Bar.view.ClientExtendInfoWindow, {
+                       parentGrid: this,
+                       withCoctailId: record.get('id'),
+                       coctailRec: record,
+                       title: 'Информация о пользователе ' + record.get('nick')
+                   }).show();
                    this.openedWindows.push(window);
-                   window.withUserId = record.get('id');
-                   window.show();
                } else {
                    this.openedWindows[i].setActive(true); // ?!
                }

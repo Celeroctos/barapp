@@ -48,9 +48,14 @@ class Controller_Users extends Controller_Extendcontroller {
             $result = $moneys->execute()->as_array();
             // Подсчитаем чистую прибыль для пользователя
             $cleanProfit = Request::factory('transactions/getCleanProfit/'.$user->id)->execute()->body();
+            // Заказы
+            $orders = Request::factory('orders/getOrders/'.$user->id)->execute()->body();
+            $orders = json_decode($orders);
+
             $response[] = array('id' => $user->id,
                                 'nick' => $user->nick,
                                 'email' => $user->email,
+                                'orders' => $orders->data,
                                 'clean_profit' => $cleanProfit,
                                 'moneyIn' => round($result[0]['money_in'], 2),
                                 'moneyOut' => round($result[0]['money_out'], 2),
