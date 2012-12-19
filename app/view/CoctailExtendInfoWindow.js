@@ -12,6 +12,7 @@ Ext.define('Bar.view.CoctailExtendInfoWindow', {
 
    // Заполнить компонентную таблицу компонентами
    fillComponentsGrid: function() {
+        this.componentsArr = [];
         var components = this.coctailRec.get('components');
         for(var i = 0; i < components.length; i++) {
             this.componentsArr[i] = {
@@ -21,6 +22,7 @@ Ext.define('Bar.view.CoctailExtendInfoWindow', {
         }
    },
    fillProfitGrid: function() {
+       this.profitsArr = [];
        var profits = this.coctailRec.get('ownersProfit');
        var counter = 0;
        for(var i in profits) {

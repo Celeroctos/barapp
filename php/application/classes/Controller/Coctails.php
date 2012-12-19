@@ -117,8 +117,8 @@ class Controller_Coctails extends Controller_Extendcontroller {
 
         $resultData = array();
         $counter = 0;
-        $ownersProfit = array();
         foreach($result as $key => $coctail) {
+            $ownersProfit = array();
             $coctail['profit_prozent_saved'] = $coctail['profit_prozent'];
             $resultData[$counter] = $coctail;
             $resultData[$counter]['components'] = array();
@@ -135,16 +135,17 @@ class Controller_Coctails extends Controller_Extendcontroller {
                     if(array_key_exists($component['nick'], $ownersProfit) === false) {
                         $ownersProfit[$component['nick']] = 0;
                     }
-                  //  echo ($component['buy_price'] * $component['c_capacity'] / $component['f_capacity'])  * (1 + $coctail['profit_prozent'] / 100)."<br>";
+                 //  echo ($component['buy_price'] * $component['c_capacity'] / $component['f_capacity'])  * (1 + $coctail['profit_prozent'] / 100)."<br>";
                     $ownersProfit[$component['nick']] += ($component['buy_price'] * $component['c_capacity'] / $component['f_capacity']) * (1 + $coctail['profit_prozent'] / 100);
                     $ownersProfit[$component['nick']] = round($ownersProfit[$component['nick']], 2);
                 }
             }
-           // var_dump($resultData);
-          // exit();
+           //   echo "!!";
             $resultData[$counter]['ownersProfit'] = $ownersProfit;
             $counter++;
         }
+       // var_dump($resultData);
+       // exit();
         $this->makeResponse(array('success' => true,
                                   'data' => $resultData));
     }

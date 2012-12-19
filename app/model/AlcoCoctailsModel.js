@@ -27,6 +27,9 @@ Ext.define('Bar.model.AlcoCoctailsModel', {
        },
        {
            name: 'profit_prozent_saved'
+       },
+       {
+           name: 'ownersProfit'
        }
    ]
 });
