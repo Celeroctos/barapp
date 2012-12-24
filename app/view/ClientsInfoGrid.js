@@ -85,13 +85,11 @@ Ext.define('Bar.view.ClientsInfoGrid', {
                         Ext.getCmp('clientsGrid').getStore().filterBy(function(rec, id) {
                             var comboValue = Ext.getCmp('clientsFilterCombo').getValue();
                             if(comboValue === 0) {
-                                var pattern = new RegExp('/^' + newValue + '\.+$/i', 'i');
-                                return pattern.test(rec.get('nick'));
+                                return rec.get('nick').toUpperCase().indexOf(newValue.toUpperCase()) == 0;
                             } else if(comboValue == 1) {
-                                var pattern = new RegExp('/^\.+' + newValue + '\.+$/i', 'i');
-                                return pattern.test(rec.get('nick'));
+                                return rec.get('nick').toUpperCase().indexOf(newValue.toUpperCase()) != -1;
                             }
-                            return false;
+                            return true;
                         });
                     }
                 }

@@ -32,9 +32,9 @@ class Controller_Orders extends Controller_Extendcontroller {
         $params = $this->request->param();
         if(isset($params['user_id']) && $params['user_id'] == '') {
             return;
-        } else {
+        } /**else {
             $userId = $params['user_id'];
-        }
+        }*/
         $query = DB::query(Database::SELECT, 'SELECT a.id,
                                                      a.coctail_id,
                                                      a.owner_id,

@@ -72,64 +72,14 @@ Ext.define('Bar.view.NoAlcoResourcesPanel', {
                     }
                 }
             ]
-        },
-        {
-            xtype: 'fieldset',
-            id: 'noAlcoDelete',
-            width: 300,
-            title: 'С отмеченными',
-            maxHeight: 100,
-            style: 'margin-left: 10px',
-            items: [
-                {
-                    xtype: 'button',
-                    text: 'Удалить',
-                    handler: function() {
-                        var selected = [];
-                        var selection = Ext.getCmp('noAlcoGrid').getSelectionModel().getSelection();
-                        for(var i = 0; i < selection.length; i++) {
-                            selected.push(selection[i].get('id'));
-                        }
-                        var data = {
-                            ids: Ext.JSON.encode(selected)
-                        };
-                        if(selected.length > 0) {
-                            Ext.Ajax.request({
-                                url: '/php/index.php/components/delComponents',
-                                params: data,
-                                success: function(response) {
-                                    var data = Ext.JSON.decode(response.responseText);
-                                    if(data.success == true) {
-                                        // Обновляем таблицу
-                                        Ext.getCmp('noAlcoGrid').getStore().reload();
-                                    }
-                                }
-                            });
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            xtype: 'fieldset',
-            id: 'noAlcoUpdate',
-            width: 300,
-            title: 'Дополнительно',
-            maxHeight: 70,
-            style: 'margin-left: 10px',
-            items: [
-                {
-                    xtype: 'button',
-                    text: 'Обновить таблицу',
-                    handler: function() {
-                        Ext.getCmp('noAlcoGrid').getStore().reload();
-                    }
-                }
-            ]
         }
     ],
+
     updatePanel: function() {
         Ext.getCmp('noAlcoGrid').getStore().reload();
+    },
+    getGrid: function() {
+        return Ext.getCmp('noAlcoGrid');
     },
     initComponent: function() {
         Bar.view.NoAlcoResourcesPanel.superclass.initComponent.apply(this, arguments);

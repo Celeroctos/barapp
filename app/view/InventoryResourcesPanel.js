@@ -73,63 +73,12 @@ Ext.define('Bar.view.InventoryResourcesPanel', {
                 }
             ]
         },
-        {
-            xtype: 'fieldset',
-            id: 'inventoryDelete',
-            width: 300,
-            title: 'С отмеченными',
-            maxHeight: 100,
-            style: 'margin-left: 10px',
-            items: [
-                {
-                    xtype: 'button',
-                    text: 'Удалить',
-                    handler: function() {
-                        var selected = [];
-                        var selection = Ext.getCmp('inventoryGrid').getSelectionModel().getSelection();
-                        for(var i = 0; i < selection.length; i++) {
-                            selected.push(selection[i].get('id'));
-                        }
-                        var data = {
-                            ids: Ext.JSON.encode(selected)
-                        };
-                        if(selected.length > 0) {
-                            Ext.Ajax.request({
-                                url: '/php/index.php/components/delComponents',
-                                params: data,
-                                success: function(response) {
-                                    var data = Ext.JSON.decode(response.responseText);
-                                    if(data.success == true) {
-                                        // Обновляем таблицу
-                                        Ext.getCmp('inventoryGrid').getStore().reload();
-                                    }
-                                }
-                            });
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            xtype: 'fieldset',
-            id: 'inventoryUpdate',
-            width: 300,
-            title: 'Дополнительно',
-            maxHeight: 70,
-            style: 'margin-left: 10px',
-            items: [
-                {
-                    xtype: 'button',
-                    text: 'Обновить таблицу',
-                    handler: function() {
-                        Ext.getCmp('inventoryGrid').getStore().reload();
-                    }
-                }
-            ]
-        }
     ],
     updatePanel: function() {
         Ext.getCmp('inventoryGrid').getStore().reload();
+    },
+    getGrid: function() {
+        return Ext.getCmp('inventoryGrid');
     },
     initComponent: function() {
         Bar.view.InventoryResourcesPanel.superclass.initComponent.apply(this, arguments);

@@ -79,64 +79,14 @@ Ext.define('Bar.view.AlcoResourcesPanel', {
                    }
                }
            ]
-       },
-       {
-           xtype: 'fieldset',
-           id: 'alcoDelete',
-           width: 300,
-           title: 'С отмеченными',
-           maxHeight: 100,
-           style: 'margin-left: 10px',
-           items: [
-               {
-                   xtype: 'button',
-                   text: 'Удалить',
-                   handler: function() {
-                       var selected = [];
-                       var selection = Ext.getCmp('alcoGrid').getSelectionModel().getSelection();
-                       for(var i = 0; i < selection.length; i++) {
-                           selected.push(selection[i].get('id'));
-                       }
-                       var data = {
-                           ids: Ext.JSON.encode(selected)
-                       };
-                       if(selected.length > 0) {
-                           Ext.Ajax.request({
-                               url: '/php/index.php/components/delComponents',
-                               params: data,
-                               success: function(response) {
-                                   var data = Ext.JSON.decode(response.responseText);
-                                   if(data.success == true) {
-                                       // Обновляем таблицу
-                                       Ext.getCmp('alcoGrid').getStore().reload();
-                                   }
-                               }
-                           });
-                       }
-                   }
-               }
-           ]
-       },
-       {
-           xtype: 'fieldset',
-           id: 'alcoUpdate',
-           width: 300,
-           title: 'Дополнительно',
-           maxHeight: 70,
-           style: 'margin-left: 10px',
-           items: [
-               {
-                   xtype: 'button',
-                   text: 'Обновить таблицу',
-                   handler: function() {
-                       Ext.getCmp('alcoGrid').getStore().reload();
-                   }
-               }
-           ]
        }
    ],
+
    updatePanel: function() {
        Ext.getCmp('alcoGrid').getStore().reload();
+   },
+   getGrid: function() {
+       return Ext.getCmp('alcoGrid');
    },
    initComponent: function() {
        Bar.view.AlcoResourcesPanel.superclass.initComponent.apply(this, arguments);
