@@ -76,7 +76,7 @@ class Controller_Components extends Controller_Extendcontroller {
             } else {
                 $operator = '=';
             }
-            $components = $model->where('type', $operator, $type)->order_by('id', 'DESC')->find_all();
+            $components = $model->where('type', $operator, $type)->and_where('disabled', '=', 0)->order_by('id', 'DESC')->find_all();
         }
         $response = array();
         foreach($components as $key => $component) {
@@ -95,6 +95,31 @@ class Controller_Components extends Controller_Extendcontroller {
         }
 
         $this->makeResponse($response);
+    }
+
+    public function action_getDependences() {
+        $params = $this->request->param();
+
+        if(isset($params['ids']) && $params['ids'] != '') {
+           $ids = json_decode($params['ids']);
+        } else {
+            return;
+        }
+
+        $idsStr = implode(',', $ids);
+        $query = DB::query(Database::SELECT, 'SELECT a.*
+                                              FROM coctails a
+                                              INNER JOIN coctailscomponents b ON b.coctail_id = a.id
+                                              WHERE b.component_id IN('.$idsStr.')');
+        $dependences = $query->execute();
+        $coctailsNames = '';
+        foreach($dependences as $key => $item) {
+            $coctailsNames .= $item['name'].', ';
+        }
+        $coctailsNames = substr($coctailsNames, 0, $coctailsNames - 2);
+        $this->makeResponse(array('success' => true,
+                                  'data' => $dependences,
+                                  'coctailsNames' => $coctailsNames));
     }
 
     public function action_delComponents() {

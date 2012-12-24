@@ -3,13 +3,23 @@
 class Controller_Transactions extends Controller_Extendcontroller {
 
 	public function action_getTransactions() {
+        $params = $this->request->param();
+
+
         $query = DB::query(Database::SELECT, 'SELECT a.*, b.nick
                                               FROM transactions a
                                               INNER JOIN users b ON b.id = a.user_id
-                                              ORDER BY a.id DESC');
+                                              ORDER BY a.id DESC
+                                              LIMIT '.$params['limit'].' OFFSET '.$params['limit'] * ($params['page'] - 1));
+       // echo $query;
         $result = $query->execute()->as_array();
+        $total =  DB::query(Database::SELECT, 'SELECT COUNT(*) as num
+                                               FROM transactions a')
+                  ->execute()
+                  ->as_array();
         $this->makeResponse(array('success' => true,
-                                  'data' => $result));
+                                  'data' => $result,
+                                  'total' => $total[0]['num']));
     }
 
     public function action_moveToTransactions() {

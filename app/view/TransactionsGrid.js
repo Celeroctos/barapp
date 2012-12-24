@@ -37,6 +37,15 @@ Ext.define('Bar.view.TransactionsGrid', {
             }
         }
     ],
+
+    dockedItems: [{
+        xtype: 'pagingtoolbar',
+        store: 'TransactionsStore',
+        dock: 'bottom',
+        displayInfo: true,
+        displayMsg: 'Отображаются {0} - {1} из {2} записей',
+    }],
+
     listeners: {
         afterrender: function(grid, eOpts) {
             grid.getStore().load();

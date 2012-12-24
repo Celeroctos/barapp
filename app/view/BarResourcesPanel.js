@@ -47,22 +47,49 @@ Ext.define('Bar.view.BarResourcesPanel', {
         for(var i = 0; i < selection.length; i++) {
             selected.push(selection[i].get('id'));
         }
-        var data = {
+        var dataIn = {
             ids: Ext.JSON.encode(selected)
         };
         if(selected.length > 0) {
             Ext.Ajax.request({
-                url: '/php/index.php/components/delComponents',
-                params: data,
-                success: function(response) {
+                url: '/php/index.php/components/getDependences',
+                params: dataIn,
+                success: Ext.bind(function(response) {
                     var data = Ext.JSON.decode(response.responseText);
                     if(data.success == true) {
-                        // Обновляем таблицу
-                        Ext.getCmp(grid.id).getStore().reload();
+                        if(data.coctailsNames != false) {
+                            Ext.Msg.show({
+                                title:'Сообщение',
+                                msg: 'Следующие коктейли будут недоступны: ' + data.coctailsNames + '. Вы уверены, что хотите удалить компоненты?',
+                                buttons: Ext.MessageBox.YESNO,
+                                fn: Ext.bind(function(btn) {
+                                    console.log(this);
+                                    if(btn == 'yes') {
+                                        this.deleteStep2(dataIn, grid);
+                                    }
+                                }, this)
+                            });
+                        } else {
+                            this.deleteStep2(dataIn, grid);
+                        }
                     }
-                }
+                }, this)
             });
         }
+    },
+
+    deleteStep2: function(dataIn, grid) {
+        Ext.Ajax.request({
+            url: '/php/index.php/components/delComponents',
+            params: dataIn,
+            success: function(response) {
+                var data = Ext.JSON.decode(response.responseText);
+                if(data.success == true) {
+                    // Обновляем таблицу
+                    Ext.getCmp(grid.id).getStore().reload();
+                }
+            }
+        });
     },
 
     makeToolbar: function() {
