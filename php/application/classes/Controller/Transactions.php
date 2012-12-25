@@ -45,6 +45,10 @@ class Controller_Transactions extends Controller_Extendcontroller {
                 $modelOrder->is_visible = 0;
                 $modelOrder->status = 4; // Заказ готов, если транзакция полностью проведена
 
+                $modelUser = ORM::factory('user', $modelOrder->owner_id);
+                $modelUser->bill -= $modelOrder->price;
+                $modelUser->save();
+
                 // Теперь посчитаем профит-транзакции для каждого хозяина
                 $query = DB::query(Database::SELECT, 'SELECT a.id,
                                                              b.type,
@@ -84,11 +88,34 @@ class Controller_Transactions extends Controller_Extendcontroller {
                     $modelProfitTransaction->money = $data['profit'];
                     $modelProfitTransaction->user_id = $data['user_id'];
                     $modelProfitTransaction->save();
+
+                    // Изменяем счёт
+                    $modelUser = ORM::factory('user', $data['user_id']);
+                    $modelUser->bill += $data['profit'];
+                    $modelUser->save();
                 }
 
                 $modelOrder->save();
                 $modelTransaction->save();
             }
+       } elseif($params['t_type'] == 1 || $params['t_type'] == 2) { // Транзакция на пополнение или уменьшение юзерского счёта
+            if(!isset($params['client']) || !isset($params['quantity'])) {
+                return;
+            }
+            $modelProfitTransaction = ORM::factory('transaction');
+            $modelProfitTransaction->order_id = -1;
+            $modelProfitTransaction->type = ($params['t_type'] == 1) ? 1 : 0; // Прибавка или отнятие
+            $modelProfitTransaction->money = $params['quantity'];
+            $modelProfitTransaction->user_id = $params['client'];
+            $modelProfitTransaction->save();
+
+            $modelUser = ORM::factory('user', $params['client']);
+            if($params['t_type'] == 1) {
+                $modelUser->bill += $params['quantity'];
+            } else {
+                $modelUser->bill -= $params['quantity'];
+            }
+            $modelUser->save();
         }
         $this->makeResponse(array('success' => true,
                                   'data' => 'Транзакции успешно проведены.'));
@@ -121,15 +148,15 @@ class Controller_Transactions extends Controller_Extendcontroller {
             $profit += ($transaction['money'] - $withoutProfit) * $transaction['quantity'];
         }
 
-        $antiProfitResult = DB::query(Database::SELECT, 'SELECT SUM(money) AS antiMoney
+       /* $antiProfitResult = DB::query(Database::SELECT, 'SELECT SUM(money) AS antiMoney
                                                      FROM transactions a
                                                      WHERE a.user_id = :user_id
                                                            AND a.type = 0')
             ->param(':user_id', $params['user_id'])
             ->execute()
-            ->as_array();
+            ->as_array();*/
 
-        $this->makeResponse(round($profit - $antiProfitResult[0]['antiMoney'], 2), false);
+        $this->makeResponse(round($profit /*- $antiProfitResult[0]['antiMoney']*/, 2), false);
     }
 
 }

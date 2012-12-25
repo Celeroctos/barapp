@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="798eb2e9-29e7-4b9c-a653-84a52fbacdef" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/store/TransactionsStore.js" afterPath="$PROJECT_DIR$/app/store/TransactionsStore.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/BarResourcesPanel.js" afterPath="$PROJECT_DIR$/app/view/BarResourcesPanel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/ClientsPanel.js" afterPath="$PROJECT_DIR$/app/view/ClientsPanel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/OwnersPanel.js" afterPath="$PROJECT_DIR$/app/view/OwnersPanel.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/TransactionsGrid.js" afterPath="$PROJECT_DIR$/app/view/TransactionsGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/bootstrap.php" afterPath="$PROJECT_DIR$/php/application/bootstrap.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/classes/Controller/Components.php" afterPath="$PROJECT_DIR$/php/application/classes/Controller/Components.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/classes/Controller/Orders.php" afterPath="$PROJECT_DIR$/php/application/classes/Controller/Orders.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/classes/Controller/Transactions.php" afterPath="$PROJECT_DIR$/php/application/classes/Controller/Transactions.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/classes/Controller/Users.php" afterPath="$PROJECT_DIR$/php/application/classes/Controller/Users.php" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,26 +36,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NoAlcoResourcesPanel.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/NoAlcoResourcesPanel.js">
+      <file leaf-file-name="Components.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Components.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="0" selection-start="2941" selection-end="2941" vertical-scroll-proportion="0.0">
+            <state line="125" column="0" selection-start="4538" selection-end="4538" vertical-scroll-proportion="0.31501833">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BarResourcesPanel.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/view/BarResourcesPanel.js">
+      <file leaf-file-name="ClientsPanel.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/ClientsPanel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="40" selection-start="2641" selection-end="2641" vertical-scroll-proportion="0.7622378">
+            <state line="98" column="20" selection-start="3680" selection-end="3680" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AlcoCoctailsPanel.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/AlcoCoctailsPanel.js">
+      <file leaf-file-name="Users.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Users.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="61" column="65" selection-start="2473" selection-end="2473" vertical-scroll-proportion="-14.384615">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientsInfoGrid.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/ClientsInfoGrid.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
@@ -61,46 +72,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AlcoCoctailsGrid.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/AlcoCoctailsGrid.js">
+      <file leaf-file-name="Transactions.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Transactions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="134" column="25" selection-start="4291" selection-end="4291" vertical-scroll-proportion="0.0">
+            <state line="156" column="27" selection-start="8934" selection-end="8934" vertical-scroll-proportion="-54.923077">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OtherResourcesPanel.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/OtherResourcesPanel.js">
+      <file leaf-file-name="Orders.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Orders.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="36" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Components.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Components.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="82" selection-start="3988" selection-end="3988" vertical-scroll-proportion="-11.192307">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AlcoResourcesGrid.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/AlcoResourcesGrid.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="19" selection-start="1562" selection-end="1562" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Coctails.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Coctails.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="157" column="9" selection-start="8980" selection-end="8980" vertical-scroll-proportion="-4.0">
+            <state line="11" column="75" selection-start="540" selection-end="540" vertical-scroll-proportion="53.615383">
               <folding />
             </state>
           </provider>
@@ -109,16 +93,25 @@
       <file leaf-file-name="bootstrap.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/application/bootstrap.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="163" column="60" selection-start="6184" selection-end="6184" vertical-scroll-proportion="-16.423077">
+            <state line="163" column="60" selection-start="6184" selection-end="6184" vertical-scroll-proportion="-18.076923">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainPanel.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/MainPanel.js">
+      <file leaf-file-name="OrdersPanel.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/OrdersPanel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="58" selection-start="3313" selection-end="3313" vertical-scroll-proportion="0.0">
+            <state line="42" column="42" selection-start="1307" selection-end="1307" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrdersGrid.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/OrdersGrid.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="10" selection-start="1224" selection-end="1224" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -138,22 +131,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/view/FilterModeCombobox.js" />
-        <option value="$PROJECT_DIR$/php/application/classes/Controller/Orders.php" />
-        <option value="$PROJECT_DIR$/app/view/MainPanel.js" />
-        <option value="$PROJECT_DIR$/app/view/InventoryResourcesGrid.js" />
         <option value="$PROJECT_DIR$/app/view/OrdersGrid.js" />
         <option value="$PROJECT_DIR$/app/view/InventoryResourcesPanel.js" />
         <option value="$PROJECT_DIR$/app/view/NoAlcoResourcesPanel.js" />
         <option value="$PROJECT_DIR$/app/view/AlcoResourcesPanel.js" />
         <option value="$PROJECT_DIR$/app/view/OtherResourcesPanel.js" />
         <option value="$PROJECT_DIR$/app/view/ClientsInfoGrid.js" />
-        <option value="$PROJECT_DIR$/app/view/TransactionsGrid.js" />
-        <option value="$PROJECT_DIR$/php/application/bootstrap.php" />
-        <option value="$PROJECT_DIR$/php/application/classes/Controller/Transactions.php" />
         <option value="$PROJECT_DIR$/app/store/TransactionsStore.js" />
-        <option value="$PROJECT_DIR$/php/application/classes/Controller/Components.php" />
         <option value="$PROJECT_DIR$/app/view/BarResourcesPanel.js" />
+        <option value="$PROJECT_DIR$/php/application/bootstrap.php" />
+        <option value="$PROJECT_DIR$/app/view/TransactionsGrid.js" />
+        <option value="$PROJECT_DIR$/app/view/OwnersPanel.js" />
+        <option value="$PROJECT_DIR$/app/view/ClientsPanel.js" />
+        <option value="$PROJECT_DIR$/php/application/classes/Controller/Users.php" />
+        <option value="$PROJECT_DIR$/php/application/classes/Controller/Orders.php" />
+        <option value="$PROJECT_DIR$/php/application/classes/Controller/Transactions.php" />
+        <option value="$PROJECT_DIR$/php/application/classes/Controller/Components.php" />
       </list>
     </option>
   </component>
@@ -753,97 +746,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/view/ClientsInfoGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="45" selection-start="3788" selection-end="3788" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/InventoryResourcesPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="10" selection-start="2980" selection-end="2980" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/application/classes/Model/component.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Transactions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="9" selection-start="635" selection-end="635" vertical-scroll-proportion="-8.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/store/TransactionsStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="16" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/TransactionsGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="60" selection-start="1219" selection-end="1219" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/MainPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="58" selection-start="3313" selection-end="3313" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/application/bootstrap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="60" selection-start="6184" selection-end="6184" vertical-scroll-proportion="-16.423077">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/OtherResourcesPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="36" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/AlcoCoctailsGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="25" selection-start="4291" selection-end="4291" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/AlcoCoctailsPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Coctails.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="157" column="9" selection-start="8980" selection-end="8980" vertical-scroll-proportion="-4.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/NoAlcoResourcesPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="0" selection-start="2941" selection-end="2941" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/view/AlcoResourcesGrid.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="61" column="19" selection-start="1562" selection-end="1562" vertical-scroll-proportion="0.0">
@@ -851,16 +753,107 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Components.php">
+    <entry file="file://$PROJECT_DIR$/app/view/BarResourcesPanel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="82" selection-start="3988" selection-end="3988" vertical-scroll-proportion="-11.192307">
+        <state line="84" column="41" selection-start="3072" selection-end="3072" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/BarResourcesPanel.js">
+    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Coctails.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="40" selection-start="2641" selection-end="2641" vertical-scroll-proportion="0.7622378">
+        <state line="157" column="9" selection-start="8980" selection-end="8980" vertical-scroll-proportion="-37.346153">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/InventoryResourcesPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="78" column="6" selection-start="2992" selection-end="3081" vertical-scroll-proportion="0.58391607">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/TransactionsGrid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="14" selection-start="262" selection-end="262" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/OwnersPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="26" selection-start="451" selection-end="451" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/application/bootstrap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="163" column="60" selection-start="6184" selection-end="6184" vertical-scroll-proportion="-18.076923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/OrdersGrid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="10" selection-start="1224" selection-end="1224" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/OrdersPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="42" selection-start="1307" selection-end="1307" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/ClientsPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="98" column="20" selection-start="3680" selection-end="3680" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/ClientsInfoGrid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="65" selection-start="2473" selection-end="2473" vertical-scroll-proportion="-14.384615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/application/classes/Model/order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Orders.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="75" selection-start="540" selection-end="540" vertical-scroll-proportion="53.615383">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Transactions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="156" column="27" selection-start="8934" selection-end="8934" vertical-scroll-proportion="-54.923077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Components.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="125" column="0" selection-start="4538" selection-end="4538" vertical-scroll-proportion="0.31501833">
           <folding />
         </state>
       </provider>

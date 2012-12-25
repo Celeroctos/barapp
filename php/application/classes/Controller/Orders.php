@@ -9,7 +9,7 @@ class Controller_Orders extends Controller_Extendcontroller {
         $model->coctail_id = $params['coctail'];
         $model->owner_id = $params['client'];
         $model->quantity = trim($params['quantity']) == '' ? 1 : $params['quantity'];
-        $model->status = $params['status'];
+        $model->status = ($params['status'] !== '') ? $params['status'] : 0;
         $model->discount = trim($params['discount']) == '' ? 0 : $params['discount'];
         // Автопроставление цены
         if($model->status > 3) {

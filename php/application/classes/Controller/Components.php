@@ -68,7 +68,7 @@ class Controller_Components extends Controller_Extendcontroller {
         $operator = '';
         if(count($ids) > 0) {
             $operator = 'IN';
-            $components = $model->where('id', $operator, $ids)->order_by('id', 'DESC')->find_all();
+            $components = $model->where('id', $operator, $ids)->order_by('id', 'DESC')->and_where('disabled', '=', 0)->find_all();
 
         } else { // По типу
             if(is_array($type)) {
@@ -112,11 +112,13 @@ class Controller_Components extends Controller_Extendcontroller {
                                               INNER JOIN coctailscomponents b ON b.coctail_id = a.id
                                               WHERE b.component_id IN('.$idsStr.')');
         $dependences = $query->execute();
-        $coctailsNames = '';
+        $coctailsNames = array();
         foreach($dependences as $key => $item) {
-            $coctailsNames .= $item['name'].', ';
+            if(array_search($item['name'], $coctailsNames) === false) {
+                $coctailsNames[] = $item['name'];
+            }
         }
-        $coctailsNames = substr($coctailsNames, 0, $coctailsNames - 2);
+        $coctailsNames = implode($coctailsNames, ', ');
         $this->makeResponse(array('success' => true,
                                   'data' => $dependences,
                                   'coctailsNames' => $coctailsNames));
@@ -134,7 +136,7 @@ class Controller_Components extends Controller_Extendcontroller {
             ->find_all();
         $num = 0;
         foreach($components as $component) {
-            $component->delete();
+            $component->disabled = 1;
             $num++;
         }
         $this->makeResponse(array('success' => true,

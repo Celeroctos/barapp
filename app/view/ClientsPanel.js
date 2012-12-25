@@ -55,11 +55,79 @@ Ext.define('Bar.view.ClientsPanel', {
                    }
                }
            ]
+       },
+       {
+           xtype: 'fieldset',
+           id: 'clientAddMoney',
+           width: 300,
+           title: 'Операции со средствами',
+           style: 'margin-left: 10px',
+           items: [
+               {
+                   xtype: 'ClientsCombobox',
+                   fieldLabel: 'Клиент',
+                   id: 'addMoneyOwner',
+                   editable: false
+               },
+               {
+                   xtype: 'textfield',
+                   fieldLabel: 'Количество',
+                   id: 'addMoneyQuantity'
+               },
+               {
+                   xtype: 'button',
+                   text: 'Добавить',
+                   handler: function() {
+                       var data = {
+                           client: Ext.getCmp('addMoneyOwner').getValue(),
+                           quantity: Ext.getCmp('addMoneyQuantity').getValue(),
+                           t_type: 1
+                       };
+                       Ext.Ajax.request({
+                           url: '/php/index.php/transactions/moveToTransactions',
+                           params: data,
+                           success: function(response) {
+                               var data = Ext.JSON.decode(response.responseText);
+                               if(data.success == true) {
+                                   // Обновляем таблицу
+                                   Ext.getCmp('addMoneyOwner').setValue('');
+                                   Ext.getCmp('addMoneyQuantity').setValue('');
+                                   Ext.getCmp('clientsGrid').getStore().reload();
+                               }
+                           }
+                       });
+                   }
+               },
+               {
+                   xtype: 'button',
+                   text: 'Отнять',
+                   style: 'margin-left: 10px;',
+                   handler: function() {
+                       var data = {
+                           client: Ext.getCmp('addMoneyOwner').getValue(),
+                           quantity: Ext.getCmp('addMoneyQuantity').getValue(),
+                           t_type: 2
+                       };
+                       Ext.Ajax.request({
+                           url: '/php/index.php/transactions/moveToTransactions',
+                           params: data,
+                           success: function(response) {
+                               var data = Ext.JSON.decode(response.responseText);
+                               if(data.success == true) {
+                                   // Обновляем таблицу
+                                   Ext.getCmp('addMoneyOwner').setValue('');
+                                   Ext.getCmp('addMoneyQuantity').setValue('');
+                                   Ext.getCmp('clientsGrid').getStore().reload();
+                               }
+                           }
+                       });
+                   }
+               }
+           ]
        }
    ],
    updatePanel: function() {
-
-
+       Ext.getCmp('clientsGrid').getStore().reload();
    },
    initComponent: function() {
        Bar.view.ClientsPanel.superclass.initComponent.apply(this, arguments);

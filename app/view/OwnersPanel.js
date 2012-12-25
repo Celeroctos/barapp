@@ -57,6 +57,9 @@ Ext.define('Bar.view.OwnersPanel', {
             ]
         }
     ],
+    updatePanel: function() {
+        Ext.getCmp('ownersGrid').getStore().reload();
+    },
     initComponent: function() {
         console.log('Bar.view.OwnersPanel');
         Bar.view.OwnersPanel.superclass.initComponent.apply(this, arguments);

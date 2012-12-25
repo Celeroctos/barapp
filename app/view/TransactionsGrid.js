@@ -20,7 +20,10 @@ Ext.define('Bar.view.TransactionsGrid', {
         {
             text: 'Заказ',
             width: 190,
-            dataIndex: 'order_id'
+            dataIndex: 'order_id',
+            renderer: function(value) {
+                return value == -1 ? 'Операция со счётом' : value;
+            }
         },
         {
             text: 'Сумма',

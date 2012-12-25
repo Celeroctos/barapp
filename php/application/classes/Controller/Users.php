@@ -59,7 +59,7 @@ class Controller_Users extends Controller_Extendcontroller {
                                 'clean_profit' => $cleanProfit,
                                 'moneyIn' => round($result[0]['money_in'], 2),
                                 'moneyOut' => round($result[0]['money_out'], 2),
-                                'difference' => round($result[0]['money_in'] - $result[0]['money_out'], 2));
+                                'difference' => round($user->bill, 2));
         }
 
         $this->makeResponse($response);
