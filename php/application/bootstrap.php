@@ -161,5 +161,6 @@ Route::set('default', '<controller>/<action>(/<tail>)')
         't_type' => isset($_POST['t_type']) ? $_POST['t_type'] : '',
         'start' => isset($_POST['start']) ? $_POST['start'] : '',
         'limit' => isset($_POST['limit']) ? $_POST['limit'] : '',
-        'page' => isset($_POST['page']) ? $_POST['page'] : 0
+        'page' => isset($_POST['page']) ? $_POST['page'] : 0,
+        'profile_id' => isset($_POST['profile_id']) ? $_POST['profile_id'] : -1
     ));

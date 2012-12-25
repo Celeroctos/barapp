@@ -34,12 +34,18 @@ Ext.define('Bar.view.ClientsPanel', {
                    id: 'addClientEmail'
                },
                {
+                   xtype: 'textfield',
+                   fieldLabel: 'ID профиля на соникмире',
+                   id: 'addProfileId'
+               },
+               {
                    xtype: 'button',
                    text: 'ОК',
                    handler: function() {
                        var data = {
                            nick: Ext.ComponentManager.get('addClientNickname').getValue(),
-                           email: Ext.ComponentManager.get('addClientEmail').getValue()
+                           email: Ext.ComponentManager.get('addClientEmail').getValue(),
+                           profile_id: Ext.ComponentManager.get('addProfileId').getValue(),
                        };
                        Ext.Ajax.request({
                            url: '/php/index.php/users/addClient',
@@ -48,6 +54,9 @@ Ext.define('Bar.view.ClientsPanel', {
                                var data = Ext.JSON.decode(response.responseText);
                                if(data.success == true) {
                                    // Обновляем таблицу
+                                   Ext.getCmp('addClientNickname').setValue('');
+                                   Ext.getCmp('addProfileId').setValue('');
+                                   Ext.getCmp('addClientEmail').setValue('');
                                    Ext.getCmp('clientsGrid').getStore().reload();
                                }
                            }

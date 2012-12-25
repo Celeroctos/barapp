@@ -1,6 +1,11 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 class Controller_Users extends Controller_Extendcontroller {
+    private $domain = 'http://forum.sonic-world.ru';
+    private $avatarPath = '/uploads/';
+    private $avatarPrefix = 'av-';
+    private $fileTypes = array('jpg', 'png', 'gif', 'jpeg');
+    private $defaultAvatar = '';
 
     public function action_addOwner() {
         $this->addUser(1);
@@ -16,6 +21,7 @@ class Controller_Users extends Controller_Extendcontroller {
         // Пишем нового хозяина бара
         $model->nick = $params['nick'];
         $model->email = $params['email'];
+        $model->profile_id = $params['profile_id'];
         $model->type = $type; // Хозяин
         $model->save();
 
@@ -51,7 +57,18 @@ class Controller_Users extends Controller_Extendcontroller {
             // Заказы
             $orders = Request::factory('orders/getOrders/'.$user->id)->execute()->body();
             $orders = json_decode($orders);
-
+            // Выясняем ссылку на аватар: линковка к соникмиру
+            $avatarLink = '';
+            $iter = 0;
+            foreach($this->fileTypes as $key => $val) {
+                $avatarLink = $this->domain.$this->avatarPath.$this->avatarPrefix.$user->profile_id.'.'.$val;
+                if(@fopen($avatarLink, 'r') == true) {
+                    break;
+                } elseif($iter == count($this->fileTypes) - 1) {
+                    $avatarLink = '';
+                }
+                $iter++;
+            }
             $response[] = array('id' => $user->id,
                                 'nick' => $user->nick,
                                 'email' => $user->email,
@@ -59,7 +76,9 @@ class Controller_Users extends Controller_Extendcontroller {
                                 'clean_profit' => $cleanProfit,
                                 'moneyIn' => round($result[0]['money_in'], 2),
                                 'moneyOut' => round($result[0]['money_out'], 2),
-                                'difference' => round($user->bill, 2));
+                                'difference' => round($user->bill, 2),
+                                'profileId' => $user->profile_id,
+                                'avatar' => $avatarLink);
         }
 
         $this->makeResponse($response);

@@ -72,3 +72,47 @@
 #8 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
 #9 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
 #10 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-25 16:22:38 --- EMERGENCY: Kohana_Exception [ 0 ]: The profile property does not exist in the Model_User class ~ MODPATH\orm\classes\Kohana\ORM.php [ 684 ] in Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php:600
+2012-12-25 16:22:38 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(600): Kohana_ORM->get('profile')
+#1 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(62): Kohana_ORM->__get('profile')
+#2 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(35): Controller_Users->getUsers(Array)
+#3 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Users->action_getClients()
+#4 [internal function]: Kohana_Controller->execute()
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Users))
+#6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#9 {main} in Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php:600
+2012-12-25 16:22:38 --- EMERGENCY: Kohana_Exception [ 0 ]: The profile property does not exist in the Model_User class ~ MODPATH\orm\classes\Kohana\ORM.php [ 684 ] in Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php:600
+2012-12-25 16:22:38 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(600): Kohana_ORM->get('profile')
+#1 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(62): Kohana_ORM->__get('profile')
+#2 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(35): Controller_Users->getUsers(Array)
+#3 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Users->action_getClients()
+#4 [internal function]: Kohana_Controller->execute()
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Users))
+#6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#9 {main} in Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php:600
+2012-12-25 16:22:52 --- EMERGENCY: Kohana_Exception [ 0 ]: The profile property does not exist in the Model_User class ~ MODPATH\orm\classes\Kohana\ORM.php [ 684 ] in Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php:600
+2012-12-25 16:22:52 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(600): Kohana_ORM->get('profile')
+#1 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(62): Kohana_ORM->__get('profile')
+#2 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(35): Controller_Users->getUsers(Array)
+#3 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Users->action_getClients()
+#4 [internal function]: Kohana_Controller->execute()
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Users))
+#6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#9 {main} in Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php:600
+2012-12-25 16:22:53 --- EMERGENCY: Kohana_Exception [ 0 ]: The profile property does not exist in the Model_User class ~ MODPATH\orm\classes\Kohana\ORM.php [ 684 ] in Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php:600
+2012-12-25 16:22:53 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(600): Kohana_ORM->get('profile')
+#1 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(62): Kohana_ORM->__get('profile')
+#2 Z:\home\barapp.my\www\php\application\classes\Controller\Users.php(35): Controller_Users->getUsers(Array)
+#3 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Users->action_getClients()
+#4 [internal function]: Kohana_Controller->execute()
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Users))
+#6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#8 Z:\home\barapp.my\www\php\index.php(118): Kohana_Request->execute()
+#9 {main} in Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php:600

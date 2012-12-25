@@ -21,6 +21,12 @@ Ext.define('Bar.model.ClientsModel', {
        },
        {
            name: 'orders'
+       },
+       {
+           name: 'profileId'
+       },
+       {
+           name: 'avatar'
        }
    ]
 });

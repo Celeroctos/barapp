@@ -12,7 +12,17 @@ Ext.define('Bar.view.ClientsInfoGrid', {
         {
             text: 'ID',
             sortable: true,
-            dataIndex: 'id'
+            dataIndex: 'id',
+            width: 50
+        },
+        {
+            text: '',
+            sortable: true,
+            width: 100,
+            dataIndex: 'avatar',
+            renderer: function(value) {
+                return value != '' ? '<img src="' + value + '" alt="" width="30" />' : '';
+            }
         },
         {
             text: 'ФИО / Ник',
@@ -26,17 +36,17 @@ Ext.define('Bar.view.ClientsInfoGrid', {
         },
         {
             text: 'Потраченная сумма',
-            width: 150,
+            width: 120,
             dataIndex: 'moneyOut'
         },
         {
             text: 'Пришедшая сумма',
-            width: 150,
+            width: 120,
             dataIndex: 'moneyIn'
         },
         {
             text: 'Баланс',
-            width: 150,
+            width: 120,
             dataIndex: 'difference',
             renderer: function(value) {
                 if(value >= 0) {
