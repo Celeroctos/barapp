@@ -1,5 +1,5 @@
 Ext.define('Bar.view.ClientsInfoGrid', {
-    extend: 'Ext.grid.Panel',
+    extend: 'Bar.view.BaseGrid',
     requires: ['Bar.view.ClientExtendInfoWindow',
                'Bar.view.FilterModeCombobox'],
     region:'center',
@@ -15,7 +15,7 @@ Ext.define('Bar.view.ClientsInfoGrid', {
             dataIndex: 'id',
             width: 50
         },
-        {
+       /* {
             text: '',
             sortable: true,
             width: 100,
@@ -23,7 +23,7 @@ Ext.define('Bar.view.ClientsInfoGrid', {
             renderer: function(value) {
                 return value != '' ? '<img src="' + value + '" alt="" width="30" />' : '';
             }
-        },
+        },*/
         {
             text: 'ФИО / Ник',
             sortable: true,
@@ -155,7 +155,7 @@ Ext.define('Bar.view.ClientsInfoGrid', {
                if(!issetWindow) {
                    var window = Ext.create(Bar.view.ClientExtendInfoWindow, {
                        parentGrid: this,
-                       withCoctailId: record.get('id'),
+                       withUserId: record.get('id'),
                        coctailRec: record,
                        title: 'Информация о пользователе ' + record.get('nick')
                    }).show();

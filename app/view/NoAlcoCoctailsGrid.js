@@ -1,5 +1,5 @@
 Ext.define('Bar.view.NoAlcoCoctailsGrid', {
-    extend: 'Ext.grid.Panel',
+    extend: 'Bar.view.BaseGrid',
     requires: ['Ext.grid.plugin.CellEditing',
                'Bar.view.OwnersCombobox',
                'Bar.view.CoctailExtendInfoWindow'],

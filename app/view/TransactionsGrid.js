@@ -1,5 +1,5 @@
 Ext.define('Bar.view.TransactionsGrid', {
-    extend: 'Ext.grid.Panel',
+    extend: 'Bar.view.BaseGrid',
     region:'center',
     layout: 'card',
     alias: 'widget.TransactionsGrid',
@@ -40,14 +40,6 @@ Ext.define('Bar.view.TransactionsGrid', {
             }
         }
     ],
-
-    dockedItems: [{
-        xtype: 'pagingtoolbar',
-        store: 'TransactionsStore',
-        dock: 'bottom',
-        displayInfo: true,
-        displayMsg: 'Отображаются {0} - {1} из {2} записей',
-    }],
 
     listeners: {
         afterrender: function(grid, eOpts) {

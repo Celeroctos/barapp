@@ -19,6 +19,7 @@ class Controller_Coctails extends Controller_Extendcontroller {
         // Считаем цену. Для этого вызовем контроллер коктейлей и передадим ему пришедшие идшники, чтобы он посчитал цену.
         $components = Request::factory('components/getComponentsById')->execute()->body();
         $componentsArr = json_decode($components);
+        $componentsArr = $componentsArr->data;
         $model->price_clean = 0;
         $model->save();
         // Декодируем компоненты, которые пришли: там прописан объём, который нужно брать для компонента
@@ -79,6 +80,7 @@ class Controller_Coctails extends Controller_Extendcontroller {
     }
 
     private function getCoctails($type) {
+        $params = $this->request->param();
         // Алкольными считаем те коктейли, в которых есть алкогольные составляющие
         if($type == 0) {
             $query = DB::query(Database::SELECT, 'SELECT DISTINCT coctails.id AS id,
@@ -94,7 +96,7 @@ class Controller_Coctails extends Controller_Extendcontroller {
                                                            FROM components
                                                            WHERE components.id = coctailscomponents.component_id
                                                                  AND type = 0)
-                                              ORDER BY coctails.id DESC ');
+                                              ORDER BY coctails.id DESC');
         } elseif($type == 1) {
             $query = DB::query(Database::SELECT, 'SELECT DISTINCT coctails.id AS id,
                                                               coctails.price_clean,
@@ -114,40 +116,48 @@ class Controller_Coctails extends Controller_Extendcontroller {
                                               ORDER BY coctails.id DESC ');
         }
         $result = $query->execute()->as_array();
-
+        $num = count($result);
         $resultData = array();
         $counter = 0;
+        $counterForArr = 0; // Счётчик для массива
+        $begin = $params['limit'] * ($params['page'] - 1);
+        $end = $begin + $params['limit'];
         foreach($result as $key => $coctail) {
-            $ownersProfit = array();
-            $coctail['profit_prozent_saved'] = $coctail['profit_prozent'];
-            $resultData[$counter] = $coctail;
-            $resultData[$counter]['components'] = array();
-            $resultData[$counter]['capacity'] = 0;
-            // Вычислим объём для коктейля
-            $query = DB::query(Database::SELECT, 'SELECT a.id, b.type, a.component_id, a.capacity AS c_capacity, b.buy_price, b.capacity AS f_capacity, b.name, c.nick FROM coctailscomponents a INNER JOIN components b ON a.component_id = b.id INNER JOIN users c ON c.id = b.owner_id WHERE a.coctail_id = '.$coctail['id']);
-            $componentsResult = $query->execute()->as_array();
-            //var_dump($componentsResult);
-            foreach($componentsResult as $key2 => $component) {
-                $resultData[$counter]['capacity'] += $component['c_capacity'];
-                $resultData[$counter]['components'][] = $component;
-                // Профит для каждого, кто вносит лепту в коктейль
-                if(array_search($component['type'], array(0, 1)) !== false) {
-                    if(array_key_exists($component['nick'], $ownersProfit) === false) {
-                        $ownersProfit[$component['nick']] = 0;
+            // Пагинация
+            if($counter >= $begin && $counter < $end) {
+                $ownersProfit = array();
+                $coctail['profit_prozent_saved'] = $coctail['profit_prozent'];
+                $resultData[$counterForArr] = $coctail;
+                $resultData[$counterForArr]['components'] = array();
+                $resultData[$counterForArr]['capacity'] = 0;
+                // Вычислим объём для коктейля
+                $query = DB::query(Database::SELECT, 'SELECT a.id, b.type, a.component_id, a.capacity AS c_capacity, b.buy_price, b.capacity AS f_capacity, b.name, c.nick FROM coctailscomponents a INNER JOIN components b ON a.component_id = b.id INNER JOIN users c ON c.id = b.owner_id WHERE a.coctail_id = '.$coctail['id']);
+                $componentsResult = $query->execute()->as_array();
+                //var_dump($componentsResult);
+                foreach($componentsResult as $key2 => $component) {
+                    $resultData[$counterForArr]['capacity'] += $component['c_capacity'];
+                    $resultData[$counterForArr]['components'][] = $component;
+                    // Профит для каждого, кто вносит лепту в коктейль
+                    if(array_search($component['type'], array(0, 1)) !== false) {
+                        if(array_key_exists($component['nick'], $ownersProfit) === false) {
+                            $ownersProfit[$component['nick']] = 0;
+                        }
+                     //  echo ($component['buy_price'] * $component['c_capacity'] / $component['f_capacity'])  * (1 + $coctail['profit_prozent'] / 100)."<br>";
+                        $ownersProfit[$component['nick']] += ($component['buy_price'] * $component['c_capacity'] / $component['f_capacity']) * (1 + $coctail['profit_prozent'] / 100);
+                        $ownersProfit[$component['nick']] = round($ownersProfit[$component['nick']], 2);
                     }
-                 //  echo ($component['buy_price'] * $component['c_capacity'] / $component['f_capacity'])  * (1 + $coctail['profit_prozent'] / 100)."<br>";
-                    $ownersProfit[$component['nick']] += ($component['buy_price'] * $component['c_capacity'] / $component['f_capacity']) * (1 + $coctail['profit_prozent'] / 100);
-                    $ownersProfit[$component['nick']] = round($ownersProfit[$component['nick']], 2);
                 }
+               //   echo "!!";
+                $resultData[$counterForArr]['ownersProfit'] = $ownersProfit;
+                $counterForArr++;
             }
-           //   echo "!!";
-            $resultData[$counter]['ownersProfit'] = $ownersProfit;
             $counter++;
         }
        // var_dump($resultData);
        // exit();
         $this->makeResponse(array('success' => true,
-                                  'data' => $resultData));
+                                  'data' => $resultData,
+                                  'total' => $num));
     }
 
     public function action_delCoctail() {

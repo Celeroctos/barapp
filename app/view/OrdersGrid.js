@@ -1,5 +1,5 @@
 Ext.define('Bar.view.OrdersGrid', {
-    extend: 'Ext.grid.Panel',
+    extend: 'Bar.view.BaseGrid',
     requires: ['Ext.grid.plugin.CellEditing',
                'Bar.view.ClientsCombobox',
                'Bar.view.OrdersStatusCombobox',

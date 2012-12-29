@@ -30,11 +30,12 @@ class Controller_Orders extends Controller_Extendcontroller {
 
     public function action_getOrders() {
         $params = $this->request->param();
-        if(isset($params['user_id']) && $params['user_id'] == '') {
-            return;
-        } /**else {
+        if(isset($params['user_id'])) {
+            if($params['user_id'] == '') {
+                return;
+            }
             $userId = $params['user_id'];
-        }*/
+        }
         $query = DB::query(Database::SELECT, 'SELECT a.id,
                                                      a.coctail_id,
                                                      a.owner_id,
@@ -53,10 +54,16 @@ class Controller_Orders extends Controller_Extendcontroller {
                                                INNER JOIN coctails b ON a.coctail_id = b.id
                                                INNER JOIN users c ON c.id = a.owner_id
                                                WHERE a.is_visible = 1 '.(isset($userId) ? 'AND c.id = "'.$userId.'" ' : '').'
-                                               ORDER BY a.id DESC');
+                                               ORDER BY a.id DESC
+                                               LIMIT '.$params['limit'].' OFFSET '.$params['limit'] * ($params['page'] - 1));
         $result = $query->execute()->as_array();
+        $totalQuery = DB::query(Database::SELECT, 'SELECT COUNT(*) AS num
+                                                   FROM orders a
+                                                   WHERE a.is_visible = 1');
+        $resultTotal = $totalQuery->execute()->as_array();
         $this->makeResponse(array('success' => true,
-                                  'data' => $result));
+                                  'data' => $result,
+                                  'total' => $resultTotal[0]['num']));
     }
 
     public function action_saveChanges() {

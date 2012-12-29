@@ -1,5 +1,5 @@
 Ext.define('Bar.store.OwnersStore', {
-    extend: 'Ext.data.Store',
+    extend: 'Bar.store.BaseStore',
     requires: ['Bar.model.OwnersModel'],
     model: 'Bar.model.OwnersModel',
     proxy: {
@@ -8,6 +8,12 @@ Ext.define('Bar.store.OwnersStore', {
         reader: {
             type: 'json',
             root: 'data'
+        },
+        actionMethods: {
+            create : 'POST',
+            read   : 'POST',
+            update : 'POST',
+            destroy: 'POST'
         }
     },
     listeners: {

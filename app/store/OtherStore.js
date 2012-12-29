@@ -1,5 +1,5 @@
 Ext.define('Bar.store.OtherStore', {
-    extend: 'Ext.data.Store',
+    extend: 'Bar.store.BaseStore',
     requires: ['Bar.model.OtherModel'],
     model: 'Bar.model.OtherModel',
     proxy: {
@@ -8,6 +8,12 @@ Ext.define('Bar.store.OtherStore', {
         reader: {
             type: 'json',
             root: 'data'
+        },
+        actionMethods: {
+            create : 'POST',
+            read   : 'POST',
+            update : 'POST',
+            destroy: 'POST'
         }
     },
     listeners: {

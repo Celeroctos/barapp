@@ -1,5 +1,5 @@
 Ext.define('Bar.store.AllComponentsStore', {
-    extend: 'Ext.data.Store',
+    extend: 'Bar.store.BaseStore',
     requires: ['Bar.model.AlcoModel'],
     model: 'Bar.model.AlcoModel',
     autoload: true,
@@ -9,6 +9,12 @@ Ext.define('Bar.store.AllComponentsStore', {
         reader: {
             type: 'json',
             root: 'data'
+        },
+        actionMethods: {
+            create : 'POST',
+            read   : 'POST',
+            update : 'POST',
+            destroy: 'POST'
         }
     },
     listeners: {

@@ -1,5 +1,5 @@
 Ext.define('Bar.view.OwnersGrid', {
-    extend: 'Ext.grid.Panel',
+    extend: 'Bar.view.BaseGrid',
     region:'center',
     layout: 'card',
     alias: 'widget.OwnersGrid',

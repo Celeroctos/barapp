@@ -63,21 +63,42 @@ class Controller_Components extends Controller_Extendcontroller {
     }
 
     private function getComponents($type, $ids = array()) {
+        $params = $this->request->param();
         $model = ORM::factory('component');
         // По ID...
         $operator = '';
+
+        if(!isset($params['limit']) || $params['limit'] === '') {
+            $params['limit'] = 100; // Пока этого хватит
+        }
+        if(!isset($params['page']) || $params['page'] === '') {
+            $params['page'] = 1;
+        }
+
         if(count($ids) > 0) {
             $operator = 'IN';
             $components = $model->where('id', $operator, $ids)->order_by('id', 'DESC')->and_where('disabled', '=', 0)->find_all();
-
+            $componentsNum = count($ids);
         } else { // По типу
             if(is_array($type)) {
                 $operator = 'IN';
             } else {
                 $operator = '=';
             }
-            $components = $model->where('type', $operator, $type)->and_where('disabled', '=', 0)->order_by('id', 'DESC')->find_all();
+
+            $components = $model->where('type', $operator, $type)
+                ->and_where('disabled', '=', 0)
+                ->limit($params['limit'])
+                ->offset($params['limit'] * ($params['page'] - 1))
+                ->order_by('id', 'DESC')
+                ->find_all();
+
+            $modelNum = ORM::factory('component');
+            $componentsNum = $modelNum->where('type', $operator, $type)
+                ->and_where('disabled', '=', 0)
+                ->find_all();
         }
+
         $response = array();
         foreach($components as $key => $component) {
             $users = ORM::factory('user')->where('id', '=', $component->owner_id)->find_all();
@@ -94,7 +115,10 @@ class Controller_Components extends Controller_Extendcontroller {
                                 'strength' => $component->strength);
         }
 
-        $this->makeResponse($response);
+        $this->makeResponse(array('data' => $response,
+                                  'success' => true,
+                                  'total' => count($componentsNum)
+                            ));
     }
 
     public function action_getDependences() {

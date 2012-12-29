@@ -55,7 +55,7 @@ Ext.define('Bar.view.ClientExtendInfoWindow', {
             // Ищем тот, что можно закрыть. Удаляем индекс окна
             var gridPanel = panel.parentGrid;
             for(var i = 0; i < gridPanel.openedWindows.length; i++) {
-                if(gridPanel.openedWindows[i].withCoctailId == panel.withCoctailId) {
+                if(gridPanel.openedWindows[i].withCoctailId == panel.withUserId) {
                     gridPanel.openedWindows = gridPanel.openedWindows.slice(0, i - 1).concat(gridPanel.openedWindows.slice(i + 1));
                     return;
                 }

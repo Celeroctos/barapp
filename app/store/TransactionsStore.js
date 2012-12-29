@@ -1,5 +1,5 @@
 Ext.define('Bar.store.TransactionsStore', {
-    extend: 'Ext.data.Store',
+    extend: 'Bar.store.BaseStore',
     requires: ['Bar.model.TransactionsModel'],
     model: 'Bar.model.TransactionsModel',
     pageSize: 25,
@@ -18,14 +18,5 @@ Ext.define('Bar.store.TransactionsStore', {
             root: 'data',
             totalProperty: 'total'
         }
-    },
-    listeners: {
-        beforeload: function(store, operations, eOpts) {
-            operations.params = {
-                start: 0,
-                limit: this.pageSize
-            }
-        }
-
     }
 });

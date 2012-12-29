@@ -134,7 +134,10 @@ Route::set('clean_profit', 'transactions/getCleanProfit/<user_id>')
 Route::set('orders_by_user', 'orders/getOrders/<user_id>')
     ->defaults(array(
     'controller' => 'orders',
-    'action' => 'getOrders'
+    'action' => 'getOrders',
+    'start' => isset($_POST['start']) ? $_POST['start'] : 0,
+    'limit' => isset($_POST['limit']) ? $_POST['limit'] : 100,
+    'page' => isset($_POST['page']) ? $_POST['page'] : 0,
 ));
 
 Route::set('default', '<controller>/<action>(/<tail>)')
@@ -159,8 +162,8 @@ Route::set('default', '<controller>/<action>(/<tail>)')
         'status' => isset($_POST['status']) ? $_POST['status'] : '',
         'forced' => isset($_POST['forced']) ? $_POST['forced'] : '',
         't_type' => isset($_POST['t_type']) ? $_POST['t_type'] : '',
-        'start' => isset($_POST['start']) ? $_POST['start'] : '',
-        'limit' => isset($_POST['limit']) ? $_POST['limit'] : '',
+        'start' => isset($_POST['start']) ? $_POST['start'] : 0,
+        'limit' => isset($_POST['limit']) ? $_POST['limit'] : 100,
         'page' => isset($_POST['page']) ? $_POST['page'] : 0,
         'profile_id' => isset($_POST['profile_id']) ? $_POST['profile_id'] : -1
     ));
