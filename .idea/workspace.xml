@@ -2,36 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="798eb2e9-29e7-4b9c-a653-84a52fbacdef" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/store/BaseStore.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/view/BaseGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/store/AlcoCoctailsStore.js" afterPath="$PROJECT_DIR$/app/store/AlcoCoctailsStore.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/store/AlcoStore.js" afterPath="$PROJECT_DIR$/app/store/AlcoStore.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/store/AllComponentsStore.js" afterPath="$PROJECT_DIR$/app/store/AllComponentsStore.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/store/ClientsStore.js" afterPath="$PROJECT_DIR$/app/store/ClientsStore.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/store/InventoryStore.js" afterPath="$PROJECT_DIR$/app/store/InventoryStore.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/store/NoAlcoCoctailsStore.js" afterPath="$PROJECT_DIR$/app/store/NoAlcoCoctailsStore.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/store/NoAlcoStore.js" afterPath="$PROJECT_DIR$/app/store/NoAlcoStore.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/store/OrdersStore.js" afterPath="$PROJECT_DIR$/app/store/OrdersStore.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/store/OtherStore.js" afterPath="$PROJECT_DIR$/app/store/OtherStore.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/store/OwnersStore.js" afterPath="$PROJECT_DIR$/app/store/OwnersStore.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/store/TransactionsStore.js" afterPath="$PROJECT_DIR$/app/store/TransactionsStore.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/AlcoCoctailsGrid.js" afterPath="$PROJECT_DIR$/app/view/AlcoCoctailsGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/AlcoResourcesGrid.js" afterPath="$PROJECT_DIR$/app/view/AlcoResourcesGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/ClientExtendInfoWindow.js" afterPath="$PROJECT_DIR$/app/view/ClientExtendInfoWindow.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/ClientsInfoGrid.js" afterPath="$PROJECT_DIR$/app/view/ClientsInfoGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/InventoryResourcesGrid.js" afterPath="$PROJECT_DIR$/app/view/InventoryResourcesGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/NoAlcoCoctailsGrid.js" afterPath="$PROJECT_DIR$/app/view/NoAlcoCoctailsGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/NoAlcoResourcesGrid.js" afterPath="$PROJECT_DIR$/app/view/NoAlcoResourcesGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/OrdersGrid.js" afterPath="$PROJECT_DIR$/app/view/OrdersGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/OtherResourcesGrid.js" afterPath="$PROJECT_DIR$/app/view/OtherResourcesGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/OwnersGrid.js" afterPath="$PROJECT_DIR$/app/view/OwnersGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/TransactionsGrid.js" afterPath="$PROJECT_DIR$/app/view/TransactionsGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/bootstrap.php" afterPath="$PROJECT_DIR$/php/application/bootstrap.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/classes/Controller/Coctails.php" afterPath="$PROJECT_DIR$/php/application/classes/Controller/Coctails.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/classes/Controller/Components.php" afterPath="$PROJECT_DIR$/php/application/classes/Controller/Components.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/classes/Controller/Orders.php" afterPath="$PROJECT_DIR$/php/application/classes/Controller/Orders.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/index.php" afterPath="$PROJECT_DIR$/php/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/logs/2012/12/29.php" afterPath="$PROJECT_DIR$/php/application/logs/2012/12/29.php" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -94,10 +66,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Coctails.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Coctails.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Coctails.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="151" column="33" selection-start="9118" selection-end="9118" vertical-scroll-proportion="-13.153846">
+            <state line="35" column="61" selection-start="1565" selection-end="1565" vertical-scroll-proportion="0.62637365">
               <folding />
             </state>
           </provider>
@@ -130,10 +102,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NoAlcoCoctailsGrid.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="NoAlcoCoctailsGrid.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/view/NoAlcoCoctailsGrid.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="30" selection-start="74" selection-end="74" vertical-scroll-proportion="0.02972028">
+            <state line="21" column="23" selection-start="786" selection-end="786" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -176,8 +148,8 @@
         <option value="$PROJECT_DIR$/php/application/bootstrap.php" />
         <option value="$PROJECT_DIR$/php/application/classes/Controller/Components.php" />
         <option value="$PROJECT_DIR$/app/store/AlcoCoctailsStore.js" />
-        <option value="$PROJECT_DIR$/php/application/classes/Controller/Coctails.php" />
         <option value="$PROJECT_DIR$/app/view/NoAlcoCoctailsGrid.js" />
+        <option value="$PROJECT_DIR$/php/application/classes/Controller/Coctails.php" />
       </list>
     </option>
   </component>
@@ -826,23 +798,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/store/BaseStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="83" selection-end="83" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/application/bootstrap.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="138" column="61" selection-start="4629" selection-end="4629" vertical-scroll-proportion="-7.9615383">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/store/AllComponentsStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="9" selection-start="496" selection-end="496" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -868,9 +826,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Coctails.php">
+    <entry file="file://$PROJECT_DIR$/app/view/NoAlcoCoctailsGrid.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="151" column="33" selection-start="9118" selection-end="9118" vertical-scroll-proportion="-13.153846">
+        <state line="21" column="23" selection-start="786" selection-end="786" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/store/BaseStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="17" selection-start="83" selection-end="83" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/store/AllComponentsStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="9" selection-start="496" selection-end="496" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -882,9 +854,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/NoAlcoCoctailsGrid.js">
+    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Coctails.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="30" selection-start="74" selection-end="74" vertical-scroll-proportion="0.02972028">
+        <state line="35" column="61" selection-start="1565" selection-end="1565" vertical-scroll-proportion="0.62637365">
           <folding />
         </state>
       </provider>

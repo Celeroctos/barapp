@@ -31,9 +31,17 @@ class Controller_Coctails extends Controller_Extendcontroller {
         $componentsToCoctailsModels = array();
         // Начинаем считать стоимость коктейля
         foreach($componentsArr as $key => $component) {
+            // Найдём среди пришедших компонентов нужный
+            $capacity = false;
+            foreach($componentsIn as $key2 => $componentIn) {
+                if($component->id == $componentIn->combo) {
+                    $capacity = $componentIn->textfield;
+                    break;
+                }
+            }
             $componentsToCoctailsModels[$key] = ORM::factory('coctailscomponent');
-            $componentsToCoctailsModels[$key]->capacity = $componentsIn[$key]->textfield;
-            $componentsToCoctailsModels[$key]->component_id = $componentsArr[$key]->id;
+            $componentsToCoctailsModels[$key]->capacity = $capacity;
+            $componentsToCoctailsModels[$key]->component_id = $component->id;
             $componentsToCoctailsModels[$key]->coctail_id = $model->id;
             // Стекло не учитывается в стоимости
             if(array_search($component->type, array(0, 1)) !== false) {

@@ -1645,3 +1645,46 @@
 #6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
 #7 Z:\home\barapp.my\www\php\index.php(117): Kohana_Request->execute()
 #8 {main} in Z:\home\barapp.my\www\php\application\classes\Controller\Coctails.php:99
+2012-12-29 22:51:11 --- EMERGENCY: Database_Exception [ 1366 ]: Incorrect integer value: '' for column 'owner_id' at row 1 [ INSERT INTO `components` (`name`, `capacity`, `type`, `owner_id`, `current_capacity`, `buy_price`) VALUES ('Сок лимона', '1000', 1, '', '1000', '1') ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-29 22:51:11 --- NOTICE: #0 Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(2, 'INSERT INTO `co...', false, Array)
+#1 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(1321): Kohana_Database_Query->execute(Object(Database_MySQL))
+#2 Z:\home\barapp.my\www\php\modules\orm\classes\Kohana\ORM.php(1418): Kohana_ORM->create(NULL)
+#3 Z:\home\barapp.my\www\php\application\classes\Controller\Components.php(60): Kohana_ORM->save()
+#4 Z:\home\barapp.my\www\php\application\classes\Controller\Components.php(9): Controller_Components->addComponent(1)
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Components->action_addNoAlcoComponent()
+#6 [internal function]: Kohana_Controller->execute()
+#7 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Components))
+#8 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#9 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#10 Z:\home\barapp.my\www\php\index.php(117): Kohana_Request->execute()
+#11 {main} in Z:\home\barapp.my\www\php\modules\database\classes\Kohana\Database\Query.php:251
+2012-12-29 23:24:04 --- EMERGENCY: ErrorException [ 8 ]: Undefined property: stdClass::$id ~ APPPATH\classes\Controller\Coctails.php [ 37 ] in Z:\home\barapp.my\www\php\application\classes\Controller\Coctails.php:37
+2012-12-29 23:24:04 --- NOTICE: #0 Z:\home\barapp.my\www\php\application\classes\Controller\Coctails.php(37): Kohana_Core::error_handler(8, 'Undefined prope...', 'Z:\home\barapp....', 37, Array)
+#1 Z:\home\barapp.my\www\php\application\classes\Controller\Coctails.php(5): Controller_Coctails->addCoctail(0)
+#2 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Coctails->action_addAlcoCoctail()
+#3 [internal function]: Kohana_Controller->execute()
+#4 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Coctails))
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#7 Z:\home\barapp.my\www\php\index.php(117): Kohana_Request->execute()
+#8 {main} in Z:\home\barapp.my\www\php\application\classes\Controller\Coctails.php:37
+2012-12-29 23:25:10 --- EMERGENCY: ErrorException [ 8 ]: Undefined property: stdClass::$id ~ APPPATH\classes\Controller\Coctails.php [ 37 ] in Z:\home\barapp.my\www\php\application\classes\Controller\Coctails.php:37
+2012-12-29 23:25:10 --- NOTICE: #0 Z:\home\barapp.my\www\php\application\classes\Controller\Coctails.php(37): Kohana_Core::error_handler(8, 'Undefined prope...', 'Z:\home\barapp....', 37, Array)
+#1 Z:\home\barapp.my\www\php\application\classes\Controller\Coctails.php(5): Controller_Coctails->addCoctail(0)
+#2 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Coctails->action_addAlcoCoctail()
+#3 [internal function]: Kohana_Controller->execute()
+#4 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Coctails))
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#7 Z:\home\barapp.my\www\php\index.php(117): Kohana_Request->execute()
+#8 {main} in Z:\home\barapp.my\www\php\application\classes\Controller\Coctails.php:37
+2012-12-29 23:25:33 --- EMERGENCY: ErrorException [ 8 ]: Undefined property: stdClass::$id ~ APPPATH\classes\Controller\Coctails.php [ 38 ] in Z:\home\barapp.my\www\php\application\classes\Controller\Coctails.php:38
+2012-12-29 23:25:33 --- NOTICE: #0 Z:\home\barapp.my\www\php\application\classes\Controller\Coctails.php(38): Kohana_Core::error_handler(8, 'Undefined prope...', 'Z:\home\barapp....', 38, Array)
+#1 Z:\home\barapp.my\www\php\application\classes\Controller\Coctails.php(5): Controller_Coctails->addCoctail(0)
+#2 Z:\home\barapp.my\www\php\system\classes\Kohana\Controller.php(84): Controller_Coctails->action_addAlcoCoctail()
+#3 [internal function]: Kohana_Controller->execute()
+#4 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Coctails))
+#5 Z:\home\barapp.my\www\php\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#6 Z:\home\barapp.my\www\php\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#7 Z:\home\barapp.my\www\php\index.php(117): Kohana_Request->execute()
+#8 {main} in Z:\home\barapp.my\www\php\application\classes\Controller\Coctails.php:38
