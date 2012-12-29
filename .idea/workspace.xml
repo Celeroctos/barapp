@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="798eb2e9-29e7-4b9c-a653-84a52fbacdef" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/classes/Controller/Coctails.php" afterPath="$PROJECT_DIR$/php/application/classes/Controller/Coctails.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/logs/2012/12/29.php" afterPath="$PROJECT_DIR$/php/application/logs/2012/12/29.php" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,7 +68,7 @@
       <file leaf-file-name="Coctails.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Coctails.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="61" selection-start="1565" selection-end="1565" vertical-scroll-proportion="0.62637365">
+            <state line="62" column="52" selection-start="3041" selection-end="3041" vertical-scroll-proportion="0.93772894">
               <folding />
             </state>
           </provider>
@@ -856,7 +855,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Coctails.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="61" selection-start="1565" selection-end="1565" vertical-scroll-proportion="0.62637365">
+        <state line="62" column="52" selection-start="3041" selection-end="3041" vertical-scroll-proportion="0.93772894">
           <folding />
         </state>
       </provider>

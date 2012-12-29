@@ -32,25 +32,25 @@ class Controller_Coctails extends Controller_Extendcontroller {
         // Начинаем считать стоимость коктейля
         foreach($componentsArr as $key => $component) {
             // Найдём среди пришедших компонентов нужный
-            $capacity = false;
+            $currentComponent = false;
             foreach($componentsIn as $key2 => $componentIn) {
                 if($component->id == $componentIn->combo) {
-                    $capacity = $componentIn->textfield;
+                    $currentComponent = $componentIn;
                     break;
                 }
             }
             $componentsToCoctailsModels[$key] = ORM::factory('coctailscomponent');
-            $componentsToCoctailsModels[$key]->capacity = $capacity;
+            $componentsToCoctailsModels[$key]->capacity = $currentComponent->textfield;
             $componentsToCoctailsModels[$key]->component_id = $component->id;
             $componentsToCoctailsModels[$key]->coctail_id = $model->id;
             // Стекло не учитывается в стоимости
             if(array_search($component->type, array(0, 1)) !== false) {
-                $sum += ($component->price * $componentsIn[$key]->textfield / $component->capacity) * (1 + $params['prozent'] / 100);
+                $sum += ($component->price * $currentComponent->textfield / $component->capacity) * (1 + $params['prozent'] / 100);
             //    echo ($component->price * $componentsIn[$key]->textfield / $component->capacity) * (1 + $params['prozent'] / 100)."<br>";
                 $sum = round($sum, 2);
                 // Вычисление крепкости коктейля
-                $alcoCapacity += $component->strength * $componentsIn[$key]->textfield / 100;
-                $capacity += $componentsIn[$key]->textfield;
+                $alcoCapacity += $component->strength * $currentComponent->textfield / 100;
+                $capacity += $currentComponent->textfield;
             }
             // Вычисление крепкости окочательное
 
@@ -150,12 +150,15 @@ class Controller_Coctails extends Controller_Extendcontroller {
                         if(array_key_exists($component['nick'], $ownersProfit) === false) {
                             $ownersProfit[$component['nick']] = 0;
                         }
-                     //  echo ($component['buy_price'] * $component['c_capacity'] / $component['f_capacity'])  * (1 + $coctail['profit_prozent'] / 100)."<br>";
+                    //  echo ($component['buy_price'] * $component['c_capacity'] / $component['f_capacity'])  * (1 + $coctail['profit_prozent'] / 100)."<br>";
+
                         $ownersProfit[$component['nick']] += ($component['buy_price'] * $component['c_capacity'] / $component['f_capacity']) * (1 + $coctail['profit_prozent'] / 100);
                         $ownersProfit[$component['nick']] = round($ownersProfit[$component['nick']], 2);
                     }
                 }
                //   echo "!!";
+               // var_dump($ownersProfit);
+               // exit();
                 $resultData[$counterForArr]['ownersProfit'] = $ownersProfit;
                 $counterForArr++;
             }
