@@ -5,7 +5,7 @@ Ext.define('Bar.store.OrdersStore', {
     pageSize: 10,
     proxy: {
         type: 'ajax',
-        url: '/php/index.php/orders/getOrders',
+        url: '/php/index.php/orders/getOrders/0',
         reader: {
             type: 'json',
             root: 'data'
@@ -18,7 +18,7 @@ Ext.define('Bar.store.OrdersStore', {
         }
     },
     listeners: {
-        load: function() {
+        beforeload: function(store, operation, eOpts) {
 
         }
 

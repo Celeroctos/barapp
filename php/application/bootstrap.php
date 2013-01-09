@@ -131,7 +131,7 @@ Route::set('clean_profit', 'transactions/getCleanProfit/<user_id>')
         'action' => 'getCleanProfit'
     ));
 
-Route::set('orders_by_user', 'orders/getOrders/<user_id>')
+Route::set('orders_by_user', 'orders/getOrders(/<type>)(/<user_id>)(/<limit>/<page>)')
     ->defaults(array(
     'controller' => 'orders',
     'action' => 'getOrders',

@@ -4,7 +4,7 @@ Ext.define('Bar.view.ClientsCombobox', {
    valueField: 'id',
    hiddenName: 'nick',
    hiddenValue: 'id',
-   store: 'ClientsStore',
+   store: 'AllClientsStore',
    alias: 'widget.ClientsCombobox',
    queryMode: 'remote',
    editable: false,

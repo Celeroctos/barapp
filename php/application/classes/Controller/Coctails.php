@@ -73,6 +73,10 @@ class Controller_Coctails extends Controller_Extendcontroller {
         $this->getCoctails(1);
     }
 
+    public function action_getAllCoctails() {
+        $this->getCoctails(2);
+    }
+
     public function action_saveChanges() {
         $params = $this->request->param();
         $newData = json_decode($params['newData']);
@@ -122,7 +126,20 @@ class Controller_Coctails extends Controller_Extendcontroller {
                                                                 WHERE components.type = 0
                                                                       AND coctailscomponents.coctail_id = coctails.id)
                                               ORDER BY coctails.id DESC ');
+        } elseif($type == 2) {
+             $query = DB::query(Database::SELECT, 'SELECT DISTINCT coctails.id AS id,
+                                                              coctails.price_clean,
+                                                              coctails.strength,
+                                                              coctails.name AS name,
+                                                              coctails.recipe AS recipe,
+                                                              coctails.price AS price,
+                                                              coctails.profit_prozent
+                                              FROM coctails
+                                              INNER JOIN coctailscomponents ON coctails.id = coctailscomponents.coctail_id
+                                              INNER JOIN components ON components.id = coctailscomponents.component_id
+                                              ORDER BY coctails.id DESC');
         }
+
         $result = $query->execute()->as_array();
         $num = count($result);
         $resultData = array();

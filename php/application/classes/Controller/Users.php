@@ -37,13 +37,27 @@ class Controller_Users extends Controller_Extendcontroller {
     }
 
     public function getUsers($type) {
+        $params = $this->request->param();
         $model = ORM::factory('user');
         if(is_array($type)) {
             $operator = 'IN';
         } else {
             $operator = '=';
         }
-        $users = $model->where('type', $operator, $type)->order_by('id', 'DESC')->find_all();
+        $users = $model
+                ->where('type', $operator, $type)
+                ->limit($params['limit'])
+                ->offset($params['limit'] * ($params['page'] - 1))
+                ->order_by('id', 'DESC')
+                ->find_all();
+
+        $modelNum = ORM::factory('user');
+        $usersNum = $modelNum
+                    ->where('type', $operator, $type)
+                    ->find_all()
+                    ->as_array();
+        $num = count($usersNum);
+
         $response = array();
         foreach($users as $key => $user) {
             // Считаем по транзакциям, сколько пришло и сколько ушло
@@ -55,7 +69,9 @@ class Controller_Users extends Controller_Extendcontroller {
             // Подсчитаем чистую прибыль для пользователя
             $cleanProfit = Request::factory('transactions/getCleanProfit/'.$user->id)->execute()->body();
             // Заказы
-            $orders = Request::factory('orders/getOrders/'.$user->id)->execute()->body();
+            $orders = Request::factory('orders/getOrders/2/'.$user->id.'/100/1')
+                        ->execute()
+                        ->body();
             $orders = json_decode($orders);
             // Выясняем ссылку на аватар: линковка к соникмиру
             $avatarLink = '';
@@ -81,7 +97,9 @@ class Controller_Users extends Controller_Extendcontroller {
                                 'avatar' => $avatarLink);
         }
 
-        $this->makeResponse($response);
+        $this->makeResponse(array('success' => true,
+                                  'data' => $response,
+                                  'total' => $num));
     }
     public function action_delUsers() {
         $params = $this->request->param();

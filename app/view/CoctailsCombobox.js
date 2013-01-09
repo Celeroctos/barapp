@@ -2,7 +2,7 @@ Ext.define('Bar.view.CoctailsCombobox', {
    extend: 'Ext.form.ComboBox',
    displayField: 'name',
    valueField: 'id',
-   store: 'AlcoCoctailsStore',
+   store: 'AllCoctailsStore',
    alias: 'widget.CoctailsCombobox',
    queryMode: 'remote',
    initComponent: function() {

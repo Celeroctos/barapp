@@ -155,8 +155,8 @@ class Controller_Transactions extends Controller_Extendcontroller {
             ->param(':user_id', $params['user_id'])
             ->execute()
             ->as_array();*/
-
-        $this->makeResponse(round($profit /*- $antiProfitResult[0]['antiMoney']*/, 2), false);
+        $roundedProfit = round($profit /*- $antiProfitResult[0]['antiMoney']*/, 2);
+        $this->makeResponse($roundedProfit > 0 ? $roundedProfit : 0, false);
     }
 
 }

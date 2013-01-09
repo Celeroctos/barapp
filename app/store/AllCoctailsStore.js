@@ -1,11 +1,10 @@
-Ext.define('Bar.store.ClientsStore', {
+Ext.define('Bar.store.AllCoctailsStore', {
     extend: 'Bar.store.BaseStore',
-    requires: ['Bar.model.ClientsModel'],
-    model: 'Bar.model.ClientsModel',
-    pageSize: 8,
+    requires: ['Bar.model.AlcoCoctailsModel'],
+    model: 'Bar.model.AlcoCoctailsModel',
     proxy: {
         type: 'ajax',
-        url: '/php/index.php/users/getClients',
+        url: '/php/index.php/coctails/getAllCoctails',
         reader: {
             type: 'json',
             root: 'data'

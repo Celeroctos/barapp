@@ -36,6 +36,21 @@ class Controller_Orders extends Controller_Extendcontroller {
             }
             $userId = $params['user_id'];
         }
+        // По типу. Можно показывать заказы, а можно историю
+        // 0 - история, 1 - заказы, 2 - история и заказы
+        $cond = '';
+      // var_dump($params);
+        if(isset($params['type'])) {
+            if($params['type'] == 0) {
+                $cond = ' WHERE a.is_visible = 1';
+            } elseif($params['type'] == 1) {
+                $cond = ' WHERE a.is_visible = 0';
+            } elseif($params['type'] == 2) {
+                // А здесь всё. Это просто заглушка для напоминания. Условия нет.
+            }
+        }
+        //var_dump($cond);
+      // exit();
         $query = DB::query(Database::SELECT, 'SELECT a.id,
                                                      a.coctail_id,
                                                      a.owner_id,
@@ -53,7 +68,7 @@ class Controller_Orders extends Controller_Extendcontroller {
                                                FROM orders a
                                                INNER JOIN coctails b ON a.coctail_id = b.id
                                                INNER JOIN users c ON c.id = a.owner_id
-                                               WHERE a.is_visible = 1 '.(isset($userId) ? 'AND c.id = "'.$userId.'" ' : '').'
+                                               '.$cond.' '.(isset($userId) ? 'AND c.id = "'.$userId.'" ' : '').'
                                                ORDER BY a.id DESC
                                                LIMIT '.$params['limit'].' OFFSET '.$params['limit'] * ($params['page'] - 1));
         $result = $query->execute()->as_array();

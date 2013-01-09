@@ -32,7 +32,9 @@ Ext.onReady(function() {
                  'AlcoCoctailsStore',
                  'NoAlcoCoctailsStore',
                  'OrdersStore',
-                 'TransactionsStore'],
+                 'TransactionsStore',
+                 'AllCoctailsStore',
+                 'AllClientsStore'],
         views: ['ClientsCombobox'],
         launch: function() {
             Ext.create('Bar.view.MainPanel').show();
