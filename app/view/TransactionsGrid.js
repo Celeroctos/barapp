@@ -32,12 +32,17 @@ Ext.define('Bar.view.TransactionsGrid', {
         },
         {
             text: 'Тип транзации',
-            width: 200,
+            width: 100,
             dataIndex: 'type',
             renderer: function(value) {
                 var imgSrc = value == 0 ? 'icon_dn' : 'icon_up';
                 return '<img src="/img/' + imgSrc + '.gif" width="7" height="8" />';
             }
+        },
+        {
+            text: 'Коктейль',
+            width: 300,
+            dataIndex: 'order_coctail_name'
         }
     ],
 

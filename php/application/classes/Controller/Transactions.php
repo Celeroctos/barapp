@@ -6,10 +6,12 @@ class Controller_Transactions extends Controller_Extendcontroller {
         $params = $this->request->param();
 
 
-        $query = DB::query(Database::SELECT, 'SELECT a.*, b.nick
+        $query = DB::query(Database::SELECT, 'SELECT a.*, b.nick, c.name AS order_coctail_name
                                               FROM transactions a
                                               INNER JOIN users b ON b.id = a.user_id
-                                              ORDER BY a.id DESC
+                                              INNER JOIN orders d ON d.id = a.order_id
+                                              INNER JOIN coctails c ON d.coctail_id = c.id
+                                              ORDER BY a.id
                                               LIMIT '.$params['limit'].' OFFSET '.$params['limit'] * ($params['page'] - 1));
        // echo $query;
         $result = $query->execute()->as_array();

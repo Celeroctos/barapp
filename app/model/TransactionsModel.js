@@ -15,6 +15,9 @@ Ext.define('Bar.model.TransactionsModel', {
         },
         {
             name: 'type'
+        },
+        {
+            name: 'order_coctail_name'
         }
     ]
 });

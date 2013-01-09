@@ -14,12 +14,26 @@ Ext.define('Bar.view.ClientExtendInfoWindow', {
        this.ordersArr = [];
        var orders = this.coctailRec.get('orders');
        console.log(orders);
-       for(var i = 0; i < orders.length; i++) {
-           this.ordersArr[i] = {
+       var counter = 0;
+       var quantity_all = 0;
+       var priced_all = 0;
+       for(var i in orders) {
+           priced_all += parseFloat(orders[i].priced);
+           quantity_all += parseInt(orders[i].quantity);
+           this.ordersArr[counter] = {
                name: orders[i].coctail_name,
                quantity: orders[i].quantity,
                price: orders[i].price,
                priced: orders[i].priced
+           };
+           counter++;
+       }
+       // Если он был вообще заполнен
+       if(this.ordersArr.length > 0) {
+           this.ordersArr[counter] = {
+               name: '<strong>Итого</strong>',
+               quantity: '<strong>' + quantity_all + '</strong>',
+               priced: priced_all
            };
        }
    },
@@ -56,7 +70,7 @@ Ext.define('Bar.view.ClientExtendInfoWindow', {
             // Ищем тот, что можно закрыть. Удаляем индекс окна
             var gridPanel = panel.parentGrid;
             for(var i = 0; i < gridPanel.openedWindows.length; i++) {
-                if(gridPanel.openedWindows[i].withCoctailId == panel.withUserId) {
+                if(gridPanel.openedWindows[i].withUserId == panel.withUserId) {
                     gridPanel.openedWindows = gridPanel.openedWindows.slice(0, i - 1).concat(gridPanel.openedWindows.slice(i + 1));
                     return;
                 }

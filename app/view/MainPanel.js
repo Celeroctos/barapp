@@ -69,15 +69,7 @@ Ext.define('Bar.view.MainPanel', {
                         text: 'Настройки',
                         draggable: false,
                         id: 'barSettings',
-                        children: [
-                            {
-                                nodeType: 'async',
-                                text: 'Настройки приложения',
-                                draggable: false,
-                                id: 'barAppSettings',
-                                leaf: true
-                            }
-                        ]
+                        leaf: true
                     },
                 ]
             }
@@ -100,7 +92,8 @@ Ext.define('Bar.view.MainPanel', {
                         barOwners: 'Bar.view.OwnersPanel',
                         barResources: 'Bar.view.BarResourcesPanel',
                         barCoctails: 'Bar.view.AlcoCoctailsPanel',
-                        barTransactions: 'Bar.view.TransactionsPanel'};
+                        barTransactions: 'Bar.view.TransactionsPanel',
+                        barSettings: 'Bar.view.SettingsPanel'};
 
         this.treePanel = this.items.getAt(0);
         this.actionsPanel = this.items.getAt(1);

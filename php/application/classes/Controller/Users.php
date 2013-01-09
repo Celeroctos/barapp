@@ -73,6 +73,23 @@ class Controller_Users extends Controller_Extendcontroller {
                         ->execute()
                         ->body();
             $orders = json_decode($orders);
+            // Группируем заказы по наименованию
+            $ordersGrouped = array();
+            if(count($orders->data) > 0) {
+                foreach($orders->data as $key => $order) {
+                    //var_dump($order);
+                    if(!isset($ordersGrouped[(string)$order->coctail_id])) {
+                        $ordersGrouped[(string)$order->coctail_id] = array('coctail_name' => $order->coctail_name,
+                                                                           'coctail_id' => $order->coctail_id,
+                                                                           'price' => $order->price_full / $order->quantity,
+                                                                           'priced' => $order->price_full,
+                                                                           'quantity' => $order->quantity);
+                    } else {
+                        $ordersGrouped[(string)$order->coctail_id]['priced'] += $order->price_full;
+                        $ordersGrouped[(string)$order->coctail_id]['quantity'] += $order->quantity;
+                    }
+                }
+            }
             // Выясняем ссылку на аватар: линковка к соникмиру
             $avatarLink = '';
             $iter = 0;
@@ -85,10 +102,11 @@ class Controller_Users extends Controller_Extendcontroller {
                 }
                 $iter++;
             }
+           // var_dump($ordersGrouped);
             $response[] = array('id' => $user->id,
                                 'nick' => $user->nick,
                                 'email' => $user->email,
-                                'orders' => $orders->data,
+                                'orders' => $ordersGrouped,
                                 'clean_profit' => $cleanProfit,
                                 'moneyIn' => round($result[0]['money_in'], 2),
                                 'moneyOut' => round($result[0]['money_out'], 2),
