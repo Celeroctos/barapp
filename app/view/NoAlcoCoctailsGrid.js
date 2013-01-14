@@ -49,7 +49,7 @@ Ext.define('Bar.view.NoAlcoCoctailsGrid', {
         },
         {
             text: 'Крепость',
-            width: 190,
+            width: 150,
             dataIndex: 'strength',
             editor: 'textfield'
         },
@@ -59,6 +59,14 @@ Ext.define('Bar.view.NoAlcoCoctailsGrid', {
             dataIndex: 'id',
             renderer: function(value) {
                 return '<a href="#' + value + '"><img src="/img/arrow-curve-000-left.png" alt="Посмотреть данные по коктейлю" width="16" height="16" /></a>';
+            }
+        },
+        {
+            text: '', // Поле редактирования коктейля
+            width: 40,
+            dataIndex: 'id',
+            renderer: function(value) {
+                return '<a href="#' + value + '"><img src="/img/edit-signiture.png" alt="Редактировать коктейль" width="16" height="16" /></a>';
             }
         }
     ],
@@ -90,7 +98,7 @@ Ext.define('Bar.view.NoAlcoCoctailsGrid', {
 
     deleteChecked: function() {
         var selected = [];
-        var selection = Ext.getCmp('NoAlcoCoctailsGrid').getSelectionModel().getSelection();
+        var selection = Ext.getCmp('noAlcoCoctailsGrid').getSelectionModel().getSelection();
         for(var i = 0; i < selection.length; i++) {
             selected.push(selection[i].get('id'));
         }
@@ -163,11 +171,11 @@ Ext.define('Bar.view.NoAlcoCoctailsGrid', {
         }, this);
 
         this.on('cellclick', function(grid, td, cellIndex, record, tr, rowIndex, e, eOpts) {
-            if(cellIndex == 7) {
+            if(cellIndex == 7 || cellIndex == 8) {
                 // Открывается окно с информацией о коктейле, если такого окна ещё нет. В противном случае - окно (уже имеющееся) выползает на передний план
                 issetWindow = false;
                 for(var i = 0; i < this.openedWindows.length; i++) {
-                    if(record.get('id') == this.openedWindows[i].withCoctailId) {
+                    if(cellIndex == 7 && this.openedWindows[i].id == 'view' + record.get('id')) {
                         issetWindow = true;
                         break;
                     }
@@ -178,6 +186,7 @@ Ext.define('Bar.view.NoAlcoCoctailsGrid', {
                         parentGrid: this,
                         withCoctailId: record.get('id'),
                         coctailRec: record,
+                        id: 'view' + record.get('id'),
                         title: 'Информация о коктейле "' + record.get('name') + '"'
                     }).show();
                     this.openedWindows.push(window);

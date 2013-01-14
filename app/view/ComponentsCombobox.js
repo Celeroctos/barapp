@@ -33,7 +33,7 @@ Ext.define('Bar.view.ComponentsCombobox', {
        });
    },
    initComponent: function() {
-       this.bindHandlers();
+     //  this.bindHandlers();
        console.log('Bar.view.ComponentsCombobox');
        Bar.view.ComponentsCombobox.superclass.initComponent.apply(this, arguments);
    }

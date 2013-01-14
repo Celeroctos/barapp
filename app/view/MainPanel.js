@@ -91,7 +91,7 @@ Ext.define('Bar.view.MainPanel', {
                         barOrders:  'Bar.view.OrdersPanel',
                         barOwners: 'Bar.view.OwnersPanel',
                         barResources: 'Bar.view.BarResourcesPanel',
-                        barCoctails: 'Bar.view.AlcoCoctailsPanel',
+                        barCoctails: 'Bar.view.MenuPanel',
                         barTransactions: 'Bar.view.TransactionsPanel',
                         barSettings: 'Bar.view.SettingsPanel'};
 
@@ -115,7 +115,7 @@ Ext.define('Bar.view.MainPanel', {
             }
         }, this);
 
-        var loadedPanel = 'barOrders';
+        var loadedPanel = 'barCoctails';
         // Раскрываем по умолчанию панель заказов
         panels[loadedPanel] = Ext.create(panels[loadedPanel]);
         layout.setActiveItem(panels[loadedPanel]);

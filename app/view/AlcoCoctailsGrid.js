@@ -2,7 +2,8 @@ Ext.define('Bar.view.AlcoCoctailsGrid', {
     extend: 'Bar.view.BaseGrid',
     requires: ['Ext.grid.plugin.CellEditing',
                'Bar.view.OwnersCombobox',
-               'Bar.view.CoctailExtendInfoWindow'],
+               'Bar.view.CoctailExtendInfoWindow',
+               'Bar.view.EditCoctailWindow'],
     region:'center',
     layout: 'auto',
     alias: 'widget.AlcoCoctailsGrid',
@@ -49,16 +50,24 @@ Ext.define('Bar.view.AlcoCoctailsGrid', {
         },
         {
             text: 'Крепость',
-            width: 190,
+            width: 150,
             dataIndex: 'strength',
             editor: 'textfield'
         },
         {
             text: '', // Поле просмотра коктейля (рецепта)
-            width: 50,
+            width: 40,
             dataIndex: 'id',
             renderer: function(value) {
                 return '<a href="#' + value + '"><img src="/img/arrow-curve-000-left.png" alt="Посмотреть данные по коктейлю" width="16" height="16" /></a>';
+            }
+        },
+        {
+            text: '', // Поле редактирования коктейля
+            width: 40,
+            dataIndex: 'id',
+            renderer: function(value) {
+                return '<a href="#' + value + '"><img src="/img/edit-signiture.png" alt="Редактировать коктейль" width="16" height="16" /></a>';
             }
         }
     ],
@@ -163,22 +172,36 @@ Ext.define('Bar.view.AlcoCoctailsGrid', {
         }, this);
 
         this.on('cellclick', function(grid, td, cellIndex, record, tr, rowIndex, e, eOpts) {
-            if(cellIndex == 7) {
+            if(cellIndex == 7 || cellIndex == 8) {
                 // Открывается окно с информацией о коктейле, если такого окна ещё нет. В противном случае - окно (уже имеющееся) выползает на передний план
                 issetWindow = false;
                 for(var i = 0; i < this.openedWindows.length; i++) {
-                    if(record.get('id') == this.openedWindows[i].withCoctailId) {
+                    if((cellIndex == 7 && this.openedWindows[i].id == 'view' + record.get('id'))
+                        || (cellIndex == 8 && this.openedWindows[i].id == 'edit' + record.get('id'))) {
                         issetWindow = true;
                         break;
                     }
                 }
+
                 if(!issetWindow) {
-                    var window = Ext.create(Bar.view.CoctailExtendInfoWindow, {
-                        parentGrid: this,
-                        withCoctailId: record.get('id'),
-                        coctailRec: record,
-                        title: 'Информация о коктейле "' + record.get('name') + '"'
-                    }).show();
+                    if(cellIndex == 7) {
+                        var window = Ext.create(Bar.view.CoctailExtendInfoWindow, {
+                            parentGrid: this,
+                            withCoctailId: record.get('id'),
+                            coctailRec: record,
+                            id: 'view' + record.get('id'),
+                            title: 'Информация о коктейле "' + record.get('name') + '"'
+                        }).show();
+                    }
+                    if(cellIndex == 8) {
+                        var window = Ext.create(Bar.view.EditCoctailWindow, {
+                            parentGrid: this,
+                            withCoctailId: record.get('id'),
+                            coctailRec: record,
+                            id: 'edit' + record.get('id'),
+                            title: 'Редактирование коктейля "' + record.get('name') + '"'
+                        }).show();
+                    }
                     this.openedWindows.push(window);
                 } else {
                     this.openedWindows[i].setActive(true); // ?!

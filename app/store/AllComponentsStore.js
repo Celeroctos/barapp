@@ -19,7 +19,7 @@ Ext.define('Bar.store.AllComponentsStore', {
     },
     listeners: {
         load: function(rec, id) {
-            var choosed = Ext.getCmp('alcoCoctailsComponentsAdd').alreadyChoosed;
+           /* var choosed = Ext.getCmp('alcoCoctailsComponentsAdd').alreadyChoosed;
             this.filterBy(function(rec, id) {
                 var id = rec.get('id');
                 for(var i = 0; i < choosed.length; i++) {
@@ -28,7 +28,7 @@ Ext.define('Bar.store.AllComponentsStore', {
                     }
                 }
                 return true;
-            }, this);
+            }, this); */
         }
     }
 });
