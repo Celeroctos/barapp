@@ -26,7 +26,8 @@ Ext.define('Bar.view.MenuPanel', {
                {
                    xtype: 'CoctailAddPanel',
                    id: 'coctailAddPanel',
-                   style: 'padding 0;'
+                   style: 'padding 0;',
+                   mode: 'add'
                }
            ]
        }

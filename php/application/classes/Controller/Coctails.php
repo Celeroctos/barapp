@@ -9,10 +9,40 @@ class Controller_Coctails extends Controller_Extendcontroller {
         $this->addCoctail(1);
     }
 
-    private function addCoctail($type) {
+    public function action_editCoctail() {
         $params = $this->request->param();
-        $model = ORM::factory('coctail');
-        // Пишем новый коктейль в баре
+        // Удаляем компоненты, которые были уже записаны: чтобы не возиться с тем, что может больше, а что может быть меньше
+        $componentsArr = json_decode($params['components']);
+        $inIds = '';
+        foreach($componentsArr as $key => $component) {
+            $inIds .= $component->combo.',';
+        }
+        $inIds = substr($inIds, 0, strlen($inIds) - 1);
+        $numAlcoComps = DB::query(Database::SELECT, 'SELECT COUNT(*) AS num
+                                                     FROM components
+                                                     WHERE id IN ('.$inIds.')
+                                                       AND strength > 0')
+                 ->execute()
+                 ->as_array();
+        if($numAlcoComps[0]['num'] > 0) { // Если выборка ненулевая - алкоголь есть
+            $type = 0;
+        } else {
+            $type = 1;
+        }
+        $query = DB::query(Database::DELETE, 'DELETE FROM coctailscomponents
+                                              WHERE coctail_id = '.$params['coctail'])
+                 ->execute();
+
+        // Посмотрим, какой коктейль редактируется. Для этого проверим, есть ли среди компонентов алкогольные
+        $this->addCoctail($type, ORM::factory('coctail', $params['coctail']));
+    }
+
+    private function addCoctail($type, $model = false) {
+        $params = $this->request->param();
+        if(!$model) {
+            $model = ORM::factory('coctail');
+        }
+        // Пишем новый коктейль в баре, либо редактируем тот, что был
         $model->name = $params['name'];
         $model->recipe = $params['recipe'];
         $model->profit_prozent = $params['prozent'];

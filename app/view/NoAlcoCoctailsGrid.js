@@ -175,20 +175,32 @@ Ext.define('Bar.view.NoAlcoCoctailsGrid', {
                 // Открывается окно с информацией о коктейле, если такого окна ещё нет. В противном случае - окно (уже имеющееся) выползает на передний план
                 issetWindow = false;
                 for(var i = 0; i < this.openedWindows.length; i++) {
-                    if(cellIndex == 7 && this.openedWindows[i].id == 'view' + record.get('id')) {
+                    if((cellIndex == 7 && this.openedWindows[i].id == 'view' + record.get('id'))
+                        || (cellIndex == 8 && this.openedWindows[i].id == 'edit' + record.get('id'))) {
                         issetWindow = true;
                         break;
                     }
                 }
 
                 if(!issetWindow) {
-                    var window = Ext.create(Bar.view.CoctailExtendInfoWindow, {
-                        parentGrid: this,
-                        withCoctailId: record.get('id'),
-                        coctailRec: record,
-                        id: 'view' + record.get('id'),
-                        title: 'Информация о коктейле "' + record.get('name') + '"'
-                    }).show();
+                    if(cellIndex == 7) {
+                        var window = Ext.create(Bar.view.CoctailExtendInfoWindow, {
+                            parentGrid: this,
+                            withCoctailId: record.get('id'),
+                            coctailRec: record,
+                            id: 'view' + record.get('id'),
+                            title: 'Информация о коктейле "' + record.get('name') + '"'
+                        }).show();
+                    }
+                    if(cellIndex == 8) {
+                        var window = Ext.create(Bar.view.EditCoctailWindow, {
+                            parentGrid: this,
+                            withCoctailId: record.get('id'),
+                            coctailRec: record,
+                            id: 'edit' + record.get('id'),
+                            title: 'Редактирование коктейля "' + record.get('name') + '"'
+                        }).show();
+                    }
                     this.openedWindows.push(window);
                 } else {
                     this.openedWindows[i].setActive(true); // ?!

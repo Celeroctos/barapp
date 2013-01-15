@@ -1,9 +1,9 @@
 Ext.define('Bar.view.EditCoctailWindow', {
    extend: 'Ext.window.Window',
    layout: 'card',
-   width: 500,
+   width: 490,
    minHeight: 300,
-   resizable: true,
+   resizable: false,
    draggable: true,
    layout: 'vbox',
    requires: ['Bar.view.CoctailAddPanel'],
@@ -22,7 +22,11 @@ Ext.define('Bar.view.EditCoctailWindow', {
    },
    makeItems: function() {
        this.items.add(Ext.create('Bar.view.CoctailAddPanel', {
-            prefix: this.id
+            prefix: this.id,
+            style: 'background: #ffffff;',
+            coctailRec: this.coctailRec,
+            mode: 'edit', // Редактирование. Это говорит о том, что данные нужно обновить на сервере, а не вставить новую запись
+            openedWindow: this
        }));
    },
    initComponent: function() {

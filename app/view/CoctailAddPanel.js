@@ -42,7 +42,7 @@ Ext.define('Bar.view.CoctailAddPanel', {
                 // Минус пустой последний элемент
                 for(var i = 0; i < items.length - 1; i++) {
                     data[i] = {
-                        combo: items.getAt(i).items.getAt(0).getValue(),
+                        combo: items.getAt(i).items.getAt(0).trueValue != null ? items.getAt(i).items.getAt(0).trueValue : items.getAt(i).items.getAt(0).getValue(),
                         textfield: items.getAt(i).items.getAt(1).getValue()
                     };
                 }
@@ -52,23 +52,37 @@ Ext.define('Bar.view.CoctailAddPanel', {
                     recipe:  this.itemsLinks['addAlcoCoctailsRecipe'].getValue(),
                     components: Ext.encode(data)
                 }
+                if(this.mode == 'add') {
+                    var url =  '/php/index.php/coctails/addAlcoCoctail';
+                } else if(this.mode == 'edit' && this.hasOwnProperty('coctailRec')) {
+                    var url = '/php/index.php/coctails/editCoctail';
+                    console.log(this.coctailRec);
+                    allData.coctail =  this.coctailRec.get('id'); // идентификатор коктейля, который нужно менять
+                }
+
                 Ext.Ajax.request({
-                    url: '/php/index.php/coctails/addAlcoCoctail',
+                    url: url,
                     params: allData,
                     success: Ext.bind(function(response) {
                         var data = Ext.JSON.decode(response.responseText);
                         if(data.success == true) {
-                            // Обновляем таблицу
-                            this.itemsLinks['addAlcoCoctailsName'].setValue('');
-                            this.itemsLinks['addAlcoCoctailsProzent'].setValue('');
-                            this.itemsLinks['addAlcoCoctailsRecipe'].setValue(''),
-                            // Необходимо удалить все компоненты, а потом клонировать один узел.
-                            this.itemsLinks['alcoCoctailsComponentsAdd'].removeAll();
-                            // Клонируем узел
-                            this.currentComponentId = 0;
-                            this.lastComponentId = false;
-                            this.cloneNode();
+                            if(this.mode == 'add') {
+                                // Обновляем таблицу
+                                this.itemsLinks['addAlcoCoctailsName'].setValue('');
+                                this.itemsLinks['addAlcoCoctailsProzent'].setValue('');
+                                this.itemsLinks['addAlcoCoctailsRecipe'].setValue(''),
+                                // Необходимо удалить все компоненты, а потом клонировать один узел.
+                                this.itemsLinks['alcoCoctailsComponentsAdd'].removeAll();
+                                // Клонируем узел
+                                this.currentComponentId = 0;
+                                this.lastComponentId = false;
+                                this.cloneNode();
+                            }
+                            if(this.mode == 'edit') {
+                                this.openedWindow.close();
+                            }
                             Ext.getCmp('alcoCoctailsGrid').getStore().reload();
+                            Ext.getCmp('noAlcoCoctailsGrid').getStore().reload();
                         }
                     }, this)
                 });
@@ -81,6 +95,10 @@ Ext.define('Bar.view.CoctailAddPanel', {
         if(this.lastComponentId == this.currentComponentId) {
             if(Ext.getCmp(this.prefix + 'componentCombo' + this.lastComponentId).getValue() != null &&
                 Ext.String.trim(Ext.getCmp(this.prefix + 'componentTextField' + this.lastComponentId).getValue()) != '') {
+                var items = this.itemsLinks['alcoCoctailsComponentsAdd'].items;
+                if(items.length - 1 > 0) { // К первому элементу крестик не нужен
+                    this.makeDeleteButton(items.getAt(items.length - 1));
+                }
                 this.cloneNode();
             }
         }
@@ -110,13 +128,13 @@ Ext.define('Bar.view.CoctailAddPanel', {
     },
     bindHandlers: function() {
         this.on('afterrender', function() {
-            this.cloneNode();
+            this.cloneNode(false);
         }, this);
         // Для изменения данных в ячейках
     },
 
     // Клонирование ноды компонента
-    cloneNode: function() {
+    cloneNode: function(createDeleteButton, comboValue, comboDisplay, textFieldValue) {
         if(this.lastComponentId === false) {
             this.lastComponentId = 0;
         } else {
@@ -130,55 +148,80 @@ Ext.define('Bar.view.CoctailAddPanel', {
             style: 'margin-bottom: 10px',
             id: this.prefix + 'componentPanel' + this.lastComponentId
         });
-        panel.add(Ext.create('Bar.view.ComponentsCombobox', {
+        var combo = null;
+        panel.add(combo = Ext.create('Bar.view.ComponentsCombobox', {
             fieldLabel: '',
             width: 150,
+            trueValue: comboValue,
             id: this.prefix + 'componentCombo' + this.lastComponentId,
             listeners: {
                 focus: Ext.bind(this.addOrRemoveComponent, this),
                 blur: Ext.bind(this.changeSelectedComponent, this)
             },
             numId: this.lastComponentId
-        })
-        );
+        }));
+        if(typeof comboValue != 'undefined') {
+            combo.setValue(comboValue);
+            combo.setRawValue(comboDisplay);
+        }
 
-        panel.add(Ext.create('Ext.form.TextField', {
+        var textField = '';
+        panel.add(textField = Ext.create('Ext.form.TextField', {
             fieldLabel: 'количество',
             style: 'margin-left: 10px',
+            value: typeof textFieldValue != 'undefined' ? textFieldValue : '',
             id: this.prefix + 'componentTextField' + this.lastComponentId,
             listeners: {
                 focus: Ext.bind(this.addOrRemoveComponent, this),
                 blur: Ext.bind(this.changeSelectedComponent, this)
             },
             numId: this.lastComponentId
-        })
-        );
+        }));
 
-        if(this.lastComponentId > 0) {
-            panel.add(Ext.create('Ext.Button', {
-                html: '<img src="/img/cross-script.png" alt="" width="16" height="16" />',
-                style: 'margin: 0 0 0 10px',
-                width: 30,
-                componentNum: this.lastComponentId,
-                id: this.prefix + 'removeComponent' + this.lastComponentId,
-                listeners: {
-                    click: function(component, e, options) {
-                        this.itemsLinks['alcoCoctailsComponentsAdd'].remove('componentPanel' + component.componentNum);
-                    }
-                }
-            }));
+        if(this.lastComponentId > 0 && createDeleteButton) {
+            this.makeDeleteButton(panel);
         }
 
         this.itemsLinks['alcoCoctailsComponentsAdd'].add(panel);
     },
+
+    makeDeleteButton: function(panel) {
+        panel.add(Ext.create('Ext.Button', {
+            html: '<img src="/img/cross-script.png" alt="" width="16" height="16" />',
+            style: 'margin: 0 0 0 10px',
+            width: 30,
+            componentNum: this.lastComponentId,
+            id: this.prefix + 'removeComponent' + this.lastComponentId,
+            listeners: {
+                click: Ext.bind(function(component, e, options) {
+                    this.itemsLinks['alcoCoctailsComponentsAdd'].remove(this.prefix + 'componentPanel' + component.componentNum);
+                }, this)
+            }
+        }));
+    },
+
     updatePanel: function() {
 
+    },
+
+    makeDataForEditing: function() {
+        if(this.hasOwnProperty('coctailRec')) {
+            this.itemsLinks['addAlcoCoctailsName'].setValue(this.coctailRec.get('name'));
+            this.itemsLinks['addAlcoCoctailsProzent'].setValue(this.coctailRec.get('profit_prozent'));
+            this.itemsLinks['addAlcoCoctailsRecipe'].setValue(this.coctailRec.get('recipe'));
+            var components = this.coctailRec.get('components');
+            for(var i = 0; i < components.length; i++) {
+                this.cloneNode(true, components[i].component_id, components[i].name, components[i].c_capacity);
+            }
+        }
+        console.log(this.coctailRec);
     },
 
     initComponent: function() {
         Bar.view.CoctailAddPanel.superclass.initComponent.apply(this, arguments);
         console.log('Bar.view.CoctailAddPanel');
         this.makeItems();
+        this.makeDataForEditing();
         this.bindHandlers();
     }
 });

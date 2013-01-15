@@ -8,10 +8,11 @@ Ext.define('Bar.view.ComponentsCombobox', {
    editable: false,
    bindHandlers: function() {
        this.on('select', function(combo, recs, eOpts) {
-           var choosed = Ext.getCmp('alcoCoctailsComponentsAdd').alreadyChoosed;
-           choosed.push(recs[0].get('id'));
+           combo.trueValue = recs[0].get('id');
+           //var choosed = Ext.getCmp('alcoCoctailsComponentsAdd').alreadyChoosed;
+           //choosed.push(recs[0].get('id'));
        });
-       this.on('change', function(field, newValue, oldValue, eOpts ) {
+      /* this.on('change', function(field, newValue, oldValue, eOpts ) {
            var choosed = Ext.getCmp('alcoCoctailsComponentsAdd').alreadyChoosed;
            for(var i = 0; i < choosed.length; i++) {
                if(choosed[i] == oldValue) {
@@ -30,10 +31,10 @@ Ext.define('Bar.view.ComponentsCombobox', {
                }
                return true;
            }, this);
-       });
+       }); */
    },
    initComponent: function() {
-     //  this.bindHandlers();
+       this.bindHandlers();
        console.log('Bar.view.ComponentsCombobox');
        Bar.view.ComponentsCombobox.superclass.initComponent.apply(this, arguments);
    }
