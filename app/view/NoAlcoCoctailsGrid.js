@@ -121,7 +121,7 @@ Ext.define('Bar.view.NoAlcoCoctailsGrid', {
     },
 
     saveChanges: function(btn, e, options) {
-        var grid = Ext.getCmp('NoAlcoCoctailsGrid');
+        var grid = Ext.getCmp('noAlcoCoctailsGrid');
         var edited = grid.edited;
         var store = grid.getStore();
         var toSend = []; // Данные на отправку, новые

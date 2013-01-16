@@ -11,6 +11,9 @@ Ext.define('Bar.model.OtherModel', {
             name: 'price'
         },
         {
+            name: 'strength'
+        },
+        {
             name: 'capacity'
         },
         {

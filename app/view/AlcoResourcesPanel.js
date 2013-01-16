@@ -8,7 +8,7 @@ Ext.define('Bar.view.AlcoResourcesPanel', {
    region: 'center',
    title: '',
    items: [
-       {
+       this.grid = {
            xtype: 'AlcoResourcesGrid',
            id: 'alcoGrid',
            title: '',

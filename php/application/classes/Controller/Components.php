@@ -166,4 +166,49 @@ class Controller_Components extends Controller_Extendcontroller {
         $this->makeResponse(array('success' => true,
                                   'data' => 'Успешно удалено '.$num.' компонентов.'));
     }
+
+    public function action_saveChanges() {
+        $params = $this->request->param();
+        $newData = json_decode($params['newData']);
+        foreach($newData as $key => $component) {
+            $model = ORM::factory('component', $component->id);
+            $model->name = $component->name;
+            $model->capacity = $component->capacity;
+            $model->current_capacity = $component->current_capacity;
+            if($model->buy_price != $component->price || $model->strength != $component->strength) {
+                $priceOld = $model->buy_price;
+                $model->buy_price = $component->price;
+                $strengthOld = $model->strength;
+                $model->strength = $component->strength;
+                // Найдём коктейли для компонента
+                $coctails = Request::factory('coctails/getCoctailsByComponent/'.$component->id)->execute()->body();
+                $coctails = json_decode($coctails);
+
+                foreach($coctails->data as $index => $coctail) {
+                    // Посчитаем крепость для старого и для нового компонента в напитке.
+                   // var_dump($coctail);
+                    $alcoCapacityNew = $component->strength * $coctail->c_capacity / 100;
+                    $alcoCapacityOld = $strengthOld * $coctail->c_capacity / 100;
+                    $modelCoctail = ORM::factory('coctail', $coctail->id);
+                    $modelCoctail->strength += $alcoCapacityNew - $alcoCapacityOld;
+                    // Алко и неалко учитывается в стоимости
+                    if(array_search($model->type, array(0, 1)) !== false) {
+                        $priceOld = ($priceOld * $coctail->c_capacity / $component->capacity) * (1 + $coctail->profit_prozent / 100);
+                        $priceNew = ($component->price * $coctail->c_capacity / $component->capacity) * (1 + $coctail->profit_prozent / 100);
+                       // var_dump($priceNew);
+                    //    var_dump($priceOld);
+                      //  exit();
+                        $modelCoctail->price_clean += round($priceNew - $priceOld, 2);
+                        $modelCoctail->price += round($priceNew - $priceOld, 2);
+                    //exit();
+                    }
+                    $modelCoctail->save();
+                }
+                //exit();
+            }
+            $model->save();
+        }
+        $this->makeResponse(array('success' => true,
+                                  'data' => 'Данные успешно сохранены.'));
+    }
 }

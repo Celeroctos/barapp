@@ -11,6 +11,9 @@ Ext.define('Bar.model.NoAlcoModel', {
             name: 'price'
         },
         {
+            name: 'strength'
+        },
+        {
             name: 'capacity'
         },
         {

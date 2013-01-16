@@ -11,6 +11,9 @@ Ext.define('Bar.model.InventoryModel', {
             name: 'price'
         },
         {
+            name: 'strength'
+        },
+        {
             name: 'capacity'
         },
         {

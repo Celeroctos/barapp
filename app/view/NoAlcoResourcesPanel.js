@@ -8,7 +8,7 @@ Ext.define('Bar.view.NoAlcoResourcesPanel', {
     region: 'center',
     title: '',
     items: [
-        {
+        this.grid = {
             xtype: 'NoAlcoResourcesGrid',
             id: 'noAlcoGrid',
             title: '',

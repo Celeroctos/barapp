@@ -8,7 +8,7 @@ Ext.define('Bar.view.InventoryResourcesPanel', {
     region: 'center',
     title: '',
     items: [
-        {
+        this.grid = {
             xtype: 'InventoryResourcesGrid',
             id: 'inventoryGrid',
             title: '',

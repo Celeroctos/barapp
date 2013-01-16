@@ -94,6 +94,17 @@ class Controller_Coctails extends Controller_Extendcontroller {
                                   'data' => 'Коктейль добавлен.'));
     }
 
+    public function action_getCoctailsByComponent() {
+        $params = $this->request->param();
+        $query = DB::query(Database::SELECT, 'SELECT b.*, a.capacity AS c_capacity
+                                              FROM coctailscomponents a
+                                              INNER JOIN coctails b ON a.coctail_id = b.id
+                                              WHERE component_id = '.$params['id']);
+        $result = $query->execute()->as_array();
+        $this->makeResponse(array('success' => true,
+                                  'data' => $result));
+    }
+
 
     public function action_getAlcoCoctails() {
         $this->getCoctails(0);

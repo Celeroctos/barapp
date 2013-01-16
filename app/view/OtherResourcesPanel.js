@@ -8,7 +8,7 @@ Ext.define('Bar.view.OtherResourcesPanel', {
     region: 'center',
     title: '',
     items: [
-        {
+        this.grid = {
             xtype: 'OtherResourcesGrid',
             id: 'otherGrid',
             title: '',

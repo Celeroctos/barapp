@@ -9,6 +9,7 @@ Ext.define('Bar.view.AlcoResourcesGrid', {
     id: 'AlcoResourcesGrid',
     selModel: new Ext.create('Ext.selection.CheckboxModel', {}),
     selType: 'cellmodel',
+    edited: [], // Строки, которые редактировались
     plugins: [
         Ext.create('Ext.grid.plugin.CellEditing', {
             clicksToEdit: 2
@@ -58,12 +59,24 @@ Ext.define('Bar.view.AlcoResourcesGrid', {
             editor: 'OwnersCombobox'
         }
     ],
+    bindHandlers: function() {
+        this.on('validateedit', function(editor, e, options) {
+            var rowIdx = e.rowIdx;
+            for(var i = 0; i < this.edited.length; i++) {
+                if(this.edited[i] == rowIdx) {
+                    return;
+                }
+            }
+            this.edited.push(rowIdx);
+        }, this);
+    },
     initComponent: function() {
         console.log('Bar.view.AlcoResourcesGrid');
         Bar.view.AlcoResourcesGrid.superclass.initComponent.apply(this, arguments);
+        this.bindHandlers();
     },
     listeners: {
-        afterrender: function(grid, eOpts) {
+        'afterrender': function(grid, eOpts) {
             grid.getStore().load();
         }
     }

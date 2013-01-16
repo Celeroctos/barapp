@@ -95,7 +95,12 @@ Ext.define('Bar.view.BarResourcesPanel', {
     makeToolbar: function() {
         return this.tbar = {
             height: 30,
-            items: [
+            items: [{
+                    text: 'Сохранить изменения в таблице',
+                    listeners: {
+                        click: Ext.bind(this.saveChanges, this)
+                    }
+                },
                 '<strong>С отмеченными:</strong>',
                 {
                     text: 'удалить',
@@ -112,6 +117,50 @@ Ext.define('Bar.view.BarResourcesPanel', {
                 },
             ]
         };
+    },
+
+    saveChanges: function() {
+        var tabs = this.items;
+        var toSend = []; // Данные на отправку, новые
+        for(var i = 0; i < tabs.length; i++) {
+            var grid = tabs.getAt(i).getGrid();
+            var edited = grid.edited;
+            var store = grid.getStore();
+            if(edited.length > 0) {
+                for(var j = 0; j < edited.length; j++ ) {
+                    var rec = store.getAt(edited[j]);
+                    toSend.push({
+                        id: rec.get('id'),
+                        name: rec.get('name'),
+                        capacity: rec.get('capacity'),
+                        strength: rec.get('strength'),
+                        current_capacity: rec.get('current_capacity'),
+                        price: rec.get('price')
+                    });
+                }
+            }
+        }
+
+        Ext.Ajax.request({
+            url: '/php/index.php/components/saveChanges',
+            params: {
+                newData: Ext.JSON.encode(toSend)
+            },
+            success: function(response) {
+                var data = Ext.JSON.decode(response.responseText);
+                if(data.success == true) {
+                    Ext.Msg.show({
+                        title:'Сообщение',
+                        msg: data.data,
+                        buttons: Ext.MessageBox.YES,
+                        buttonText: 'ОК'
+                    });
+                    for(var i = 0; i < tabs.length; i++) {
+                        tabs.getAt(i).getGrid().getStore().reload();
+                    }
+                }
+            }
+        });
     },
 
     initComponent: function() {

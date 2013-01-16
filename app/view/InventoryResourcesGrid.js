@@ -9,6 +9,7 @@ Ext.define('Bar.view.InventoryResourcesGrid', {
     id: 'InventoryResourcesGrid',
     selModel: new Ext.create('Ext.selection.CheckboxModel', {}),
     selType: 'cellmodel',
+    edited: [],
     plugins: [
         Ext.create('Ext.grid.plugin.CellEditing', {
             clicksToEdit: 2
@@ -24,7 +25,8 @@ Ext.define('Bar.view.InventoryResourcesGrid', {
             text: 'Наименование',
             sortable: true,
             dataIndex: 'name',
-            editor: 'textfield'
+            editor: 'textfield',
+            width: 200
         },
         {
             text: 'Цена',
@@ -51,9 +53,21 @@ Ext.define('Bar.view.InventoryResourcesGrid', {
             editor: 'OwnersCombobox'
         }
     ],
+    bindHandlers: function() {
+        this.on('validateedit', function(editor, e, options) {
+            var rowIdx = e.rowIdx;
+            for(var i = 0; i < this.edited.length; i++) {
+                if(this.edited[i] == rowIdx) {
+                    return;
+                }
+            }
+            this.edited.push(rowIdx);
+        }, this);
+    },
     initComponent: function() {
         console.log('Bar.view.InventoryResourcesGrid');
         Bar.view.InventoryResourcesGrid.superclass.initComponent.apply(this, arguments);
+        this.bindHandlers();
     },
     listeners: {
         afterrender: function(grid, eOpts) {

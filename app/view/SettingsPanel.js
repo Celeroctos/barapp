@@ -11,7 +11,7 @@ Ext.define('Bar.view.SettingsPanel', {
     items: [
         {
             xtype: 'fieldset',
-            id: 'appSettings',
+            id: 'appBarSettings',
             width: 300,
             title: 'Бар',
             style: 'margin-left: 10px',
@@ -33,11 +33,35 @@ Ext.define('Bar.view.SettingsPanel', {
                     handler: this.changeCurrentBar
                 }
             ]
+        },
+        {
+            xtype: 'fieldset',
+            id: 'appSettings',
+            width: 300,
+            title: 'Приложение',
+            style: 'margin-left: 10px',
+            items: [
+                {
+                    xtype: 'ClientsCombobox',
+                    fieldLabel: 'Панель бара по умолчанию',
+                    id: 'defaultBarPanel',
+                    editable: false
+                },
+                {
+                    xtype: 'button',
+                    text: 'ОК',
+                    handler: this.saveAppSettings
+                }
+            ]
         }
     ],
 
     changeCurrentBar: function() {
 
+
+    },
+
+    saveAppSettings: function() {
 
     },
 

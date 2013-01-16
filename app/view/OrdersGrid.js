@@ -23,7 +23,7 @@ Ext.define('Bar.view.OrdersGrid', {
             text: 'ID',
             sortable: true,
             dataIndex: 'id',
-            width: 40,
+            width: 40
         },
         {
             text: 'Название',
@@ -55,23 +55,23 @@ Ext.define('Bar.view.OrdersGrid', {
                 }
 
                 return value;
-            },
+            }
         },
         {
             text: 'Дата создания',
             width: 130,
-            dataIndex: 'create_date',
+            dataIndex: 'create_date'
         },
         {
             text: 'Цена',
             sortable: true,
             dataIndex: 'price',
-            width: 60,
+            width: 60
         },
         {
             text: 'Цена полная',
             width: 80,
-            dataIndex: 'price_full',
+            dataIndex: 'price_full'
         },
         {
             text: 'Скидка',

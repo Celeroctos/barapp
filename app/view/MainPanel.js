@@ -115,7 +115,7 @@ Ext.define('Bar.view.MainPanel', {
             }
         }, this);
 
-        var loadedPanel = 'barCoctails';
+        var loadedPanel = 'barResources';
         // Раскрываем по умолчанию панель заказов
         panels[loadedPanel] = Ext.create(panels[loadedPanel]);
         layout.setActiveItem(panels[loadedPanel]);
