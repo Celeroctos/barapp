@@ -127,6 +127,12 @@ Cookie::$salt = 1;
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
+Route::set('get_setting', 'settings/getSetting/<setting>')
+    ->defaults(array(
+    'controller' => 'settings',
+    'action' => 'getSetting'
+));
+
 Route::set('coctails_by_component', 'coctails/getCoctailsByComponent/<id>')
     ->defaults(array(
     'controller' => 'coctails',

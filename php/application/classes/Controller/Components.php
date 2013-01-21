@@ -86,8 +86,12 @@ class Controller_Components extends Controller_Extendcontroller {
                 $operator = '=';
             }
 
+            $currentBar = Request::factory('bars/getDefaultBarId')->execute()->body();
+            $currentBar = json_decode($currentBar);
+
             $components = $model->where('type', $operator, $type)
                 ->and_where('disabled', '=', 0)
+                ->and_where('bar_id', '=', $currentBar->data)
                 ->limit($params['limit'])
                 ->offset($params['limit'] * ($params['page'] - 1))
                 ->order_by('id', 'DESC')
@@ -186,7 +190,6 @@ class Controller_Components extends Controller_Extendcontroller {
 
                 foreach($coctails->data as $index => $coctail) {
                     // Посчитаем крепость для старого и для нового компонента в напитке.
-                   // var_dump($coctail);
                     $alcoCapacityNew = $component->strength * $coctail->c_capacity / 100;
                     $alcoCapacityOld = $strengthOld * $coctail->c_capacity / 100;
                     $modelCoctail = ORM::factory('coctail', $coctail->id);
@@ -195,16 +198,11 @@ class Controller_Components extends Controller_Extendcontroller {
                     if(array_search($model->type, array(0, 1)) !== false) {
                         $priceOld = ($priceOld * $coctail->c_capacity / $component->capacity) * (1 + $coctail->profit_prozent / 100);
                         $priceNew = ($component->price * $coctail->c_capacity / $component->capacity) * (1 + $coctail->profit_prozent / 100);
-                       // var_dump($priceNew);
-                    //    var_dump($priceOld);
-                      //  exit();
                         $modelCoctail->price_clean += round($priceNew - $priceOld, 2);
                         $modelCoctail->price += round($priceNew - $priceOld, 2);
-                    //exit();
                     }
                     $modelCoctail->save();
                 }
-                //exit();
             }
             $model->save();
         }

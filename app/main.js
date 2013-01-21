@@ -60,7 +60,8 @@ Ext.onReady(function() {
                  'NoAlcoModel',
                  'OtherModel',
                  'InventoryModel',
-                 'OrdersModel'],
+                 'OrdersModel',
+                 'BarModel'],
         stores: ['ClientsStore',
                  'OwnersStore',
                  'InventoryStore',
@@ -73,7 +74,8 @@ Ext.onReady(function() {
                  'OrdersStore',
                  'TransactionsStore',
                  'AllCoctailsStore',
-                 'AllClientsStore'],
+                 'AllClientsStore',
+                 'BarStore'],
         views: ['ClientsCombobox'],
         launch: function() {
             Ext.create('Bar.view.MainPanel').show();

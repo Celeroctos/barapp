@@ -115,11 +115,30 @@ Ext.define('Bar.view.MainPanel', {
             }
         }, this);
 
-        var loadedPanel = 'barResources';
-        // Раскрываем по умолчанию панель заказов
-        panels[loadedPanel] = Ext.create(panels[loadedPanel]);
-        layout.setActiveItem(panels[loadedPanel]);
-        panels[loadedPanel].updatePanel();
+        this.on('afterrender', function(component, options) {
+            Ext.Ajax.request({
+                url: '/php/index.php/settings/getDefaultBarPanel',
+                success: Ext.bind(function(response) {
+                    var data = Ext.JSON.decode(response.responseText);
+                    if(data.success == true) {
+                        var loadedPanel = data.data
+                        for(var i in panels) {
+                            if(panels[i] == data.data) {
+                                var loadedPanelIndex = i;
+                                break;
+                            }
+                        }
+                        panels[loadedPanelIndex] = Ext.create(panels[loadedPanelIndex]);
+                        layout.setActiveItem(panels[loadedPanelIndex]);
+                        panels[loadedPanelIndex].updatePanel();
+                    }
+                }, this)
+            });
+        });
+    },
+
+    getDefaultBarPanel: function() {
+
     },
 
     initComponent: function() {

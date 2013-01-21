@@ -95,11 +95,11 @@ class Controller_Users extends Controller_Extendcontroller {
             $iter = 0;
             foreach($this->fileTypes as $key => $val) {
                 $avatarLink = $this->domain.$this->avatarPath.$this->avatarPrefix.$user->profile_id.'.'.$val;
-                if(@fopen($avatarLink, 'r') == true) {
+              /*  if(@fopen($avatarLink, 'r') == true) {
                     break;
                 } elseif($iter == count($this->fileTypes) - 1) {
                     $avatarLink = '';
-                }
+                } */
                 $iter++;
             }
            // var_dump($ordersGrouped);

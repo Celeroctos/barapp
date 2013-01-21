@@ -2,26 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="798eb2e9-29e7-4b9c-a653-84a52fbacdef" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/model/BarModel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/store/BarStore.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/view/BarCombobox.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/application/classes/Controller/Bars.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/application/classes/Controller/Settings.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/application/classes/Model/bar.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/application/classes/Model/setting.php" />
       <change type="DELETED" beforePath="Z:\home\barapp.my\www\app\view\AlcoCoctailsPanel.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/model/InventoryModel.js" afterPath="$PROJECT_DIR$/app/model/InventoryModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/model/OtherModel.js" afterPath="$PROJECT_DIR$/app/model/OtherModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/AlcoResourcesGrid.js" afterPath="$PROJECT_DIR$/app/view/AlcoResourcesGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/AlcoResourcesPanel.js" afterPath="$PROJECT_DIR$/app/view/AlcoResourcesPanel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/BarResourcesPanel.js" afterPath="$PROJECT_DIR$/app/view/BarResourcesPanel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/InventoryResourcesGrid.js" afterPath="$PROJECT_DIR$/app/view/InventoryResourcesGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/InventoryResourcesPanel.js" afterPath="$PROJECT_DIR$/app/view/InventoryResourcesPanel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/main.js" afterPath="$PROJECT_DIR$/app/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/MainPanel.js" afterPath="$PROJECT_DIR$/app/view/MainPanel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/NoAlcoCoctailsGrid.js" afterPath="$PROJECT_DIR$/app/view/NoAlcoCoctailsGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/NoAlcoResourcesGrid.js" afterPath="$PROJECT_DIR$/app/view/NoAlcoResourcesGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/NoAlcoResourcesPanel.js" afterPath="$PROJECT_DIR$/app/view/NoAlcoResourcesPanel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/OrdersGrid.js" afterPath="$PROJECT_DIR$/app/view/OrdersGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/OtherResourcesGrid.js" afterPath="$PROJECT_DIR$/app/view/OtherResourcesGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/OtherResourcesPanel.js" afterPath="$PROJECT_DIR$/app/view/OtherResourcesPanel.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/SettingsPanel.js" afterPath="$PROJECT_DIR$/app/view/SettingsPanel.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/bootstrap.php" afterPath="$PROJECT_DIR$/php/application/bootstrap.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/classes/Controller/Coctails.php" afterPath="$PROJECT_DIR$/php/application/classes/Controller/Coctails.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/classes/Controller/Components.php" afterPath="$PROJECT_DIR$/php/application/classes/Controller/Components.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/classes/Controller/Users.php" afterPath="$PROJECT_DIR$/php/application/classes/Controller/Users.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/classes/Controller/extendcontroller.php" afterPath="$PROJECT_DIR$/php/application/classes/Controller/extendcontroller.php" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,10 +44,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BarResourcesPanel.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/BarResourcesPanel.js">
+      <file leaf-file-name="SettingsPanel.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/SettingsPanel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="139" column="17" selection-start="4986" selection-end="4986" vertical-scroll-proportion="0.0">
+            <state line="113" column="49" selection-start="4576" selection-end="4576" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BarCombobox.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/BarCombobox.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="20" selection-start="725" selection-end="725" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseStore.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/store/BaseStore.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="19" selection-start="99" selection-end="104" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Settings.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Settings.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="43" selection-start="1123" selection-end="1123" vertical-scroll-proportion="5.8076925">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Bars.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Bars.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="5" selection-start="1358" selection-end="1358" vertical-scroll-proportion="-12.5">
               <folding />
             </state>
           </provider>
@@ -60,61 +92,43 @@
       <file leaf-file-name="Components.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Components.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="201" column="74" selection-start="8185" selection-end="8185" vertical-scroll-proportion="0.8443223">
+            <state line="113" column="50" selection-start="3925" selection-end="3925" vertical-scroll-proportion="0.43589744">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bootstrap.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/application/bootstrap.php">
+      <file leaf-file-name="extendcontroller.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/extendcontroller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="134" column="0" selection-start="4386" selection-end="4386" vertical-scroll-proportion="10.384615">
+            <state line="7" column="0" selection-start="304" selection-end="304" vertical-scroll-proportion="-4.576923">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Coctails.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Coctails.php">
+      <file leaf-file-name="bar.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/application/classes/Model/bar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="44" selection-start="3609" selection-end="3609" vertical-scroll-proportion="-7.923077">
+            <state line="5" column="2" selection-start="50" selection-end="50" vertical-scroll-proportion="-3.2692308">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AlcoResourcesGrid.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/AlcoResourcesGrid.js">
+      <file leaf-file-name="BarStore.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/store/BarStore.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="32" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0">
+            <state line="4" column="19" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NoAlcoResourcesGrid.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/NoAlcoResourcesGrid.js">
+      <file leaf-file-name="BarModel.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/model/BarModel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="10" selection-start="811" selection-end="811" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InventoryResourcesGrid.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/InventoryResourcesGrid.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="22" selection-start="812" selection-end="812" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OtherResourcesGrid.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/OtherResourcesGrid.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="22" selection-start="796" selection-end="796" vertical-scroll-proportion="0.0">
+            <state line="13" column="28" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -134,21 +148,21 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/view/NoAlcoResourcesPanel.js" />
-        <option value="$PROJECT_DIR$/app/view/OtherResourcesPanel.js" />
-        <option value="$PROJECT_DIR$/app/view/AlcoResourcesPanel.js" />
-        <option value="$PROJECT_DIR$/app/view/InventoryResourcesPanel.js" />
-        <option value="$PROJECT_DIR$/app/model/NoAlcoModel.js" />
-        <option value="$PROJECT_DIR$/app/model/InventoryModel.js" />
-        <option value="$PROJECT_DIR$/app/model/OtherModel.js" />
-        <option value="$PROJECT_DIR$/app/view/OrdersGrid.js" />
-        <option value="$PROJECT_DIR$/app/view/AlcoResourcesGrid.js" />
-        <option value="$PROJECT_DIR$/app/view/NoAlcoResourcesGrid.js" />
-        <option value="$PROJECT_DIR$/app/view/InventoryResourcesGrid.js" />
-        <option value="$PROJECT_DIR$/app/view/OtherResourcesGrid.js" />
-        <option value="$PROJECT_DIR$/app/view/BarResourcesPanel.js" />
-        <option value="$PROJECT_DIR$/php/application/bootstrap.php" />
         <option value="$PROJECT_DIR$/php/application/classes/Controller/Coctails.php" />
+        <option value="$PROJECT_DIR$/php/application/classes/Controller/Users.php" />
+        <option value="$PROJECT_DIR$/php/application/classes/Model/setting.php" />
+        <option value="$PROJECT_DIR$/app/view/MainPanel.js" />
+        <option value="$PROJECT_DIR$/app/main.js" />
+        <option value="$PROJECT_DIR$/php/application/classes/Model/bar.php" />
+        <option value="$PROJECT_DIR$/php/application/bootstrap.php" />
+        <option value="$PROJECT_DIR$/app/store/BaseStore.js" />
+        <option value="$PROJECT_DIR$/app/store/BarStore.js" />
+        <option value="$PROJECT_DIR$/app/model/BarModel.js" />
+        <option value="$PROJECT_DIR$/app/view/BarCombobox.js" />
+        <option value="$PROJECT_DIR$/app/view/SettingsPanel.js" />
+        <option value="$PROJECT_DIR$/php/application/classes/Controller/extendcontroller.php" />
+        <option value="$PROJECT_DIR$/php/application/classes/Controller/Settings.php" />
+        <option value="$PROJECT_DIR$/php/application/classes/Controller/Bars.php" />
         <option value="$PROJECT_DIR$/php/application/classes/Controller/Components.php" />
       </list>
     </option>
@@ -592,11 +606,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="Z:\home\barapp.my\www\app\view" />
-      <recent name="Z:\home\barapp.my\www\app\store" />
-      <recent name="Z:\home\barapp.my\www\php\application\classes\Controller" />
       <recent name="Z:\home\barapp.my\www\php\application\classes\Model" />
       <recent name="Z:\home\barapp.my\www\app\model" />
+      <recent name="Z:\home\barapp.my\www\app\store" />
+      <recent name="Z:\home\barapp.my\www\app\view" />
+      <recent name="Z:\home\barapp.my\www\php\application\classes\Controller" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="Z:\home\barapp.my\www\php\application\classes\Controller\users" />
@@ -672,13 +686,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1288" height="764" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936978" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936978" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25445706" sideWeight="0.6706302" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20016207" sideWeight="0.6706302" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32818073" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -749,114 +763,114 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/store/NoAlcoStore.js">
+    <entry file="file://$PROJECT_DIR$/app/view/ClientsCombobox.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/model/InventoryModel.js">
+    <entry file="file://$PROJECT_DIR$/app/store/OtherStore.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="10" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0">
+        <state line="21" column="9" selection-start="524" selection-end="524" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/model/OtherModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="10" selection-start="267" selection-end="267" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/model/NoAlcoModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="10" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/model/AlcoModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="24" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/NoAlcoResourcesPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="21" selection-start="352" selection-end="352" vertical-scroll-proportion="0.28716215">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/OrdersGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="280" column="34" selection-start="8933" selection-end="8933" vertical-scroll-proportion="4.9341216">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/NoAlcoCoctailsGrid.js">
+    <entry file="file://$PROJECT_DIR$/php/application/classes/Model/user.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/OtherResourcesGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="22" selection-start="796" selection-end="796" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/AlcoResourcesGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="32" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/NoAlcoResourcesGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="10" selection-start="811" selection-end="811" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/BarResourcesPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="17" selection-start="4986" selection-end="4986" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/InventoryResourcesGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="22" selection-start="812" selection-end="812" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Coctails.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="44" selection-start="3609" selection-end="3609" vertical-scroll-proportion="-7.923077">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/application/bootstrap.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="0" selection-start="4386" selection-end="4386" vertical-scroll-proportion="10.384615">
+        <state line="132" column="27" selection-start="4341" selection-end="4351" vertical-scroll-proportion="-9.153846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="26" selection-start="2556" selection-end="2556" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/model/AlcoModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/extendcontroller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="304" selection-end="304" vertical-scroll-proportion="-4.576923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/application/classes/Model/bar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="2" selection-start="50" selection-end="50" vertical-scroll-proportion="-3.2692308">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/store/BarStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="19" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/model/BarModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="28" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/BarCombobox.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="20" selection-start="725" selection-end="725" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/SettingsPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="49" selection-start="4576" selection-end="4576" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/store/BaseStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="19" selection-start="99" selection-end="104" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="43" selection-start="1123" selection-end="1123" vertical-scroll-proportion="5.8076925">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Bars.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="5" selection-start="1358" selection-end="1358" vertical-scroll-proportion="-12.5">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Components.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="201" column="74" selection-start="8185" selection-end="8185" vertical-scroll-proportion="0.8443223">
+        <state line="113" column="50" selection-start="3925" selection-end="3925" vertical-scroll-proportion="0.43589744">
           <folding />
         </state>
       </provider>
