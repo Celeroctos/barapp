@@ -4,19 +4,22 @@ class Controller_Transactions extends Controller_Extendcontroller {
 
 	public function action_getTransactions() {
         $params = $this->request->param();
-
+        $currentBar = Request::factory('bars/getDefaultBarId')->execute()->body();
+        $currentBar = json_decode($currentBar);
 
         $query = DB::query(Database::SELECT, 'SELECT a.*, b.nick, c.name AS order_coctail_name
                                               FROM transactions a
                                               INNER JOIN users b ON b.id = a.user_id
                                               INNER JOIN orders d ON d.id = a.order_id
                                               INNER JOIN coctails c ON d.coctail_id = c.id
+                                              WHERE a.bar_id = '.$currentBar->data.'
                                               ORDER BY a.id
                                               LIMIT '.$params['limit'].' OFFSET '.$params['limit'] * ($params['page'] - 1));
        // echo $query;
         $result = $query->execute()->as_array();
         $total =  DB::query(Database::SELECT, 'SELECT COUNT(*) as num
-                                               FROM transactions a')
+                                               FROM transactions a
+                                               WHERE a.bar_id = '.$currentBar->data)
                   ->execute()
                   ->as_array();
         $this->makeResponse(array('success' => true,
@@ -43,6 +46,7 @@ class Controller_Transactions extends Controller_Extendcontroller {
                 $modelTransaction->type = 0; // Уплата
                 $modelTransaction->money = $modelOrder->price;
                 $modelTransaction->user_id = $modelOrder->owner_id;
+                $modelTransaction->bar_id = $modelOrder->bar_id;
                 $modelOrder->priced = $modelOrder->price;
                 $modelOrder->is_visible = 0;
                 $modelOrder->status = 4; // Заказ готов, если транзакция полностью проведена
@@ -89,6 +93,7 @@ class Controller_Transactions extends Controller_Extendcontroller {
                     $modelProfitTransaction->type = 1; // Прибавка
                     $modelProfitTransaction->money = $data['profit'];
                     $modelProfitTransaction->user_id = $data['user_id'];
+                    $modelProfitTransaction->bar_id = $modelOrder->bar_id;
                     $modelProfitTransaction->save();
 
                     // Изменяем счёт
@@ -104,12 +109,6 @@ class Controller_Transactions extends Controller_Extendcontroller {
             if(!isset($params['client']) || !isset($params['quantity'])) {
                 return;
             }
-            $modelProfitTransaction = ORM::factory('transaction');
-            $modelProfitTransaction->order_id = -1;
-            $modelProfitTransaction->type = ($params['t_type'] == 1) ? 1 : 0; // Прибавка или отнятие
-            $modelProfitTransaction->money = $params['quantity'];
-            $modelProfitTransaction->user_id = $params['client'];
-            $modelProfitTransaction->save();
 
             $modelUser = ORM::factory('user', $params['client']);
             if($params['t_type'] == 1) {
@@ -118,6 +117,15 @@ class Controller_Transactions extends Controller_Extendcontroller {
                 $modelUser->bill -= $params['quantity'];
             }
             $modelUser->save();
+
+            $modelProfitTransaction = ORM::factory('transaction');
+            $modelProfitTransaction->order_id = -1;
+            $modelProfitTransaction->type = ($params['t_type'] == 1) ? 1 : 0; // Прибавка или отнятие
+            $modelProfitTransaction->money = $params['quantity'];
+            $modelProfitTransaction->user_id = $params['client'];
+            $modelProfitTransaction->bar_id = $modelUser->bar_id;
+            $modelProfitTransaction->save();
+
         }
         $this->makeResponse(array('success' => true,
                                   'data' => 'Транзакции успешно проведены.'));

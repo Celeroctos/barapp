@@ -22,5 +22,8 @@ Ext.define('Bar.model.AlcoModel', {
        {
            name: 'owner'
        },
+       {
+           name: 'owner_id'
+       }
    ]
 });

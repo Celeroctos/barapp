@@ -21,6 +21,9 @@ Ext.define('Bar.model.InventoryModel', {
         },
         {
             name: 'owner'
+        },
+        {
+            name: 'owner_id'
         }
     ]
 });

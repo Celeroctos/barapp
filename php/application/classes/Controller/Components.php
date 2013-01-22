@@ -46,6 +46,8 @@ class Controller_Components extends Controller_Extendcontroller {
     private function addComponent($type) {
         $params = $this->request->param();
         $model = ORM::factory('component');
+        $currentBar = Request::factory('bars/getDefaultBarId')->execute()->body();
+        $currentBar = json_decode($currentBar);
         // Пишем новый компонент бара
         $model->name = $params['name'];
         $model->capacity = $params['capacity'];
@@ -56,6 +58,7 @@ class Controller_Components extends Controller_Extendcontroller {
             $model->strength = $params['strength'];
         }
         $model->buy_price = $params['price'];
+        $model->bar_id = $currentBar->data;
 
         $model->save();
 
@@ -108,10 +111,12 @@ class Controller_Components extends Controller_Extendcontroller {
             $users = ORM::factory('user')->where('id', '=', $component->owner_id)->find_all();
             foreach($users as $user) {
                 $nickname = $user->nick;
+                $userId = $user->id;
             }
             $response[] = array('id' => $component->id,
                                 'capacity' => $component->capacity,
                                 'owner' => $nickname,
+                                'owner_id' => $userId,
                                 'price' => $component->buy_price,
                                 'current_capacity' => $component->current_capacity,
                                 'name' => $component->name,
@@ -179,6 +184,7 @@ class Controller_Components extends Controller_Extendcontroller {
             $model->name = $component->name;
             $model->capacity = $component->capacity;
             $model->current_capacity = $component->current_capacity;
+            $model->owner_id = $component->owner;
             if($model->buy_price != $component->price || $model->strength != $component->strength) {
                 $priceOld = $model->buy_price;
                 $model->buy_price = $component->price;
@@ -196,9 +202,11 @@ class Controller_Components extends Controller_Extendcontroller {
                     $modelCoctail->strength += $alcoCapacityNew - $alcoCapacityOld;
                     // Алко и неалко учитывается в стоимости
                     if(array_search($model->type, array(0, 1)) !== false) {
-                        $priceOld = ($priceOld * $coctail->c_capacity / $component->capacity) * (1 + $coctail->profit_prozent / 100);
-                        $priceNew = ($component->price * $coctail->c_capacity / $component->capacity) * (1 + $coctail->profit_prozent / 100);
-                        $modelCoctail->price_clean += round($priceNew - $priceOld, 2);
+                        $priceOldClean = $priceOld * $coctail->c_capacity / $component->capacity;
+                        $priceOld = $priceOldClean * (1 + $coctail->profit_prozent / 100);
+                        $priceNewClean = $component->price * $coctail->c_capacity / $component->capacity;
+                        $priceNew = $priceNewClean * (1 + $coctail->profit_prozent / 100);
+                        $modelCoctail->price_clean += round($priceNewClean - $priceOldClean, 2);
                         $modelCoctail->price += round($priceNew - $priceOld, 2);
                     }
                     $modelCoctail->save();
@@ -208,5 +216,36 @@ class Controller_Components extends Controller_Extendcontroller {
         }
         $this->makeResponse(array('success' => true,
                                   'data' => 'Данные успешно сохранены.'));
+    }
+
+    public function action_moveToBar() {
+        $params = $this->request->param();
+        $newData = json_decode($params['newData']);
+        $to = $params['to'];
+
+        $ids = json_decode($params['ids']);
+        $idsStr = implode(',', $ids);
+
+        $query = DB::query(Database::SELECT, 'SELECT a.*
+                                              FROM components a
+                                              WHERE a.id IN('.$idsStr.')');
+        $components = $query->execute();
+
+        foreach($components as $key => $component) {
+            $model = ORM::factory('component');
+            $model->name = $component['name'];
+            $model->capacity = $component['capacity'];
+            $model->current_capacity = $component['current_capacity'];
+            $model->buy_price = $component['buy_price'];
+            $model->strength = $component['strength'];
+            $model->type = $component['type'];
+            $model->disabled = $component['disabled'];
+            $model->owner_id = -1; // Неизвестный владелец
+            $model->bar_id = $to;
+            $model->save();
+        }
+
+        $this->makeResponse(array('success' => true,
+                                  'data' => 'Компоненты успешно перенесены.'));
     }
 }

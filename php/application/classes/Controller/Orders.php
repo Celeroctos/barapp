@@ -3,6 +3,9 @@
 class Controller_Orders extends Controller_Extendcontroller {
 
     public function action_addOrder() {
+        $currentBar = Request::factory('bars/getDefaultBarId')->execute()->body();
+        $currentBar = json_decode($currentBar);
+
         $params = $this->request->param();
         $model = ORM::factory('order');
         // Пишем новый заказ в баре
@@ -11,6 +14,8 @@ class Controller_Orders extends Controller_Extendcontroller {
         $model->quantity = trim($params['quantity']) == '' ? 1 : $params['quantity'];
         $model->status = ($params['status'] !== '') ? $params['status'] : 0;
         $model->discount = trim($params['discount']) == '' ? 0 : $params['discount'];
+        $model->bar_id = $currentBar->data;
+
         // Автопроставление цены
         if($model->status > 3) {
             $model->priced = (ORM::factory('coctail', $model->coctail_id)->price - $model->discount) *  $model->quantity;
@@ -51,6 +56,9 @@ class Controller_Orders extends Controller_Extendcontroller {
         }
         //var_dump($cond);
       // exit();
+        $currentBar = Request::factory('bars/getDefaultBarId')->execute()->body();
+        $currentBar = json_decode($currentBar);
+
         $query = DB::query(Database::SELECT, 'SELECT a.id,
                                                      a.coctail_id,
                                                      a.owner_id,
@@ -68,7 +76,7 @@ class Controller_Orders extends Controller_Extendcontroller {
                                                FROM orders a
                                                INNER JOIN coctails b ON a.coctail_id = b.id
                                                INNER JOIN users c ON c.id = a.owner_id
-                                               '.$cond.' '.(isset($userId) ? 'AND c.id = "'.$userId.'" ' : '').'
+                                               '.$cond.' '.(isset($userId) ? 'AND c.id = "'.$userId.'" ' : '').' AND a.bar_id = '.$currentBar->data.'
                                                ORDER BY a.id DESC
                                                LIMIT '.$params['limit'].' OFFSET '.$params['limit'] * ($params['page'] - 1));
         $result = $query->execute()->as_array();

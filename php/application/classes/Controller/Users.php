@@ -17,12 +17,17 @@ class Controller_Users extends Controller_Extendcontroller {
 
     public function addUser($type) {
         $params = $this->request->param();
+
+        $currentBar = Request::factory('bars/getDefaultBarId')->execute()->body();
+        $currentBar = json_decode($currentBar);
+
         $model = ORM::factory('user');
         // Пишем нового хозяина бара
         $model->nick = $params['nick'];
         $model->email = $params['email'];
         $model->profile_id = $params['profile_id'];
         $model->type = $type; // Хозяин
+        $model->bar_id = $currentBar->data;
         $model->save();
 
         $this->makeResponse(array('success' => true));
@@ -44,8 +49,13 @@ class Controller_Users extends Controller_Extendcontroller {
         } else {
             $operator = '=';
         }
+
+        $currentBar = Request::factory('bars/getDefaultBarId')->execute()->body();
+        $currentBar = json_decode($currentBar);
+
         $users = $model
                 ->where('type', $operator, $type)
+                ->and_where('bar_id', '=', $currentBar->data)
                 ->limit($params['limit'])
                 ->offset($params['limit'] * ($params['page'] - 1))
                 ->order_by('id', 'DESC')
@@ -54,6 +64,7 @@ class Controller_Users extends Controller_Extendcontroller {
         $modelNum = ORM::factory('user');
         $usersNum = $modelNum
                     ->where('type', $operator, $type)
+                    ->and_where('bar_id', '=', $currentBar->data)
                     ->find_all()
                     ->as_array();
         $num = count($usersNum);

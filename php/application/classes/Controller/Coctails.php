@@ -42,6 +42,8 @@ class Controller_Coctails extends Controller_Extendcontroller {
         if(!$model) {
             $model = ORM::factory('coctail');
         }
+        $currentBar = Request::factory('bars/getDefaultBarId')->execute()->body();
+        $currentBar = json_decode($currentBar);
         // Пишем новый коктейль в баре, либо редактируем тот, что был
         $model->name = $params['name'];
         $model->recipe = $params['recipe'];
@@ -51,6 +53,7 @@ class Controller_Coctails extends Controller_Extendcontroller {
         $componentsArr = json_decode($components);
         $componentsArr = $componentsArr->data;
         $model->price_clean = 0;
+        $model->bar_id = $currentBar->data;
         $model->save();
         // Декодируем компоненты, которые пришли: там прописан объём, который нужно брать для компонента
         $componentsIn = json_decode($params['components']);
@@ -134,6 +137,8 @@ class Controller_Coctails extends Controller_Extendcontroller {
 
     private function getCoctails($type) {
         $params = $this->request->param();
+        $currentBar = Request::factory('bars/getDefaultBarId')->execute()->body();
+        $currentBar = json_decode($currentBar);
         // Алкольными считаем те коктейли, в которых есть алкогольные составляющие
         if($type == 0) {
             $query = DB::query(Database::SELECT, 'SELECT DISTINCT coctails.id AS id,
@@ -149,6 +154,7 @@ class Controller_Coctails extends Controller_Extendcontroller {
                                                            FROM components
                                                            WHERE components.id = coctailscomponents.component_id
                                                                  AND type = 0)
+                                                    AND coctails.bar_id = '.$currentBar->data.'
                                               ORDER BY coctails.id DESC');
         } elseif($type == 1) {
             $query = DB::query(Database::SELECT, 'SELECT DISTINCT coctails.id AS id,
@@ -166,6 +172,7 @@ class Controller_Coctails extends Controller_Extendcontroller {
                                                                 INNER JOIN components ON coctailscomponents.component_id = components.id
                                                                 WHERE components.type = 0
                                                                       AND coctailscomponents.coctail_id = coctails.id)
+                                                    AND coctails.bar_id = '.$currentBar->data.'
                                               ORDER BY coctails.id DESC ');
         } elseif($type == 2) {
              $query = DB::query(Database::SELECT, 'SELECT DISTINCT coctails.id AS id,
@@ -178,6 +185,7 @@ class Controller_Coctails extends Controller_Extendcontroller {
                                               FROM coctails
                                               INNER JOIN coctailscomponents ON coctails.id = coctailscomponents.coctail_id
                                               INNER JOIN components ON components.id = coctailscomponents.component_id
+                                              WHERE coctails.bar_id = '.$currentBar->data.'
                                               ORDER BY coctails.id DESC');
         }
 

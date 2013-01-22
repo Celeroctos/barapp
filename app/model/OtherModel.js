@@ -21,6 +21,9 @@ Ext.define('Bar.model.OtherModel', {
         },
         {
             name: 'owner'
+        },
+        {
+            name: 'owner_id'
         }
     ]
 });

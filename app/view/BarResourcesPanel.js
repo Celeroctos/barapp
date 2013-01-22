@@ -4,6 +4,7 @@ Ext.define('Bar.view.BarResourcesPanel', {
                'Bar.view.NoAlcoResourcesPanel',
                'Bar.view.OtherResourcesPanel',
                'Bar.view.InventoryResourcesPanel',
+               'Bar.view.BarCombobox',
                'Bar.controller.ResourcesController'],
     alias: 'widget.BarResourcesPanel',
     layout: 'auto',
@@ -39,14 +40,8 @@ Ext.define('Bar.view.BarResourcesPanel', {
     },
 
     deleteChecked: function() {
-        var activeTab = this.getActiveTab();
-        var grid = activeTab.getGrid();
+        var selected = this.getSelected();
 
-        var selected = [];
-        var selection = Ext.getCmp(grid.id).getSelectionModel().getSelection();
-        for(var i = 0; i < selection.length; i++) {
-            selected.push(selection[i].get('id'));
-        }
         var dataIn = {
             ids: Ext.JSON.encode(selected)
         };
@@ -108,15 +103,56 @@ Ext.define('Bar.view.BarResourcesPanel', {
                         click: Ext.bind(this.deleteChecked, this)
                     }
                 },
+                '|',
+                'перенести в бар',
+                {
+                    xtype: 'BarCombobox',
+                    id: 'moveComponentsToCombo'
+                },
+                {
+                    text: 'ок',
+                    listeners: {
+                        click: Ext.bind(this.moveToBar, this)
+                    }
+                },
                 '<strong>Дополнительно:</strong>',
                 {
                     text: 'обновить таблицу',
                     listeners: {
                         click: this.updatePanel
                     }
-                },
+                }
             ]
         };
+    },
+
+    getSelected: function() {
+        var selected = [];
+        var activeTab = this.getActiveTab();
+        var grid = activeTab.getGrid();
+
+        var selection = Ext.getCmp(grid.id).getSelectionModel().getSelection();
+        for(var i = 0; i < selection.length; i++) {
+            selected.push(selection[i].get('id'));
+        }
+        return selected;
+    },
+
+    moveToBar: function() {
+        var selected = this.getSelected();
+        var dataIn = {
+            ids: Ext.JSON.encode(selected),
+            to: Ext.getCmp('moveComponentsToCombo').getValue()
+        };
+        if(selected.length > 0) {
+            Ext.Ajax.request({
+                url: '/php/index.php/components/moveToBar',
+                params: dataIn,
+                success: Ext.bind(function(response) {
+
+                })
+            })
+        }
     },
 
     saveChanges: function() {
@@ -135,7 +171,8 @@ Ext.define('Bar.view.BarResourcesPanel', {
                         capacity: rec.get('capacity'),
                         strength: rec.get('strength'),
                         current_capacity: rec.get('current_capacity'),
-                        price: rec.get('price')
+                        price: rec.get('price'),
+                        owner: rec.get('owner_id')
                     });
                 }
             }

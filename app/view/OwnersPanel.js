@@ -47,6 +47,8 @@ Ext.define('Bar.view.OwnersPanel', {
                             success: function(response) {
                                 var data = Ext.JSON.decode(response.responseText);
                                 if(data.success == true) {
+                                    Ext.getCmp('addOwnerNickname').setValue(''),
+                                    Ext.getCmp('addOwnerEmail').setValue('')
                                     // Обновляем таблицу
                                     Ext.getCmp('ownersGrid').getStore().reload();
                                 }

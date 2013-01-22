@@ -21,6 +21,9 @@ Ext.define('Bar.model.NoAlcoModel', {
         },
         {
             name: 'owner'
+        },
+        {
+            name: 'owner_id'
         }
     ]
 });

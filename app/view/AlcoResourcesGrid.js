@@ -15,53 +15,66 @@ Ext.define('Bar.view.AlcoResourcesGrid', {
             clicksToEdit: 2
         })
     ],
-    columns: [
-        {
-            text: 'ID',
-            sortable: true,
-            dataIndex: 'id'
-        },
-        {
-            text: 'Наименование',
-            sortable: true,
-            dataIndex: 'name',
-            editor: 'textfield',
-            width: 200
-        },
-        {
-            text: 'Цена',
-            sortable: true,
-            dataIndex: 'price',
-            editor: 'textfield'
-        },
-        {
-            text: 'Крепость',
-            width: 90,
-            dataIndex: 'strength',
-            editor: 'textfield'
-        },
-        {
-            text: 'Объём',
-            width: 90,
-            dataIndex: 'capacity',
-            editor: 'textfield'
-        },
-        {
-            text: 'Оставшийся объём',
-            width: 120,
-            dataIndex: 'current_capacity',
-            editor: 'textfield'
-        },
-        {
-            text: 'Владелец',
-            width: 200,
-            dataIndex: 'owner',
-            editor: 'OwnersCombobox'
-        }
-    ],
+
+    makeColumns: function() {
+        this.columns = [
+            {
+                text: 'ID',
+                sortable: true,
+                dataIndex: 'id'
+            },
+            {
+                text: 'Наименование',
+                sortable: true,
+                dataIndex: 'name',
+                editor: 'textfield',
+                width: 200
+            },
+            {
+                text: 'Цена',
+                sortable: true,
+                dataIndex: 'price',
+                editor: 'textfield'
+            },
+            {
+                text: 'Крепость',
+                width: 90,
+                dataIndex: 'strength',
+                editor: 'textfield'
+            },
+            {
+                text: 'Объём',
+                width: 90,
+                dataIndex: 'capacity',
+                editor: 'textfield'
+            },
+            {
+                text: 'Оставшийся объём',
+                width: 120,
+                dataIndex: 'current_capacity',
+                editor: 'textfield'
+            },
+            {
+                text: 'Владелец',
+                width: 200,
+                dataIndex: 'owner',
+                editor: this.ownersCombo = Ext.create('Bar.view.OwnersCombobox')
+            }
+        ];
+    },
     bindHandlers: function() {
         this.on('validateedit', function(editor, e, options) {
             var rowIdx = e.rowIdx;
+            e.record.set('owner_id', this.ownersCombo.getValue());
+            var store = this.ownersCombo.getStore();
+            store.each(function(rec) {
+                if(rec.get('id') == this.ownersCombo.getValue()) {
+                    e.record.set('owner', rec.get('nick'));
+                    console.log(rec.get('nick'));
+                    console.log(e.record); // Как изменить содержимое столбца...? Доделать завтра.
+                    return;
+                }
+            }, this);
             for(var i = 0; i < this.edited.length; i++) {
                 if(this.edited[i] == rowIdx) {
                     return;
@@ -72,6 +85,7 @@ Ext.define('Bar.view.AlcoResourcesGrid', {
     },
     initComponent: function() {
         console.log('Bar.view.AlcoResourcesGrid');
+        this.makeColumns();
         Bar.view.AlcoResourcesGrid.superclass.initComponent.apply(this, arguments);
         this.bindHandlers();
     },
