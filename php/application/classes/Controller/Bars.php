@@ -45,4 +45,14 @@ class Controller_Bars extends Controller_Extendcontroller {
         $this->makeResponse(array('success' => true,
                                   'data' => $defaultBar->data));
     }
+
+    public function action_getBarsWithoutDefault() {
+        $defaultBar = $this->getDefaultBar();
+        $query = DB::query(Database::SELECT, 'SELECT a.*
+                                              FROM bars a
+                                              WHERE a.id != '.$defaultBar->data);
+        $result = $query->execute()->as_array();
+        $this->makeResponse(array('success' => true,
+                                  'data' => $result));
+    }
 }

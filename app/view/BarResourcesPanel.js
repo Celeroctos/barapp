@@ -10,6 +10,7 @@ Ext.define('Bar.view.BarResourcesPanel', {
     layout: 'auto',
     region: 'center',
     title: '',
+    firstLoad: true,
     items: [
         {
             title: 'Алкоголь',
@@ -37,6 +38,12 @@ Ext.define('Bar.view.BarResourcesPanel', {
         Ext.getCmp('noAlcoTab').updatePanel();
         Ext.getCmp('otherTab').updatePanel();
         Ext.getCmp('inventoryTab').updatePanel();
+        // Первый раз не нужно грузить
+        if(!this.firstLoad) {
+            this.barCombo.fireEvent('afterrender', this.barCombo);
+        } else {
+            this.firstLoad = false;
+        }
     },
 
     deleteChecked: function() {
@@ -105,10 +112,13 @@ Ext.define('Bar.view.BarResourcesPanel', {
                 },
                 '|',
                 'перенести в бар',
-                {
-                    xtype: 'BarCombobox',
-                    id: 'moveComponentsToCombo'
-                },
+                this.barCombo = Ext.create('Bar.view.BarCombobox', {
+                    id: 'moveComponentsToCombo',
+                    setDefault: false,
+                    store: Ext.create('Bar.store.BarFilteredStore', {
+                        settings: this.settings
+                    })
+                }),
                 {
                     text: 'ок',
                     listeners: {
@@ -119,7 +129,7 @@ Ext.define('Bar.view.BarResourcesPanel', {
                 {
                     text: 'обновить таблицу',
                     listeners: {
-                        click: this.updatePanel
+                        click: Ext.bind(this.updatePanel, this)
                     }
                 }
             ]

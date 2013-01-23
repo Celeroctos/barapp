@@ -75,7 +75,8 @@ Ext.onReady(function() {
                  'TransactionsStore',
                  'AllCoctailsStore',
                  'AllClientsStore',
-                 'BarStore'],
+                 'BarStore',
+                 'BarFilteredStore'],
         views: ['ClientsCombobox'],
         launch: function() {
             Ext.create('Bar.view.MainPanel').show();

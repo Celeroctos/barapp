@@ -80,4 +80,18 @@ class Controller_Settings extends Controller_Extendcontroller {
         $this->makeResponse(array('success' => true,
                                   'data' => 'Настройки успешно сохранены.'));
     }
+
+    public function action_getAllSettings() {
+        $userId = 1;
+        $query = DB::query(Database::SELECT, 'SELECT a.*
+                                              FROM settings a
+                                              WHERE a.user_id = '.$userId);
+        $result = $query->execute()->as_array();
+        $answer = array();
+        foreach($result as $key => $value) {
+            $answer[$value['key']] = $value['value'];
+        }
+        $this->makeResponse(array('success' => true,
+                                  'data' => $answer));
+    }
 }

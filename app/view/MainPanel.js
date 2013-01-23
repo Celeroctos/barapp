@@ -10,6 +10,7 @@ Ext.define('Bar.view.MainPanel', {
     renderTo: Ext.getBody(),
     width: '100%',
     height: 1000,
+    settings: null,
     items: [
         {
             xtype: 'TreePanel',
@@ -116,19 +117,23 @@ Ext.define('Bar.view.MainPanel', {
         }, this);
 
         this.on('afterrender', function(component, options) {
+            // Загрузим все настройки
             Ext.Ajax.request({
-                url: '/php/index.php/settings/getDefaultBarPanel',
+                url: '/php/index.php/settings/getAllSettings',
                 success: Ext.bind(function(response) {
                     var data = Ext.JSON.decode(response.responseText);
                     if(data.success == true) {
-                        var loadedPanel = data.data
+                        this.settings = data.data;
+                        var loadedPanel = this.settings.defaultBarPanel;
                         for(var i in panels) {
-                            if(panels[i] == data.data) {
+                            if(panels[i] == loadedPanel) {
                                 var loadedPanelIndex = i;
                                 break;
                             }
                         }
-                        panels[loadedPanelIndex] = Ext.create(panels[loadedPanelIndex]);
+                        panels[loadedPanelIndex] = Ext.create(panels[loadedPanelIndex], {
+                            settings: this.settings
+                        });
                         layout.setActiveItem(panels[loadedPanelIndex]);
                         panels[loadedPanelIndex].updatePanel();
                     }
