@@ -254,4 +254,78 @@ class Controller_Coctails extends Controller_Extendcontroller {
                                   'data' => 'Коктейли успешно удалены.'));
     }
 
+    public function action_moveToBar() {
+        $params = $this->request->param();
+        $to = $params['to'];
+
+        $ids = json_decode($params['ids']);
+        $idsStr = implode(',', $ids);
+
+        $query = DB::query(Database::SELECT, 'SELECT a.*
+                                              FROM coctails a
+                                              WHERE a.id IN('.$idsStr.')');
+        $coctails = $query->execute();
+        $errorMsg = '';
+        $errored = array();
+
+        foreach($coctails as $key => $coctail) {
+            $query = DB::query(Database::SELECT, 'SELECT a.*, b.name
+                                                  FROM coctailscomponents a
+                                                  INNER JOIN components b ON a.component_id = b.id
+                                                  WHERE a.coctail_id = '.$coctail['id']);
+            $components = $query->execute()->as_array();
+            $isAviable = true; // Доступен ли коктейль для переноса, все ли есть компоненты
+
+            $currentComponents = array();
+            foreach($components as $index => $componentInCoctail) {
+                // Если на запрос ниже выпадет ноль строк, то это будет означать, что не было перенесено такого компонента, поэтому перенести коктейль нельзя
+                $query = DB::query(Database::SELECT, 'SELECT a.*
+                                                      FROM components a
+                                                      WHERE a.from = '.$componentInCoctail['component_id']);
+                $result = $query->execute();
+                $num = $result->count();
+                if($num == 0) {
+                    if(array_search($coctail['id'], $errored) === false) {
+                        $errored[] = $coctail['id'];
+                        $isAviable = false;
+                        $errorMsg .= '<strong>Для коктейля "'.$coctail['name'].'" не хватает следующих ингредиентов:</strong><br>';
+                    }
+                    $errorMsg .= $componentInCoctail['name'].'<br>';
+                }
+                $arr = $result->as_array();
+                $currentComponents[$index] = $arr[0];
+            }
+
+            if($isAviable) {
+                $model = ORM::factory('coctail');
+                $model->name = $coctail['name'];
+                $model->price = $coctail['price'];
+                $model->price_clean = $coctail['price_clean'];
+                $model->recipe = $coctail['recipe'];
+                $model->strength = $coctail['strength'];
+                $model->profit_prozent = $coctail['profit_prozent'];
+                $model->bar_id = $to;
+                $model->save();
+                // Ещё раз прогоняем цикл и прописываем модели
+                foreach($components as $index => $componentInCoctail) {
+                    $modelComponentInCoctail = ORM::factory('coctailscomponent');
+                    $modelComponentInCoctail->component_id = $currentComponents[$index]['id'];
+                    $modelComponentInCoctail->capacity = $componentInCoctail['capacity'];
+                    $modelComponentInCoctail->coctail_id = $model->id;
+                    $modelComponentInCoctail->save();
+                }
+            }
+        }
+
+        // Может быть ошибка, а может и не быть, тогда всё добавлено ок.
+        if($errorMsg == '') {
+            $this->makeResponse(array('success' => true,
+                                      'data' => 'Коктейли успешно перенесены.'));
+        } else {
+            $errorMsg .= 'Перемещение этих коктейлей невозможно до тех пор, пока не будут перенесены соответствующие компоненты.';
+            $this->makeResponse(array('success' => true,
+                                      'data' => $errorMsg));
+        }
+
+    }
 }

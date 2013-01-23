@@ -72,94 +72,6 @@ Ext.define('Bar.view.AlcoCoctailsGrid', {
         }
     ],
 
-    makeToolbar: function() {
-        this.tbar = {
-            height: 30,
-            items: [{
-            text: 'Сохранить изменения в таблице',
-            listeners: {
-                click: this.saveChanges
-            }
-            },
-            '<strong>C отмеченными:</strong>',
-            {
-                xtype: 'button',
-                text: 'удалить',
-                handler: this.deleteChecked
-            },
-            {
-                xtype: 'button',
-                text: 'Обновить таблицу',
-                handler: function() {
-                    Ext.getCmp('alcoCoctailsGrid').getStore().reload();
-                }
-            }]
-        };
-    },
-
-    deleteChecked: function() {
-        var selected = [];
-        var selection = Ext.getCmp('alcoCoctailsGrid').getSelectionModel().getSelection();
-        for(var i = 0; i < selection.length; i++) {
-            selected.push(selection[i].get('id'));
-        }
-        var data = {
-            ids: Ext.JSON.encode(selected)
-        };
-        if(selected.length > 0) {
-            Ext.Ajax.request({
-                url: '/php/index.php/coctails/delCoctail',
-                params: data,
-                success: function(response) {
-                    var data = Ext.JSON.decode(response.responseText);
-                    if(data.success == true) {
-                        // Обновляем таблицу
-                        Ext.getCmp('alcoCoctailsGrid').getStore().reload();
-                    }
-                }
-            });
-        }
-    },
-
-    saveChanges: function(btn, e, options) {
-        var grid = Ext.getCmp('alcoCoctailsGrid');
-        var edited = grid.edited;
-        var store = grid.getStore();
-        var toSend = []; // Данные на отправку, новые
-        if(edited.length > 0) {
-            for(var i = 0; i < edited.length; i++ ) {
-                var rec = store.getAt(edited[i]);
-                toSend.push({
-                    name: rec.get('name'),
-                    price: rec.get('price'),
-                    strength: rec.get('strength'),
-                    profit_prozent: rec.get('profit_prozent'),
-                    profit_prozent_saved: rec.get('profit_prozent_saved'),
-                    id: rec.get('id')
-                });
-            }
-
-            Ext.Ajax.request({
-                url: '/php/index.php/coctails/saveChanges',
-                params: {
-                    newData: Ext.JSON.encode(toSend)
-                },
-                success: function(response) {
-                    var data = Ext.JSON.decode(response.responseText);
-                    if(data.success == true) {
-                        Ext.Msg.show({
-                            title:'Сообщение',
-                            msg: 'Данные успешно сохранены.',
-                            buttons: Ext.MessageBox.YES,
-                            buttonText: 'ОК'
-                        });
-                        Ext.getCmp('alcoCoctailsGrid').getStore().reload();
-                    }
-                }
-            });
-        }
-    },
-
     bindHandlers: function() {
         this.on('validateedit', function(editor, e, options) {
             var rowIdx = e.rowIdx;
@@ -211,7 +123,6 @@ Ext.define('Bar.view.AlcoCoctailsGrid', {
     },
     initComponent: function() {
         console.log('Bar.view.AlcoCoctailsGrid');
-        this.makeToolbar();
         this.bindHandlers();
         Bar.view.AlcoCoctailsGrid.superclass.initComponent.apply(this, arguments);
     },

@@ -96,69 +96,6 @@ Ext.define('Bar.view.NoAlcoCoctailsGrid', {
         };
     },
 
-    deleteChecked: function() {
-        var selected = [];
-        var selection = Ext.getCmp('noAlcoCoctailsGrid').getSelectionModel().getSelection();
-        for(var i = 0; i < selection.length; i++) {
-            selected.push(selection[i].get('id'));
-        }
-        var data = {
-            ids: Ext.JSON.encode(selected)
-        };
-        if(selected.length > 0) {
-            Ext.Ajax.request({
-                url: '/php/index.php/coctails/delCoctail',
-                params: data,
-                success: function(response) {
-                    var data = Ext.JSON.decode(response.responseText);
-                    if(data.success == true) {
-                        // Обновляем таблицу
-                        Ext.getCmp('noAlcoCoctailsGrid').getStore().reload();
-                    }
-                }
-            });
-        }
-    },
-
-    saveChanges: function(btn, e, options) {
-        var grid = Ext.getCmp('noAlcoCoctailsGrid');
-        var edited = grid.edited;
-        var store = grid.getStore();
-        var toSend = []; // Данные на отправку, новые
-        if(edited.length > 0) {
-            for(var i = 0; i < edited.length; i++ ) {
-                var rec = store.getAt(edited[i]);
-                toSend.push({
-                    name: rec.get('name'),
-                    price: rec.get('price'),
-                    strength: rec.get('strength'),
-                    profit_prozent: rec.get('profit_prozent'),
-                    profit_prozent_saved: rec.get('profit_prozent_saved'),
-                    id: rec.get('id')
-                });
-            }
-
-            Ext.Ajax.request({
-                url: '/php/index.php/coctails/saveChanges',
-                params: {
-                    newData: Ext.JSON.encode(toSend)
-                },
-                success: function(response) {
-                    var data = Ext.JSON.decode(response.responseText);
-                    if(data.success == true) {
-                        Ext.Msg.show({
-                            title:'Сообщение',
-                            msg: 'Данные успешно сохранены.',
-                            buttons: Ext.MessageBox.YES,
-                            buttonText: 'ОК'
-                        });
-                        Ext.getCmp('noAlcoCoctailsGrid').getStore().reload();
-                    }
-                }
-            });
-        }
-    },
-
     bindHandlers: function() {
         this.on('validateedit', function(editor, e, options) {
             var rowIdx = e.rowIdx;
@@ -210,7 +147,6 @@ Ext.define('Bar.view.NoAlcoCoctailsGrid', {
     },
     initComponent: function() {
         console.log('Bar.view.NoAlcoCoctailsGrid');
-        this.makeToolbar();
         this.bindHandlers();
         Bar.view.NoAlcoCoctailsGrid.superclass.initComponent.apply(this, arguments);
     },

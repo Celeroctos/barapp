@@ -81,6 +81,8 @@ Ext.define('Bar.view.BarResourcesPanel', {
     },
 
     deleteStep2: function(dataIn, grid) {
+        var activeTab = this.getActiveTab();
+        var grid = activeTab.getGrid();
         Ext.Ajax.request({
             url: '/php/index.php/components/delComponents',
             params: dataIn,
@@ -149,6 +151,8 @@ Ext.define('Bar.view.BarResourcesPanel', {
     },
 
     moveToBar: function() {
+        var activeTab = this.getActiveTab();
+        var grid = activeTab.getGrid();
         var selected = this.getSelected();
         var dataIn = {
             ids: Ext.JSON.encode(selected),
@@ -159,7 +163,14 @@ Ext.define('Bar.view.BarResourcesPanel', {
                 url: '/php/index.php/components/moveToBar',
                 params: dataIn,
                 success: Ext.bind(function(response) {
-
+                    var data = Ext.JSON.decode(response.responseText);
+                    Ext.Msg.show({
+                        title:'Сообщение',
+                        msg: data.data,
+                        buttons: Ext.MessageBox.YES,
+                        buttonText: 'ОК'
+                    });
+                    Ext.getCmp(grid.id).getStore().reload();
                 })
             })
         }
@@ -196,6 +207,7 @@ Ext.define('Bar.view.BarResourcesPanel', {
             success: function(response) {
                 var data = Ext.JSON.decode(response.responseText);
                 if(data.success == true) {
+                    var data = Ext.JSON.decode(response.responseText);
                     Ext.Msg.show({
                         title:'Сообщение',
                         msg: data.data,

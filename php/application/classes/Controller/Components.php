@@ -103,6 +103,7 @@ class Controller_Components extends Controller_Extendcontroller {
             $modelNum = ORM::factory('component');
             $componentsNum = $modelNum->where('type', $operator, $type)
                 ->and_where('disabled', '=', 0)
+                ->and_where('bar_id', '=', $currentBar->data)
                 ->find_all();
         }
 
@@ -243,11 +244,9 @@ class Controller_Components extends Controller_Extendcontroller {
             $model->disabled = $component['disabled'];
             $model->owner_id = -1; // Неизвестный владелец
             $model->bar_id = $to;
+            $model->from = $component['id'];
             $model->save();
         }
-
-        /* Если я переношу компонент... То должен дописать этот перенос в путь ссылок, чтобы можно было восстановить, куда я перенёс копонент. Если из А в Б перенос, а потом из Б в В и так далее, нужно будет делать много запросов к базе, чтобы перенести коктейль, т.к. нужно знать, из чего коктейль состоит, а это есть точно только в самом первом баре. Компонент может быть перенесён, но из него может быть не составлен переносимый коктейль, следовательно если коктейль есть, то он точно есть в том баре, где появился в самый первый раз. */
-
 
         $this->makeResponse(array('success' => true,
                                   'data' => 'Компоненты успешно перенесены.'));
