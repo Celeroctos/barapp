@@ -33,13 +33,6 @@ Ext.define('Bar.view.OrdersGrid', {
             width: 150
         },
         {
-            text: 'Количество',
-            sortable: true,
-            dataIndex: 'quantity',
-            editor: 'textfield',
-            width: 80
-        },
-        {
             text: 'Клиент',
             width: 150,
             dataIndex: 'nick',
@@ -65,19 +58,32 @@ Ext.define('Bar.view.OrdersGrid', {
         {
             text: 'Цена',
             sortable: true,
-            dataIndex: 'price',
+            dataIndex: 'price_one',
             width: 60
         },
         {
-            text: 'Цена полная',
+            text: 'Скидка',
+            width: 50,
+            dataIndex: 'discount',
+            editor: 'textfield'
+        },
+        {
+            text: 'Кол-во',
+            sortable: true,
+            dataIndex: 'quantity',
+            editor: 'textfield',
+            width: 50
+        },
+        {
+            text: 'Полная ст-ть',
             width: 80,
             dataIndex: 'price_full'
         },
         {
-            text: 'Скидка',
-            width: 80,
-            dataIndex: 'discount',
-            editor: 'textfield'
+            text: 'Итого',
+            sortable: true,
+            dataIndex: 'price',
+            width: 80
         },
         {
             text: 'Статус',

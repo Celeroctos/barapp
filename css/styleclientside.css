@@ -1,6 +1,6 @@
 body {
     font-size: 14pt;
-    background: url('/img/bg1.png') repeat-x;
+    background: url('/img/bg1.png') repeat-x #2b3346;
 }
 header {
     color: #FF8000;

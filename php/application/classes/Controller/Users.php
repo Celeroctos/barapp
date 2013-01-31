@@ -80,7 +80,7 @@ class Controller_Users extends Controller_Extendcontroller {
             // Подсчитаем чистую прибыль для пользователя
             $cleanProfit = Request::factory('transactions/getCleanProfit/'.$user->id)->execute()->body();
             // Заказы
-            $orders = Request::factory('orders/getOrders/2/'.$user->id.'/100/1')
+            $orders = Request::factory('orders/getOrders/2/'.$user->id.'/100/1/1')
                         ->execute()
                         ->body();
             $orders = json_decode($orders);

@@ -39,13 +39,13 @@ Ext.define('Bar.view.OrdersPanel', {
                 },
                 {
                     xtype: 'textfield',
-                    fieldLabel: 'Количество',
-                    id: 'addOrderQuantity'
+                    fieldLabel: 'Скидка (в ден. ед.)',
+                    id: 'addOrderDiscount'
                 },
                 {
                     xtype: 'textfield',
-                    fieldLabel: 'Скидка (в ден. ед.)',
-                    id: 'addOrderDiscount'
+                    fieldLabel: 'Количество',
+                    id: 'addOrderQuantity'
                 },
                 {
                     xtype: 'textfield',

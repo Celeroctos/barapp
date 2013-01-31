@@ -23,9 +23,9 @@ class Controller_Orders extends Controller_Extendcontroller {
         $model->priority = trim($params['priority']) == '' ? 0 : $params['priority'];
         $coctail = ORM::factory('coctail', $params['coctail']);
         if(trim($params['discount']) != '') {
-            $model->price = $coctail->price - $params['discount'];
+            $model->price = ($coctail->price - $params['discount']) * $model->quantity;
         } else {
-            $model->price = $coctail->price;
+            $model->price = $coctail->price * $model->quantity;
         }
         $model->save();
 
@@ -68,6 +68,7 @@ class Controller_Orders extends Controller_Extendcontroller {
                                                      a.discount,
                                                      a.priority,
                                                      a.price,
+                                                     b.price as price_one,
                                                      FORMAT((b.price * a.quantity), 2) as price_full,
                                                      c.nick,
                                                      a.priced,
@@ -79,7 +80,7 @@ class Controller_Orders extends Controller_Extendcontroller {
                                                '.$cond.' '.(isset($userId) ? 'AND c.id = "'.$userId.'" ' : '').' AND a.bar_id = '.$currentBar->data.'
                                                ORDER BY a.id DESC
                                                LIMIT '.$params['limit'].' OFFSET '.$params['limit'] * ($params['page'] - 1));
-        //echo $query;
+      //  echo $query;
         $result = $query->execute()->as_array();
         $totalQuery = DB::query(Database::SELECT, 'SELECT COUNT(*) AS num
                                                    FROM orders a
