@@ -2,16 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="798eb2e9-29e7-4b9c-a653-84a52fbacdef" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/reset.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/styleclientside.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/application/classes/Controller/Clientside.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/application/views/clientside.php" />
       <change type="DELETED" beforePath="Z:\home\barapp.my\www\app\view\AlcoCoctailsPanel.js" afterPath="" />
-      <change type="DELETED" beforePath="Z:\home\barapp.my\www\php\application\classes\Model\barlink.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/AlcoCoctailsGrid.js" afterPath="$PROJECT_DIR$/app/view/AlcoCoctailsGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/BarResourcesPanel.js" afterPath="$PROJECT_DIR$/app/view/BarResourcesPanel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/CoctailsPanel.js" afterPath="$PROJECT_DIR$/app/view/CoctailsPanel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/NoAlcoCoctailsGrid.js" afterPath="$PROJECT_DIR$/app/view/NoAlcoCoctailsGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/classes/Controller/Coctails.php" afterPath="$PROJECT_DIR$/php/application/classes/Controller/Coctails.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/classes/Controller/Components.php" afterPath="$PROJECT_DIR$/php/application/classes/Controller/Components.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/logs/2013/01/23.php" afterPath="$PROJECT_DIR$/php/application/logs/2013/01/23.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/bootstrap.php" afterPath="$PROJECT_DIR$/php/application/bootstrap.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/application/classes/Controller/Orders.php" afterPath="$PROJECT_DIR$/php/application/classes/Controller/Orders.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/modules/database/config/database.php" afterPath="$PROJECT_DIR$/php/modules/database/config/database.php" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,10 +37,73 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Coctails.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Coctails.php">
+      <file leaf-file-name="clientside.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/application/views/clientside.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="305" column="26" selection-start="16756" selection-end="16756" vertical-scroll-proportion="1.6307421">
+            <state line="12" column="34" selection-start="426" selection-end="426" vertical-scroll-proportion="-4.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="13" selection-start="46" selection-end="46" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styleclientside.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/styleclientside.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="24" selection-start="374" selection-end="374" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="45" selection-start="879" selection-end="879" vertical-scroll-proportion="-0.4160839">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bootstrap.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/application/bootstrap.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="155" column="68" selection-start="5194" selection-end="5194" vertical-scroll-proportion="-14.153846">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reset.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/reset.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="42" column="1" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Clientside.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Clientside.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="35" selection-start="277" selection-end="277" vertical-scroll-proportion="-3.9230769">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="extendcontroller.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/extendcontroller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="0" selection-start="304" selection-end="304" vertical-scroll-proportion="-4.576923">
               <folding />
             </state>
           </provider>
@@ -50,52 +112,7 @@
       <file leaf-file-name="Components.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Components.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="125" column="9" selection-start="4606" selection-end="4606" vertical-scroll-proportion="64.73077">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CoctailsPanel.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/CoctailsPanel.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="122" column="25" selection-start="3776" selection-end="3776" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BarResourcesPanel.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/BarResourcesPanel.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="144" column="0" selection-start="4954" selection-end="4954" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BarStore.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/store/BarStore.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="28" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BarFilteredStore.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/store/BarFilteredStore.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="21" selection-start="204" selection-end="204" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Bars.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Bars.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="0" selection-start="1005" selection-end="1005" vertical-scroll-proportion="-0.84615386">
+            <state line="0" column="50" selection-start="50" selection-end="50" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -115,22 +132,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/view/OwnersCombobox.js" />
-        <option value="$PROJECT_DIR$/app/view/AlcoResourcesGrid.js" />
-        <option value="$PROJECT_DIR$/php/application/classes/Controller/Settings.php" />
-        <option value="$PROJECT_DIR$/app/view/MainPanel.js" />
-        <option value="$PROJECT_DIR$/app/main.js" />
-        <option value="$PROJECT_DIR$/app/view/SettingsPanel.js" />
-        <option value="$PROJECT_DIR$/app/view/BarCombobox.js" />
-        <option value="$PROJECT_DIR$/php/application/classes/Controller/Bars.php" />
-        <option value="$PROJECT_DIR$/app/store/BarFilteredStore.js" />
-        <option value="$PROJECT_DIR$/php/application/classes/Model/barlink.php" />
         <option value="$PROJECT_DIR$/app/view/NoAlcoCoctailsGrid.js" />
         <option value="$PROJECT_DIR$/app/view/AlcoCoctailsGrid.js" />
         <option value="$PROJECT_DIR$/app/view/BarResourcesPanel.js" />
         <option value="$PROJECT_DIR$/app/view/CoctailsPanel.js" />
         <option value="$PROJECT_DIR$/php/application/classes/Controller/Components.php" />
         <option value="$PROJECT_DIR$/php/application/classes/Controller/Coctails.php" />
+        <option value="$PROJECT_DIR$/php/application/classes/Controller/extendcontroller.php" />
+        <option value="$PROJECT_DIR$/php/application/classes/Controller/Clientside.php" />
+        <option value="$PROJECT_DIR$/php/css/style.css" />
+        <option value="$PROJECT_DIR$/css/reset.css" />
+        <option value="$PROJECT_DIR$/css/style.css" />
+        <option value="$PROJECT_DIR$/php/application/bootstrap.php" />
+        <option value="$PROJECT_DIR$/php/application/classes/Controller/Orders.php" />
+        <option value="$PROJECT_DIR$/php/application/views/clientside.php" />
+        <option value="$PROJECT_DIR$/js/main.js" />
+        <option value="$PROJECT_DIR$/css/styleclientside.css" />
       </list>
     </option>
   </component>
@@ -213,150 +230,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="orm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="orm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="classes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="orm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="classes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Kohana" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="application" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -379,33 +252,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="classes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -432,6 +279,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -659,7 +520,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936978" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936978" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1993517" sideWeight="0.6706302" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20583469" sideWeight="0.6706302" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32818073" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -730,114 +591,112 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/model/AlcoModel.js">
+    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Bars.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="8" selection-start="407" selection-end="407" vertical-scroll-proportion="0.0">
+        <state line="31" column="0" selection-start="1005" selection-end="1005" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Coctails.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="319" column="72" selection-start="17511" selection-end="17511" vertical-scroll-proportion="-208.57692">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/SettingsPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="161" column="0" selection-start="6119" selection-end="6119" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/MainPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="43" selection-start="4923" selection-end="4923" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="41" selection-start="1775" selection-end="1775" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/application/classes/Model/user.php">
+    <entry file="file://$PROJECT_DIR$/php/application/views/default.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Bars.php">
+    <entry file="file://$PROJECT_DIR$/app/store/AlcoCoctailsStore.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="1005" selection-end="1005" vertical-scroll-proportion="-0.84615386">
+        <state line="7" column="55" selection-start="275" selection-end="275" vertical-scroll-proportion="0.20804195">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/application/bootstrap.php">
+    <entry file="file://$PROJECT_DIR$/app/store/OrdersStore.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="178" column="48" selection-start="6594" selection-end="6594" vertical-scroll-proportion="0.6941392">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/BarCombobox.js">
+    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Orders.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="47" selection-start="946" selection-end="946" vertical-scroll-proportion="0.53496504">
+        <state line="81" column="10" selection-start="4024" selection-end="4024" vertical-scroll-proportion="-15.692307">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/store/BarFilteredStore.js">
+    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Clientside.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="21" selection-start="204" selection-end="204" vertical-scroll-proportion="0.0">
+        <state line="6" column="35" selection-start="277" selection-end="277" vertical-scroll-proportion="-3.9230769">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/store/BarStore.js">
+    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/extendcontroller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="28" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/NoAlcoCoctailsGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="0" selection-start="2925" selection-end="2925" vertical-scroll-proportion="0.743007">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/AlcoCoctailsGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="49" selection-start="4636" selection-end="4636" vertical-scroll-proportion="2.0861487">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/BarResourcesPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="0" selection-start="4954" selection-end="4954" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/CoctailsPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="25" selection-start="3776" selection-end="3776" vertical-scroll-proportion="0.0">
+        <state line="7" column="0" selection-start="304" selection-end="304" vertical-scroll-proportion="-4.576923">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Components.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="9" selection-start="4606" selection-end="4606" vertical-scroll-proportion="64.73077">
+        <state line="0" column="50" selection-start="50" selection-end="50" vertical-scroll-proportion="-0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/application/classes/Controller/Coctails.php">
+    <entry file="file://$PROJECT_DIR$/php/application/bootstrap.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="305" column="26" selection-start="16756" selection-end="16756" vertical-scroll-proportion="1.6307421">
+        <state line="155" column="68" selection-start="5194" selection-end="5194" vertical-scroll-proportion="-14.153846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/reset.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="1" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/OrdersGrid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="50" selection-start="2538" selection-end="2777" vertical-scroll-proportion="0.5944056">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/styleclientside.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="24" selection-start="374" selection-end="374" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="13" selection-start="46" selection-end="46" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/application/views/clientside.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="34" selection-start="426" selection-end="426" vertical-scroll-proportion="-4.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="45" selection-start="879" selection-end="879" vertical-scroll-proportion="-0.4160839">
           <folding />
         </state>
       </provider>

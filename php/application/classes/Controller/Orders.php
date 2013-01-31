@@ -79,6 +79,7 @@ class Controller_Orders extends Controller_Extendcontroller {
                                                '.$cond.' '.(isset($userId) ? 'AND c.id = "'.$userId.'" ' : '').' AND a.bar_id = '.$currentBar->data.'
                                                ORDER BY a.id DESC
                                                LIMIT '.$params['limit'].' OFFSET '.$params['limit'] * ($params['page'] - 1));
+        //echo $query;
         $result = $query->execute()->as_array();
         $totalQuery = DB::query(Database::SELECT, 'SELECT COUNT(*) AS num
                                                    FROM orders a

@@ -145,13 +145,15 @@ Route::set('clean_profit', 'transactions/getCleanProfit/<user_id>')
         'action' => 'getCleanProfit'
     ));
 
-Route::set('orders_by_user', 'orders/getOrders(/<type>)(/<user_id>)(/<limit>/<page>)')
+Route::set('orders_by_user', 'orders/getOrders(/<type>)(/<user_id>)(/<limit>/<page>/<start>)')
     ->defaults(array(
     'controller' => 'orders',
     'action' => 'getOrders',
     'start' => isset($_POST['start']) ? $_POST['start'] : 0,
     'limit' => isset($_POST['limit']) ? $_POST['limit'] : 100,
     'page' => isset($_POST['page']) ? $_POST['page'] : 0,
+    'type' => isset($_POST['type']) ? $_POST['type'] : 0,
+    'user_id' => isset($_POST['user_id']) ? $_POST['user_id'] : null,
 ));
 
 Route::set('default', '<controller>/<action>(/<tail>)')

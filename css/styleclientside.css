@@ -1,0 +1,37 @@
+body {
+    font-size: 14pt;
+    background: url('/img/bg1.png') repeat-x;
+}
+header {
+    color: #FF8000;
+    text-align: center;
+    font-size: 24pt;
+    font-weight: bold;
+    padding: 10px 0;
+    text-shadow: 1px 1px 1px #000000, 0 0 1em #FF8000;
+}
+table {
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 80%;
+}
+thead {
+    font-weight: bold;
+    background: #E4E2E2;
+}
+table td {
+    padding: 10px;
+    border: 1px solid #ffffff;
+}
+table td + td {
+    width: 20%;
+}
+table td + td + td{
+    width: 30%;
+}
+table td + td + td + td {
+    width: 20%;
+}
+table td + td + td +td + td{
+    width: 30%;
+}
