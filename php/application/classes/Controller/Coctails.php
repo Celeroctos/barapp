@@ -282,6 +282,7 @@ class Controller_Coctails extends Controller_Extendcontroller {
                 $query = DB::query(Database::SELECT, 'SELECT a.*
                                                       FROM components a
                                                       WHERE a.from = '.$componentInCoctail['component_id']);
+                //echo $query;
                 $result = $query->execute();
                 $num = $result->count();
                 if($num == 0) {
@@ -291,9 +292,11 @@ class Controller_Coctails extends Controller_Extendcontroller {
                         $errorMsg .= '<strong>Для коктейля "'.$coctail['name'].'" не хватает следующих ингредиентов:</strong><br>';
                     }
                     $errorMsg .= $componentInCoctail['name'].'<br>';
+                    $currentComponents[$index] = -1;
+                } else {
+                    $arr = $result->as_array();
+                    $currentComponents[$index] = $arr[0];
                 }
-                $arr = $result->as_array();
-                $currentComponents[$index] = $arr[0];
             }
 
             if($isAviable) {

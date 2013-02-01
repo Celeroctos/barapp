@@ -201,6 +201,8 @@ Ext.define('Bar.view.OrdersGrid', {
                 });
             }
 
+            grid.edited = [];
+
             Ext.Ajax.request({
                 url: '/php/index.php/orders/saveChanges',
                 params: {

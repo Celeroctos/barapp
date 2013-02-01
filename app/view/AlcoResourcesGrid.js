@@ -70,8 +70,6 @@ Ext.define('Bar.view.AlcoResourcesGrid', {
             store.each(function(rec) {
                 if(rec.get('id') == this.ownersCombo.getValue()) {
                     e.record.set('owner', rec.get('nick'));
-                    console.log(rec.get('nick'));
-                    console.log(e.record); // Как изменить содержимое столбца...? Доделать завтра.
                     return;
                 }
             }, this);

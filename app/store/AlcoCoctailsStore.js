@@ -2,7 +2,7 @@ Ext.define('Bar.store.AlcoCoctailsStore', {
     extend: 'Bar.store.BaseStore',
     requires: ['Bar.model.AlcoCoctailsModel'],
     model: 'Bar.model.AlcoCoctailsModel',
-    pageSize: 8,
+    pageSize: 9,
     proxy: {
         type: 'ajax',
         url: '/php/index.php/coctails/getAlcoCoctails',

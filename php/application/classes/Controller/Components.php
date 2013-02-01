@@ -48,6 +48,12 @@ class Controller_Components extends Controller_Extendcontroller {
         $model = ORM::factory('component');
         $currentBar = Request::factory('bars/getDefaultBarId')->execute()->body();
         $currentBar = json_decode($currentBar);
+        if(!isset($params['owner']) || trim($params['owner']) == '') {
+            $params['owner'] = -1; // Дефолтный юзер, который "не задан"
+        }
+        if(!isset($params['strength']) || trim($params['strength']) == '') {
+            $params['strength'] = 0; // Дефолтный юзер, который "не задан"
+        }
         // Пишем новый компонент бара
         $model->name = $params['name'];
         $model->capacity = $params['capacity'];

@@ -2,7 +2,7 @@ Ext.define('Bar.store.ClientsStore', {
     extend: 'Bar.store.BaseStore',
     requires: ['Bar.model.ClientsModel'],
     model: 'Bar.model.ClientsModel',
-    pageSize: 8,
+    pageSize: 16,
     proxy: {
         type: 'ajax',
         url: '/php/index.php/users/getClients',

@@ -11,8 +11,8 @@ Ext.define('Bar.view.ClientsPanel', {
            xtype: 'ClientsInfoGrid',
            id: 'clientsGrid',
            title: '',
-           maxHeight: 300,
-           minHeight: 300,
+           maxHeight: 500,
+           minHeight: 500,
            width: '100%',
            flex: 1
        },

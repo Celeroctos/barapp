@@ -115,7 +115,7 @@ Ext.define('Bar.view.MainPanel', {
                 }
             }
         }, this);
-        
+
         this.on('afterrender', function(component, options) {
             // Загрузим все настройки
             Ext.Ajax.request({

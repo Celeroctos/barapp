@@ -197,6 +197,7 @@ Ext.define('Bar.view.BarResourcesPanel', {
                     });
                 }
             }
+            grid.edited = [];
         }
 
         Ext.Ajax.request({

@@ -10,34 +10,37 @@ Ext.define('Bar.view.MenuPanel', {
    region: 'center',
    title: 'Список коктейлей',
    id: 'MenuPanel',
-   items: [
-       {
-           title: '',
-           xtype: 'CoctailsPanel',
-           id: 'coctailsPanel'
-       },
-       {
-           xtype: 'fieldset',
-           id: 'alcoCoctailsAdd',
-           width: 510,
-           title: 'Добавить коктейль',
-           style: 'margin-left: 10px;',
-           items: [
-               {
-                   xtype: 'CoctailAddPanel',
-                   id: 'coctailAddPanel',
-                   style: 'padding 0;',
-                   mode: 'add'
-               }
-           ]
-       }
-   ],
+
+   makeItems: function() {
+       this.items = [
+           this.coctailsPanel = Ext.create('Bar.view.CoctailsPanel', {
+               title: '',
+               id: 'coctailsPanel'
+           }),
+           {
+               xtype: 'fieldset',
+               id: 'alcoCoctailsAdd',
+               width: 510,
+               title: 'Добавить коктейль',
+               style: 'margin-left: 10px;',
+               items: [
+                   {
+                       xtype: 'CoctailAddPanel',
+                       id: 'coctailAddPanel',
+                       style: 'padding 0;',
+                       mode: 'add'
+                   }
+               ]
+           }
+       ];
+   },
    updatePanel: function() {
-       Ext.getCmp('alcoCoctailsGrid').getStore().reload();
-       Ext.getCmp('noAlcoCoctailsGrid').getStore().reload();
+       console.log(this.coctailsPanel);
+       this.coctailsPanel.updatePanel();
    },
 
    initComponent: function() {
+       this.makeItems();
        Bar.view.MenuPanel.superclass.initComponent.apply(this, arguments);
        console.log('Bar.view.MenuPanel');
    }

@@ -165,7 +165,7 @@ Route::set('default', '<controller>/<action>(/<tail>)')
         'capacity' => isset($_POST['capacity']) ? $_POST['capacity'] : '',
         'price' => isset($_POST['price']) ? $_POST['price'] : '',
         'owner' => isset($_POST['owner']) ? $_POST['owner'] : '',
-        'strength' => isset($_POST['strength']) ? $_POST['strength'] : '',
+        'strength' => isset($_POST['strength']) ? $_POST['strength'] : 0,
         'components' =>  isset($_POST['components']) ? $_POST['components'] : '',
         'recipe' => isset($_POST['recipe']) ? $_POST['recipe'] : '',
         'prozent' => isset($_POST['prozent']) ? $_POST['prozent'] : '',

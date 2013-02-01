@@ -7,6 +7,7 @@ Ext.define('Bar.view.CoctailsPanel', {
     alias: 'widget.CoctailsPanel',
     layout: 'auto',
     region: 'center',
+    firstLoad: true,
     title: '',
     items: [
         {
@@ -113,6 +114,7 @@ Ext.define('Bar.view.CoctailsPanel', {
 
     deleteChecked: function() {
         var selected = this.getSelected();
+        var grid = this.getActiveTab();
         var data = {
             ids: Ext.JSON.encode(selected)
         };
@@ -124,7 +126,7 @@ Ext.define('Bar.view.CoctailsPanel', {
                     var data = Ext.JSON.decode(response.responseText);
                     if(data.success == true) {
                         // Обновляем таблицу
-                        grid.getStore().reload();
+                        Ext.getCmp(grid.id).getStore().reload();
                     }
                 }
             });
@@ -148,6 +150,7 @@ Ext.define('Bar.view.CoctailsPanel', {
                     id: rec.get('id')
                 });
             }
+            grid.edited = [];
 
             Ext.Ajax.request({
                 url: '/php/index.php/coctails/saveChanges',
@@ -171,8 +174,14 @@ Ext.define('Bar.view.CoctailsPanel', {
     },
 
     updatePanel: function() {
-        Ext.getCmp('alcoCoctailsGrid').updatePanel();
-        Ext.getCmp('noAlcoCoctailsGrid').updatePanel();
+        Ext.getCmp('alcoCoctailsGrid').getStore().reload();
+        Ext.getCmp('noAlcoCoctailsGrid').getStore().reload();
+        // Первый раз не нужно грузить
+        if(!this.firstLoad) {
+            this.barCombo.fireEvent('afterrender', this.barCombo);
+        } else {
+            this.firstLoad = false;
+        }
     },
 
     initComponent: function() {
